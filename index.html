@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Luann Luna — Senior iOS Engineer</title>
+    <meta name="description" content="Luann Luna — Senior iOS Engineer. Swift 6, SwiftUI, Clean Architecture. Shipped to G1, Petz, LTK, Next, Dafiti and more. Performance, modularization, and design systems." />
+    <meta name="author" content="Luann Luna" />
+    <meta name="theme-color" content="#0f1320" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Luann Luna — Senior iOS Engineer" />
+    <meta property="og:description" content="7+ years building iOS apps used by millions. Swift 6, SwiftUI, Clean Architecture, performance & design systems." />
+    <meta property="og:url" content="https://luannluna.github.io/" />
+    <meta property="og:image" content="/og-image.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Luann Luna — Senior iOS Engineer" />
+    <meta name="twitter:description" content="7+ years building iOS apps used by millions. Swift 6, SwiftUI, Clean Architecture." />
+    <meta name="twitter:image" content="/og-image.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+    <script>
+      // Apply theme before paint to avoid flash
+      (function () {
+        try {
+          const stored = localStorage.getItem('theme');
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const theme = stored || (prefersDark ? 'dark' : 'light');
+          if (theme === 'dark') document.documentElement.classList.add('dark');
+        } catch (e) {}
+      })();
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Luann Luna",
+        "jobTitle": "Senior iOS Software Engineer",
+        "url": "https://luannluna.github.io/",
+        "email": "mailto:luann.marques@gmail.com",
+        "sameAs": [
+          "https://linkedin.com/in/luannluna",
+          "https://github.com/LuannLuna"
+        ]
+      }
+    </script>
+  </head>
+  <body class="bg-white text-ink-900 dark:bg-ink-950 dark:text-ink-100 antialiased">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

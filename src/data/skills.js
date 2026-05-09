@@ -1,0 +1,26 @@
+export const skillGroups = [
+  {
+    title: 'Languages & Runtime',
+    items: ['Swift 6', 'Strict Concurrency', 'Async/Await', 'Combine', 'Objective-C'],
+  },
+  {
+    title: 'UI & State',
+    items: ['SwiftUI', 'UIKit', '@Observable', 'SwiftData', 'Accessibility (VoiceOver, Dynamic Type)'],
+  },
+  {
+    title: 'Architecture & Modularization',
+    items: ['Clean Architecture', 'MVVM', 'MVVM-C', 'Coordinator', 'SOLID', 'Swift Package Manager (feature modules)', 'Dependency Injection'],
+  },
+  {
+    title: 'Quality & Performance',
+    items: ['XCTest', 'Swift Testing', 'Maestro', 'Quick/Nimble', 'Instruments'],
+  },
+  {
+    title: 'Release & Tooling',
+    items: ['Fastlane', 'Bitrise', 'GitHub Actions', 'SwiftLint', 'Firebase (Crashlytics, Analytics, Remote Config)'],
+  },
+  {
+    title: 'APIs & Platform',
+    items: ['REST', 'GraphQL', 'Apollo', 'CoreLocation', 'MapKit'],
+  },
+]
