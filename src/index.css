@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+.dark {
+  color-scheme: dark;
+}
+
+html { -webkit-font-smoothing: antialiased; }
+body { font-feature-settings: 'cv11', 'ss01'; }
+
+::selection {
+  background: theme('colors.accent.500');
+  color: white;
+}
+
+@layer components {
+  .container-prose {
+    @apply mx-auto w-full max-w-6xl px-6 sm:px-8;
+  }
+  .section {
+    @apply py-24 sm:py-32;
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em]
+           text-accent-600 dark:text-accent-300;
+  }
+  .heading {
+    @apply font-display text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight
+           text-ink-900 dark:text-white;
+  }
+  .lede {
+    @apply mt-4 max-w-2xl text-lg text-ink-600 dark:text-ink-300 leading-relaxed;
+  }
+  .card {
+    @apply rounded-2xl border border-ink-200/70 dark:border-white/10
+           bg-white dark:bg-ink-900/40 backdrop-blur
+           transition-colors;
+  }
+  .chip {
+    @apply inline-flex items-center rounded-full border border-ink-200 dark:border-white/10
+           bg-ink-50 dark:bg-white/5
+           px-3 py-1 text-xs font-medium text-ink-700 dark:text-ink-200;
+  }
+  .link {
+    @apply text-accent-600 dark:text-accent-300 hover:underline underline-offset-4;
+  }
+}
+
+/* Subtle background grid */
+.bg-grid {
+  background-image: theme('backgroundImage.grid-light');
+  background-size: 24px 24px;
+}
+.dark .bg-grid {
+  background-image: theme('backgroundImage.grid-dark');
+}
