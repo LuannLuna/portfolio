@@ -1,0 +1,3 @@
+eyebrow: "Toolkit"
+title: "The stack I reach for first."
+lede: "Day-to-day I write Swift 6 with strict concurrency, build on SwiftUI + Observation, and modularize with Swift Package Manager. Everything else is in service of that loop staying fast."

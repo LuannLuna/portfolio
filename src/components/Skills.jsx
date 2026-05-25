@@ -1,16 +1,16 @@
 import { motion } from 'framer-motion'
 import Section from './Section.jsx'
-import { skillGroups } from '../data/skills.js'
+import { skills } from '../content/loader.js'
 
 export default function Skills() {
   return (
     <Section
       id="skills"
-      eyebrow="Toolkit"
-      title="The stack I reach for first."
-      lede="Day-to-day I write Swift 6 with strict concurrency, build on SwiftUI + Observation, and modularize with Swift Package Manager. Everything else is in service of that loop staying fast.">
+      eyebrow={skills.eyebrow}
+      title={skills.title}
+      lede={skills.lede}>
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {skillGroups.map((group, i) => (
+        {skills.groups.map((group, i) => (
           <motion.div
             key={group.title}
             initial={{ opacity: 0, y: 16 }}

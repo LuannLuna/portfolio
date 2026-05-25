@@ -1,0 +1,23 @@
+locale: en
+defaultLocale: en
+availableLocales: [en]
+
+site:
+  title: "Luann Luna · Senior iOS Engineer"
+  description: "Senior iOS Engineer. Swift 6, SwiftUI, Clean Architecture. 7+ years shipping native iOS to millions of users."
+  url: "https://luannluna.github.io/portfolio/"
+  ogImage: "/og-image.png"
+  themeColor: "#0f1320"
+
+profile:
+  name: "Luann Luna"
+  title: "Senior iOS Software Engineer"
+  location: "São Luís, Brazil · Remote (US / EU / LATAM)"
+  email: "luann.marques@gmail.com"
+  phone: "+55 98 98176-4061"
+  shippedTo: ["G1", "GE", "Dafiti", "Kanui", "Tricae", "Next", "Petz", "LTK", "TocaLivros"]
+  links:
+    linkedin: "https://linkedin.com/in/luannluna"
+    github: "https://github.com/LuannLuna"
+    resume: "https://github.com/LuannLuna/Resume/raw/main/pdf/Luann_Luna_Resume_EN.pdf"
+    schedule: "https://cal.com/luann-luna/30min"

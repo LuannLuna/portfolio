@@ -1,8 +1,19 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, Github, Linkedin, Mail, FileText, MapPin } from 'lucide-react'
-import { profile } from '../data/profile.js'
+import { hero, site } from '../content/loader.js'
+
+const APP_STORE_LINKS = {
+  "Petz": "https://apps.apple.com/br/app/petz-tudo-que-seu-pet-precisa/id1250491446",
+  "LTK": "https://apps.apple.com/br/app/ltk-liketoknow-it/id1154027990",
+  "Next": "https://apps.apple.com/br/app/next-conta-digital-e-cart%C3%A3o/id1133682678",
+  "G1": "https://apps.apple.com/br/app/g1-portal-de-not%C3%ADcias-da-globo/id413333281",
+  "GE": "https://apps.apple.com/br/app/ge-not%C3%ADcias-de-esportes/id361393520",
+  "Dafiti": "https://apps.apple.com/br/app/dafiti-shopping-no-seu-bolso/id564924168",
+  "TocaLivros": "https://apps.apple.com/br/app/audiolivros-da-tocalivros/id919766261"
+}
 
 export default function Hero() {
+  const { profile } = site
   return (
     <section id="top" className="relative pt-20 pb-24 sm:pt-28 sm:pb-32">
       <div className="container-prose">
@@ -10,38 +21,38 @@ export default function Hero() {
           initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
           className="eyebrow">
           <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
-          Available for senior iOS roles · Q3 2026
+          {hero.availability}
         </motion.p>
 
         <motion.h1
           initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.05 }}
           className="mt-5 font-display text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight">
-          Senior iOS engineer who treats{' '}
+          {hero.headline.lead}{' '}
           <span className="bg-gradient-to-r from-accent-500 via-fuchsia-400 to-cyan-400 bg-clip-text text-transparent">
-            milliseconds
+            {hero.headline.highlight}
           </span>{' '}
-          like product features.
+          {hero.headline.trail}
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }}
           className="mt-6 max-w-2xl text-lg sm:text-xl text-ink-600 dark:text-ink-300 leading-relaxed">
-          {profile.shortBio}
+          {hero.body}
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }}
           className="mt-8 flex flex-wrap items-center gap-3">
-          <a href="#projects"
+          <a href={hero.ctaPrimary.href}
              className="group inline-flex items-center gap-2 rounded-xl bg-ink-900 dark:bg-white px-5 py-3
                         text-sm font-medium text-white dark:text-ink-900 hover:opacity-90 transition">
-            See selected work
+            {hero.ctaPrimary.label}
             <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
           </a>
-          <a href={profile.links.resume} target="_blank" rel="noreferrer"
+          <a href={hero.ctaSecondary.href} target="_blank" rel="noreferrer"
              className="inline-flex items-center gap-2 rounded-xl border border-ink-200 dark:border-white/10
                         px-5 py-3 text-sm font-medium hover:bg-ink-100/60 dark:hover:bg-white/5 transition">
-            <FileText size={16} /> Resume
+            <FileText size={16} /> {hero.ctaSecondary.label}
           </a>
           <div className="ml-2 flex items-center gap-1">
             <IconLink href={profile.links.github} label="GitHub"><Github size={18} /></IconLink>
@@ -56,19 +67,33 @@ export default function Hero() {
           <MapPin size={14} /> {profile.location}
         </motion.div>
 
-        {/* Logo strip */}
         <motion.div
           initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-16">
           <p className="text-xs font-mono uppercase tracking-[0.2em] text-ink-500 dark:text-ink-400">
-            Shipped to production
+            {hero.shippedToLabel}
           </p>
           <div className="mt-4 flex flex-wrap gap-x-8 gap-y-3 text-ink-500 dark:text-ink-300">
-            {profile.shippedTo.map(name => (
-              <span key={name} className="font-display text-lg sm:text-xl tracking-tight opacity-80 hover:opacity-100 transition">
-                {name}
-              </span>
-            ))}
+            {profile.shippedTo.map(name => {
+              const url = APP_STORE_LINKS[name]
+              if (url) {
+                return (
+                  <a
+                    key={name}
+                    href={url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-display text-lg sm:text-xl tracking-tight opacity-80 hover:opacity-100 hover:text-accent-500 dark:hover:text-accent-300 transition duration-200">
+                    {name}
+                  </a>
+                )
+              }
+              return (
+                <span key={name} className="font-display text-lg sm:text-xl tracking-tight opacity-40">
+                  {name}
+                </span>
+              )
+            })}
           </div>
         </motion.div>
       </div>

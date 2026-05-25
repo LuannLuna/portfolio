@@ -6,10 +6,12 @@ import Skills from './components/Skills.jsx'
 import Experience from './components/Experience.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
+import SEO from './components/SEO.jsx'
 
 export default function App() {
   return (
     <div className="relative min-h-screen overflow-x-hidden">
+      <SEO />
       {/* ambient background */}
       <div aria-hidden className="pointer-events-none fixed inset-0 -z-10">
         <div className="absolute inset-0 bg-grid opacity-60" />

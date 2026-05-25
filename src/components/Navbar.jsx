@@ -1,14 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Moon, Sun, Menu, X } from 'lucide-react'
 import { useTheme } from '../hooks/useTheme.js'
-
-const links = [
-  { href: '#about', label: 'About' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#experience', label: 'Experience' },
-  { href: '#contact', label: 'Contact' },
-]
+import { nav } from '../content/loader.js'
 
 export default function Navbar() {
   const { theme, toggle } = useTheme()
@@ -30,13 +23,13 @@ export default function Navbar() {
       <nav className="container-prose flex h-16 items-center justify-between">
         <a href="#top" className="flex items-center gap-2 font-display text-lg font-semibold tracking-tight">
           <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-accent-500 to-cyan-400 text-white">
-            LL
+            {nav.brand.short}
           </span>
-          <span className="hidden sm:inline">Luann Luna</span>
+          <span className="hidden sm:inline">{nav.brand.full}</span>
         </a>
 
         <div className="hidden md:flex items-center gap-1">
-          {links.map(l => (
+          {nav.links.map(l => (
             <a key={l.href} href={l.href}
                className="rounded-lg px-3 py-2 text-sm text-ink-600 dark:text-ink-300
                           hover:text-ink-900 dark:hover:text-white hover:bg-ink-100/60 dark:hover:bg-white/5">
@@ -67,7 +60,7 @@ export default function Navbar() {
       {open && (
         <div className="md:hidden border-t border-ink-200/60 dark:border-white/10 bg-white/95 dark:bg-ink-950/95 backdrop-blur">
           <div className="container-prose py-3 flex flex-col">
-            {links.map(l => (
+            {nav.links.map(l => (
               <a key={l.href} href={l.href} onClick={() => setOpen(false)}
                  className="rounded-lg px-3 py-2 text-sm text-ink-700 dark:text-ink-200 hover:bg-ink-100 dark:hover:bg-white/5">
                 {l.label}

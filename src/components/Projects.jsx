@@ -1,46 +1,128 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowUpRight, X } from 'lucide-react'
+import { ArrowUpRight, X, Github } from 'lucide-react'
 import Section from './Section.jsx'
-import { projects } from '../data/projects.js'
+import Markdown from './Markdown.jsx'
+import TagFilter from './TagFilter.jsx'
+import { projects, projectsMeta, githubProjects } from '../content/loader.js'
 
 export default function Projects() {
   const [active, setActive] = useState(null)
+  const [tag, setTag] = useState(null)
+
+  const visible = useMemo(
+    () => (tag ? projects.filter(p => p.tags.includes(tag)) : projects),
+    [tag]
+  )
 
   return (
     <Section
       id="projects"
-      eyebrow="Selected work"
-      title="Projects where the architecture choice was the product choice."
-      lede="A short list of the work I'm proudest of — picked because the constraints were real, the tradeoffs were visible, and the impact was measurable.">
-      <div className="grid gap-6 sm:grid-cols-2">
-        {projects.map((p, i) => (
-          <motion.button
-            key={p.slug}
-            onClick={() => setActive(p)}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.5, delay: i * 0.05 }}
-            className="group relative text-left card p-6 sm:p-7 overflow-hidden hover:shadow-glow hover:-translate-y-0.5 transition-all">
-            <div aria-hidden className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full
-                                       bg-accent-500/10 blur-3xl opacity-0 group-hover:opacity-100 transition" />
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <p className="text-xs font-mono uppercase tracking-[0.2em] text-accent-600 dark:text-accent-300">
-                  {p.company} · {p.period}
-                </p>
-                <h3 className="mt-2 font-display text-2xl font-semibold tracking-tight">{p.name}</h3>
+      eyebrow={projectsMeta.eyebrow}
+      title={projectsMeta.title}
+      lede={projectsMeta.lede}>
+      <TagFilter
+        tags={projectsMeta.allTags}
+        active={tag}
+        onChange={setTag}
+        allLabel={projectsMeta.allLabel}
+      />
+
+      <motion.div layout className="grid gap-6 sm:grid-cols-2">
+        <AnimatePresence mode="popLayout">
+          {visible.map((p, i) => (
+            <motion.button
+              key={p.slug}
+              layout
+              onClick={() => setActive(p)}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.4, delay: i * 0.04 }}
+              className="group relative text-left card overflow-hidden hover:shadow-glow hover:-translate-y-0.5 transition-all">
+              <div aria-hidden className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full
+                                         bg-accent-500/10 blur-3xl opacity-0 group-hover:opacity-100 transition" />
+              {p.coverUrl && (
+                <div className="aspect-[16/9] w-full overflow-hidden border-b border-ink-200/70 dark:border-white/10">
+                  <img
+                    src={p.coverUrl}
+                    alt=""
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+              )}
+              <div className="p-6 sm:p-7">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-xs font-mono uppercase tracking-[0.2em] text-accent-600 dark:text-accent-300">
+                      {p.company} · {p.period}
+                    </p>
+                    <h3 className="mt-2 font-display text-2xl font-semibold tracking-tight">{p.title}</h3>
+                  </div>
+                  <ArrowUpRight size={20} className="flex-none text-ink-400 group-hover:text-accent transition" />
+                </div>
+                <p className="mt-3 text-ink-600 dark:text-ink-300">{p.tagline}</p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {p.stack.slice(0, 5).map(s => <span key={s} className="chip">{s}</span>)}
+                  {p.stack.length > 5 && <span className="chip">+{p.stack.length - 5}</span>}
+                </div>
               </div>
-              <ArrowUpRight size={20} className="flex-none text-ink-400 group-hover:text-accent transition" />
-            </div>
-            <p className="mt-3 text-ink-600 dark:text-ink-300">{p.tagline}</p>
-            <div className="mt-5 flex flex-wrap gap-2">
-              {p.stack.slice(0, 5).map(s => <span key={s} className="chip">{s}</span>)}
-              {p.stack.length > 5 && <span className="chip">+{p.stack.length - 5}</span>}
-            </div>
-          </motion.button>
-        ))}
+            </motion.button>
+          ))}
+        </AnimatePresence>
+      </motion.div>
+
+      {/* Open Source Highlights Section */}
+      <div className="mt-20 sm:mt-28 border-t border-ink-200/50 dark:border-white/5 pt-16">
+        <div className="max-w-3xl">
+          <p className="eyebrow">
+            <Github size={14} /> Open Source
+          </p>
+          <h3 className="mt-3 font-display text-2xl sm:text-3xl font-semibold tracking-tight text-ink-900 dark:text-white">
+            Featured GitHub Repositories
+          </h3>
+          <p className="mt-2 text-ink-600 dark:text-ink-300">
+            A selection of native iOS libraries, toolkits, and architecture blueprints illustrating modern Swift patterns, modular architecture, and platform APIs.
+          </p>
+        </div>
+
+        <div className="mt-8 grid gap-6 sm:grid-cols-3">
+          {githubProjects.map((p, i) => (
+            <motion.a
+              key={p.name}
+              href={p.url}
+              target="_blank"
+              rel="noreferrer"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.05 }}
+              className="group card p-6 hover:shadow-glow hover:-translate-y-0.5 hover:border-accent-500/30 transition-all flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-ink-900 dark:text-white group-hover:text-accent-500 dark:group-hover:text-accent-300 transition duration-200">
+                    <Github size={18} className="opacity-80" />
+                    <span className="font-mono text-sm font-semibold tracking-tight">{p.name}</span>
+                  </div>
+                  <ArrowUpRight size={16} className="text-ink-400 group-hover:text-accent transition duration-200" />
+                </div>
+                <p className="mt-4 text-sm text-ink-600 dark:text-ink-300 leading-relaxed">
+                  {p.description}
+                </p>
+              </div>
+              <div className="mt-6">
+                <div className="flex flex-wrap gap-1.5">
+                  {p.stack.map(s => (
+                    <span key={s} className="inline-flex items-center rounded-full bg-ink-50 dark:bg-white/5 border border-ink-100 dark:border-white/5 px-2 py-0.5 text-[10px] font-medium text-ink-700 dark:text-ink-200">
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.a>
+          ))}
+        </div>
       </div>
 
       <AnimatePresence>
@@ -72,7 +154,7 @@ function ProjectModal({ project, onClose }) {
             <p className="text-xs font-mono uppercase tracking-[0.2em] text-accent-600 dark:text-accent-300">
               {project.company} · {project.period}
             </p>
-            <h3 className="mt-1 font-display text-2xl font-semibold">{project.name}</h3>
+            <h3 className="mt-1 font-display text-2xl font-semibold">{project.title}</h3>
           </div>
           <button onClick={onClose}
                   className="grid h-9 w-9 flex-none place-items-center rounded-lg border border-ink-200 dark:border-white/10
@@ -81,24 +163,38 @@ function ProjectModal({ project, onClose }) {
           </button>
         </div>
 
+        {project.coverUrl && (
+          <img
+            src={project.coverUrl}
+            alt=""
+            className="w-full aspect-[16/9] object-cover"
+          />
+        )}
+
         <div className="px-6 sm:px-8 py-6 space-y-8">
           <p className="text-lg text-ink-700 dark:text-ink-200 leading-relaxed">{project.tagline}</p>
 
-          {/* Impact */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            {project.impact.map(m => (
-              <div key={m.label} className="rounded-xl border border-ink-200 dark:border-white/10 p-4 bg-ink-50/60 dark:bg-white/5">
-                <div className="font-display text-xl font-semibold">{m.metric}</div>
-                <div className="mt-1 text-xs text-ink-500 dark:text-ink-400 leading-snug">{m.label}</div>
-              </div>
-            ))}
-          </div>
+          {project.impact.length > 0 && (
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {project.impact.map(m => (
+                <div key={m.label} className="rounded-xl border border-ink-200 dark:border-white/10 p-4 bg-ink-50/60 dark:bg-white/5">
+                  <div className="font-display text-xl font-semibold">{m.metric}</div>
+                  <div className="mt-1 text-xs text-ink-500 dark:text-ink-400 leading-snug">{m.label}</div>
+                </div>
+              ))}
+            </div>
+          )}
 
-          <Block title="Overview" body={project.overview} />
           <Block title="My role" body={project.role} />
-          <ListBlock title="Challenges" items={project.challenges} />
-          <ListBlock title="Architecture & decisions" items={project.decisions} />
-          <Block title="Lessons learned" body={project.lessons} />
+          {project.challenges.length > 0 && <ListBlock title="Challenges" items={project.challenges} />}
+          {project.decisions.length > 0 && <ListBlock title="Architecture & decisions" items={project.decisions} />}
+
+          {project.body && (
+            <div>
+              <h4 className="text-xs font-mono uppercase tracking-[0.2em] text-ink-500 dark:text-ink-400 mb-3">Case study</h4>
+              <Markdown>{project.body}</Markdown>
+            </div>
+          )}
 
           <div>
             <h4 className="text-xs font-mono uppercase tracking-[0.2em] text-ink-500 dark:text-ink-400">Tech</h4>
@@ -106,6 +202,15 @@ function ProjectModal({ project, onClose }) {
               {project.stack.map(s => <span key={s} className="chip">{s}</span>)}
             </div>
           </div>
+
+          {project.tags.length > 0 && (
+            <div>
+              <h4 className="text-xs font-mono uppercase tracking-[0.2em] text-ink-500 dark:text-ink-400">Tags</h4>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {project.tags.map(t => <span key={t} className="chip">{t}</span>)}
+              </div>
+            </div>
+          )}
         </div>
       </motion.div>
     </motion.div>
@@ -120,6 +225,7 @@ function Block({ title, body }) {
     </div>
   )
 }
+
 function ListBlock({ title, items }) {
   return (
     <div>

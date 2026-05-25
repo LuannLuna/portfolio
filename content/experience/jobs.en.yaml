@@ -1,0 +1,59 @@
+jobs:
+  - role: "Senior iOS Software Engineer"
+    company: "Hi-Tech Talents — contracted to LikeToKnow.It (LTK)"
+    period: "Oct 2025 — Apr 2026"
+    current: false
+    appLinks:
+      - name: "LTK"
+        url: "https://apps.apple.com/br/app/ltk-liketoknow-it/id1154027990"
+    bullets:
+      - "Consolidated 3 legacy search endpoints behind a unified async/await data layer in a Swift 6 strict-concurrency codebase, cutting search response time from 900ms to 200ms (-78%)"
+      - "Designed and shipped 3 SwiftUI components into the LTK design system, powering the rebuilt search experience end-to-end and positioned for adoption by other feature teams"
+      - "Built an end-to-end Maestro suite simulating the full user journey (login → tabbar → search → creator shop), complementing XCTest UI coverage to validate cross-screen behavior unit tests alone couldn't catch"
+
+  - role: "Senior iOS Software Engineer"
+    company: "Sebratec — contracted to Petz"
+    period: "Aug 2022 — Sep 2025"
+    appLinks:
+      - name: "Petz"
+        url: "https://apps.apple.com/br/app/petz-tudo-que-seu-pet-precisa/id1250491446"
+    bullets:
+      - "Architected the loyalty program module (MVVM + Clean Architecture); shipped as Petz's first production SwiftUI flow with real business logic, driving 1,000+ organic sales in week one"
+      - "Led war-room triage for a production crash affecting all 1.5M+ users — diagnosed a misconfigured remote config value and restored service in ~3 hours; triaged 12 top-occurrence crashes via Crashlytics and Instruments, sustaining ~99% crash-free sessions"
+      - "Led UIKit-to-SwiftUI migration across 8 screens with a 2-dev team, halving feature delivery from 3 months to 1.5 and establishing SwiftUI as team standard"
+
+  - role: "iOS Engineer / Digital Solutions Architect"
+    company: "Capgemini — contracted to Next"
+    period: "Jul 2021 — Jun 2022"
+    appLinks:
+      - name: "Next"
+        url: "https://apps.apple.com/br/app/next-conta-digital-e-cart%C3%A3o/id1133682678"
+    bullets:
+      - "Prototyped a redesigned authentication flow in RxSwift at NEXT, moving from upfront permission loading to on-demand privilege escalation; aligned the design with a Principal Engineer from the client and produced UML and sequence diagrams of the login lifecycle, delivered as part of the proposal"
+      - "Paired with the Chat squad on the integration of a new SDK powering Bia, NEXT's virtual assistant, contributing through code reviews and bug triage to support a seamless handoff between the bot and human support agents"
+      - "Supported a junior iOS developer's day-to-day growth through pair programming, code reviews, and technical discussions on architecture patterns, development techniques, and software design"
+
+  - role: "Mid-Level iOS Developer"
+    company: "Dextra Digital — contracted to Globo and Dafiti"
+    period: "Oct 2019 — Jun 2021"
+    appLinks:
+      - name: "G1"
+        url: "https://apps.apple.com/br/app/g1-portal-de-not%C3%ADcias-da-globo/id413333281"
+      - name: "GE"
+        url: "https://apps.apple.com/br/app/ge-not%C3%ADcias-de-esportes/id361393520"
+      - name: "Dafiti"
+        url: "https://apps.apple.com/br/app/dafiti-shopping-no-seu-bolso/id564924168"
+    bullets:
+      - "Built geolocation-based news discovery (CoreLocation, MapKit, GraphQL), doubling average session time from 4.2 to 8.7 minutes"
+      - "Grew test coverage from 18% to 67% with XCTest and Quick/Nimble, preventing 25+ production bugs over 18 months"
+      - "Implemented critical security fixes in Objective-C across Dafiti Group apps (Dafiti, Kanui, Tricae) — session control and cryptographic protections required for credit card compliance"
+
+  - role: "Junior iOS Developer"
+    company: "Verité Soluções"
+    period: "Jul 2018 — Sep 2019"
+    appLinks:
+      - name: "TocaLivros"
+        url: "https://apps.apple.com/br/app/audiolivros-da-tocalivros/id919766261"
+    bullets:
+      - "Built 3 interconnected iOS apps for business management (Swift, UIKit), supporting 500+ daily operations"
+      - "Integrated CoreLocation for nearest-store discovery paired with push notifications (40% DAU lift), and applied Firebase Performance Monitoring optimizations for 45% faster load times"

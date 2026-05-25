@@ -1,0 +1,12 @@
+eyebrow: "Selected work"
+title: "Projects where the architecture choice was the product choice."
+lede: "A short list of the work I'm proudest of, picked because the constraints were real, the tradeoffs were visible, and the impact was measurable."
+allLabel: "All"
+tagOrder:
+  - "iOS"
+  - "Swift 6"
+  - "SwiftUI"
+  - "Concurrency"
+  - "Performance"
+  - "Architecture"
+  - "Security"
