@@ -4,15 +4,16 @@ import { ArrowUpRight, X, Github } from 'lucide-react'
 import Section from './Section.jsx'
 import Markdown from './Markdown.jsx'
 import TagFilter from './TagFilter.jsx'
-import { projects, projectsMeta, githubProjects } from '../content/loader.js'
+import { useContent } from '../i18n/locale.jsx'
 
 export default function Projects() {
+  const { projects, projectsMeta, githubProjects } = useContent()
   const [active, setActive] = useState(null)
   const [tag, setTag] = useState(null)
 
   const visible = useMemo(
     () => (tag ? projects.filter(p => p.tags.includes(tag)) : projects),
-    [tag]
+    [tag, projects]
   )
 
   return (

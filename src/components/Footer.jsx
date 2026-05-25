@@ -1,6 +1,7 @@
-import { site, footer } from '../content/loader.js'
+import { useContent } from '../i18n/locale.jsx'
 
 export default function Footer() {
+  const { site, footer } = useContent()
   return (
     <footer className="border-t border-ink-200/60 dark:border-white/10 mt-20">
       <div className="container-prose flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 py-8

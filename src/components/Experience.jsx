@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion'
 import { ExternalLink } from 'lucide-react'
 import Section from './Section.jsx'
-import { experience } from '../content/loader.js'
+import { useContent } from '../i18n/locale.jsx'
 
 export default function Experience() {
+  const { experience } = useContent()
   return (
     <Section
       id="experience"

@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion'
 import Section from './Section.jsx'
-import { skills } from '../content/loader.js'
+import { useContent } from '../i18n/locale.jsx'
 
 export default function Skills() {
+  const { skills } = useContent()
   return (
     <Section
       id="skills"

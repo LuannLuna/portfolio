@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, Github, Linkedin, Mail, FileText, MapPin } from 'lucide-react'
-import { hero, site } from '../content/loader.js'
+import { useContent } from '../i18n/locale.jsx'
 
 const APP_STORE_LINKS = {
   "Petz": "https://apps.apple.com/br/app/petz-tudo-que-seu-pet-precisa/id1250491446",
@@ -13,6 +13,7 @@ const APP_STORE_LINKS = {
 }
 
 export default function Hero() {
+  const { hero, site } = useContent()
   const { profile } = site
   return (
     <section id="top" className="relative pt-20 pb-24 sm:pt-28 sm:pb-32">
@@ -64,7 +65,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-6 flex items-center gap-2 text-sm text-ink-500 dark:text-ink-400">
-          <MapPin size={14} /> {profile.location}
+          <MapPin size={14} /> {hero.location}
         </motion.div>
 
         <motion.div

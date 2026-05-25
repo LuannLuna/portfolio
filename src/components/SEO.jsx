@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { site } from '../content/loader.js'
+import { useContent, useLocale } from '../i18n/locale.jsx'
 
 function setMeta(selector, value) {
   const el = document.querySelector(selector)
@@ -7,7 +7,11 @@ function setMeta(selector, value) {
 }
 
 export default function SEO() {
+  const { site } = useContent()
+  const { locale } = useLocale()
+
   useEffect(() => {
+    document.documentElement.lang = locale
     document.title = site.site.title
     setMeta('meta[name="description"]', site.site.description)
     setMeta('meta[property="og:title"]', site.site.title)
@@ -17,6 +21,7 @@ export default function SEO() {
     setMeta('meta[name="twitter:title"]', site.site.title)
     setMeta('meta[name="twitter:description"]', site.site.description)
     setMeta('meta[name="theme-color"]', site.site.themeColor)
-  }, [])
+  }, [site, locale])
+
   return null
 }

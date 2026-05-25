@@ -8,16 +8,16 @@ export const SiteSchema = z.object({
   defaultLocale: z.string(),
   availableLocales: z.array(z.string()).min(1),
   site: z.object({
-    title: z.string(),
-    description: z.string(),
+    title: z.string().optional(),
+    description: z.string().optional(),
     url: z.string().url(),
     ogImage: z.string(),
     themeColor: z.string(),
   }),
   profile: z.object({
     name: z.string(),
-    title: z.string(),
-    location: z.string(),
+    title: z.string().optional(),
+    location: z.string().optional(),
     email: z.string().email(),
     phone: z.string().optional(),
     shippedTo: z.array(z.string()),
@@ -28,6 +28,11 @@ export const SiteSchema = z.object({
       schedule: z.string().url().optional(),
     }),
   }),
+})
+
+export const MetaSchema = z.object({
+  title: z.string(),
+  description: z.string(),
 })
 
 export const NavSchema = z.object({
@@ -50,6 +55,7 @@ export const HeroFrontmatterSchema = z.object({
   ctaPrimary: Cta,
   ctaSecondary: Cta,
   shippedToLabel: z.string(),
+  location: z.string(),
 })
 
 export const AboutFrontmatterSchema = z.object({

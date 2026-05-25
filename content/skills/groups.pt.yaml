@@ -1,0 +1,25 @@
+groups:
+  - title: "Linguagens & Runtime"
+    items: ["Swift 6", "Strict Concurrency", "Async/Await", "Combine", "Objective-C"]
+
+  - title: "UI & Estado"
+    items: ["SwiftUI", "UIKit", "@Observable", "SwiftData", "Accessibility (VoiceOver, Dynamic Type)"]
+
+  - title: "Arquitetura & Modularização"
+    items:
+      - "Clean Architecture"
+      - "MVVM"
+      - "MVVM-C"
+      - "Coordinator"
+      - "SOLID"
+      - "Swift Package Manager (feature modules)"
+      - "Dependency Injection"
+
+  - title: "Qualidade & Performance"
+    items: ["XCTest", "Swift Testing", "Maestro", "Quick/Nimble", "Instruments"]
+
+  - title: "Release & Ferramentas"
+    items: ["Fastlane", "Bitrise", "GitHub Actions", "SwiftLint", "Firebase (Crashlytics, Analytics, Remote Config)"]
+
+  - title: "APIs & Plataforma"
+    items: ["REST", "GraphQL", "Apollo", "CoreLocation", "MapKit"]

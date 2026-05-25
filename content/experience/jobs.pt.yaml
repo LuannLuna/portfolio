@@ -1,0 +1,59 @@
+jobs:
+  - role: "Engenheiro de Software iOS Sênior"
+    company: "Hi-Tech Talents — alocado na LikeToKnow.It (LTK)"
+    period: "Out 2025 — Abr 2026"
+    current: false
+    appLinks:
+      - name: "LTK"
+        url: "https://apps.apple.com/br/app/ltk-liketoknow-it/id1154027990"
+    bullets:
+      - "Consolidei 3 endpoints legados de busca por trás de uma camada de dados unificada com async/await em uma base com strict concurrency do Swift 6, reduzindo o tempo de resposta da busca de 900ms para 200ms (-78%)"
+      - "Projetei e entreguei 3 componentes SwiftUI no design system da LTK, sustentando a nova experiência de busca de ponta a ponta e prontos para adoção por outros times de produto"
+      - "Construí uma suíte Maestro de ponta a ponta simulando a jornada completa do usuário (login → tabbar → busca → loja do criador), complementando a cobertura de UI do XCTest para validar comportamentos entre telas que testes unitários sozinhos não pegavam"
+
+  - role: "Engenheiro de Software iOS Sênior"
+    company: "Sebratec — alocado na Petz"
+    period: "Ago 2022 — Set 2025"
+    appLinks:
+      - name: "Petz"
+        url: "https://apps.apple.com/br/app/petz-tudo-que-seu-pet-precisa/id1250491446"
+    bullets:
+      - "Arquitetei o módulo do programa de fidelidade (MVVM + Clean Architecture), entregue como o primeiro fluxo SwiftUI em produção da Petz com lógica de negócio real, gerando mais de 1.000 vendas orgânicas na primeira semana"
+      - "Liderei o war-room de um crash em produção que afetava todos os mais de 1,5M de usuários — diagnostiquei um valor de remote config mal configurado e restabeleci o serviço em ~3 horas; tratei os 12 crashes mais frequentes com Crashlytics e Instruments, mantendo ~99% de sessões sem crash"
+      - "Liderei a migração de UIKit para SwiftUI em 8 telas com um time de 2 devs, reduzindo pela metade a entrega de features de 3 meses para 1,5 e estabelecendo o SwiftUI como padrão do time"
+
+  - role: "Engenheiro iOS / Arquiteto de Soluções Digitais"
+    company: "Capgemini — alocado na Next"
+    period: "Jul 2021 — Jun 2022"
+    appLinks:
+      - name: "Next"
+        url: "https://apps.apple.com/br/app/next-conta-digital-e-cart%C3%A3o/id1133682678"
+    bullets:
+      - "Prototipei um fluxo de autenticação redesenhado em RxSwift na NEXT, mudando do carregamento antecipado de permissões para escalonamento de privilégios sob demanda; alinhei o desenho com um Principal Engineer do cliente e produzi diagramas UML e de sequência do ciclo de vida do login, entregues como parte da proposta"
+      - "Fiz pair com o squad de Chat na integração de um novo SDK que dava vida à Bia, a assistente virtual da NEXT, contribuindo com code reviews e triagem de bugs para apoiar uma transição fluida entre o bot e os atendentes humanos"
+      - "Apoiei o crescimento do dia a dia de um desenvolvedor iOS júnior por meio de pair programming, code reviews e discussões técnicas sobre padrões de arquitetura, técnicas de desenvolvimento e design de software"
+
+  - role: "Desenvolvedor iOS Pleno"
+    company: "Dextra Digital — alocado na Globo e Dafiti"
+    period: "Out 2019 — Jun 2021"
+    appLinks:
+      - name: "G1"
+        url: "https://apps.apple.com/br/app/g1-portal-de-not%C3%ADcias-da-globo/id413333281"
+      - name: "GE"
+        url: "https://apps.apple.com/br/app/ge-not%C3%ADcias-de-esportes/id361393520"
+      - name: "Dafiti"
+        url: "https://apps.apple.com/br/app/dafiti-shopping-no-seu-bolso/id564924168"
+    bullets:
+      - "Desenvolvi a descoberta de notícias baseada em geolocalização (CoreLocation, MapKit, GraphQL), dobrando o tempo médio de sessão de 4,2 para 8,7 minutos"
+      - "Aumentei a cobertura de testes de 18% para 67% com XCTest e Quick/Nimble, prevenindo mais de 25 bugs em produção ao longo de 18 meses"
+      - "Implementei correções críticas de segurança em Objective-C nos apps do Grupo Dafiti (Dafiti, Kanui, Tricae) — controle de sessão e proteções criptográficas exigidas para conformidade com cartão de crédito"
+
+  - role: "Desenvolvedor iOS Júnior"
+    company: "Verité Soluções"
+    period: "Jul 2018 — Set 2019"
+    appLinks:
+      - name: "TocaLivros"
+        url: "https://apps.apple.com/br/app/audiolivros-da-tocalivros/id919766261"
+    bullets:
+      - "Desenvolvi 3 apps iOS interconectados para gestão de negócios (Swift, UIKit), suportando mais de 500 operações diárias"
+      - "Integrei o CoreLocation para encontrar a loja mais próxima junto com push notifications (aumento de 40% no DAU) e apliquei otimizações com Firebase Performance Monitoring para 45% mais velocidade no carregamento"

@@ -11,25 +11,25 @@ function parseFrontmatter(raw) {
   return { data: yaml.load(m[1]) || {}, content: (m[2] || '').trim() }
 }
 
-function pickLocaleFile(map, basePath, ext, locale, defaultLocale) {
+function pickLocaleFile(map, basePath, ext, locale, defaultLoc) {
   const candidates = [
     `${basePath}.${locale}.${ext}`,
-    `${basePath}.${defaultLocale}.${ext}`,
+    `${basePath}.${defaultLoc}.${ext}`,
     `${basePath}.${ext}`,
   ]
   for (const c of candidates) if (c in map) return c
   return null
 }
 
-function readMd(basePath, locale, defaultLocale) {
-  const path = pickLocaleFile(mdFiles, basePath, 'md', locale, defaultLocale)
+function readMd(basePath, locale, defaultLoc) {
+  const path = pickLocaleFile(mdFiles, basePath, 'md', locale, defaultLoc)
   if (!path) throw new Error(`Missing markdown content: ${basePath}.md`)
   const { data, content } = parseFrontmatter(mdFiles[path])
   return { path, data, body: content }
 }
 
-function readYaml(basePath, locale, defaultLocale) {
-  const path = pickLocaleFile(yamlFiles, basePath, 'yaml', locale, defaultLocale)
+function readYaml(basePath, locale, defaultLoc) {
+  const path = pickLocaleFile(yamlFiles, basePath, 'yaml', locale, defaultLoc)
   if (!path) throw new Error(`Missing yaml content: ${basePath}.yaml`)
   return { path, data: yaml.load(yamlFiles[path]) }
 }
@@ -48,31 +48,16 @@ function resolveCover(coverPath, mdAbsPath) {
   return imageUrls[resolved]
 }
 
-const siteRaw = readBareYaml('/content/site.yaml')
-const locale = siteRaw.locale
-const defaultLocale = siteRaw.defaultLocale
-
-export const site = schemas.SiteSchema.parse(siteRaw)
-export const nav = schemas.NavSchema.parse(readBareYaml('/content/nav.yaml'))
-export const footer = schemas.FooterSchema.parse(readBareYaml('/content/footer.yaml'))
-
-const heroRaw = readMd('/content/hero/hero', locale, defaultLocale)
-export const hero = {
-  ...schemas.HeroFrontmatterSchema.parse(heroRaw.data),
-  body: heroRaw.body,
+function deriveAllTags(items, tagOrder) {
+  const seen = new Set()
+  for (const p of items) for (const t of p.tags) seen.add(t)
+  const ordered = []
+  for (const t of tagOrder) if (seen.has(t)) { ordered.push(t); seen.delete(t) }
+  for (const t of [...seen].sort()) ordered.push(t)
+  return ordered
 }
 
-const aboutRaw = readMd('/content/about/about', locale, defaultLocale)
-const aboutStatsRaw = readYaml('/content/about/stats', locale, defaultLocale)
-const aboutPhilosophyRaw = readYaml('/content/about/philosophy', locale, defaultLocale)
-export const about = {
-  ...schemas.AboutFrontmatterSchema.parse(aboutRaw.data),
-  body: aboutRaw.body,
-  stats: schemas.AboutStatsSchema.parse(aboutStatsRaw.data).stats,
-  philosophy: schemas.AboutPhilosophySchema.parse(aboutPhilosophyRaw.data).items,
-}
-
-function loadProjects() {
+function loadProjects(locale, defaultLoc) {
   const buckets = new Map()
   for (const [path, raw] of Object.entries(mdFiles)) {
     if (!path.startsWith('/content/projects/')) continue
@@ -87,58 +72,75 @@ function loadProjects() {
   }
   const items = []
   for (const byLocale of buckets.values()) {
-    const chosen = byLocale[locale] || byLocale[defaultLocale] || byLocale.none
+    const chosen = byLocale[locale] || byLocale[defaultLoc] || byLocale.none
     if (!chosen) continue
     const { data, content } = parseFrontmatter(chosen.raw)
     const fm = schemas.ProjectFrontmatterSchema.parse(data)
-    items.push({
-      ...fm,
-      body: content,
-      coverUrl: resolveCover(fm.cover, chosen.path),
-    })
+    items.push({ ...fm, body: content, coverUrl: resolveCover(fm.cover, chosen.path) })
   }
   items.sort((a, b) => (a.order ?? 999) - (b.order ?? 999) || a.slug.localeCompare(b.slug))
   return items
 }
 
-export const projects = loadProjects()
+// --- bootstrap: locale-independent config read once ---
+const siteRaw = readBareYaml('/content/site.yaml')
+export const defaultLocale = siteRaw.defaultLocale
+export const availableLocales = siteRaw.availableLocales
 
-const projectsIndexRaw = readYaml('/content/projects/_index', locale, defaultLocale)
-const _projectsMeta = schemas.ProjectsIndexSchema.parse(projectsIndexRaw.data)
+const _cache = new Map()
 
-function deriveAllTags(items, tagOrder) {
-  const seen = new Set()
-  for (const p of items) for (const t of p.tags) seen.add(t)
-  const ordered = []
-  for (const t of tagOrder) if (seen.has(t)) { ordered.push(t); seen.delete(t) }
-  for (const t of [...seen].sort()) ordered.push(t)
-  return ordered
-}
+// Build the full, validated content tree for a locale. Memoized per locale.
+// Falls back to defaultLocale files when a translation is missing (see pickLocaleFile).
+export function getContent(locale) {
+  if (_cache.has(locale)) return _cache.get(locale)
+  const dl = defaultLocale
 
-export const projectsMeta = {
-  ..._projectsMeta,
-  allTags: deriveAllTags(projects, _projectsMeta.tagOrder),
-}
+  const siteParsed = schemas.SiteSchema.parse(siteRaw)
+  const meta = schemas.MetaSchema.parse(readYaml('/content/meta', locale, dl).data)
+  const site = {
+    ...siteParsed,
+    site: { ...siteParsed.site, title: meta.title, description: meta.description },
+  }
 
-const githubProjectsRaw = readYaml('/content/projects/github', locale, defaultLocale)
-export const githubProjects = schemas.GithubProjectsSchema.parse(githubProjectsRaw.data).projects
+  const nav = schemas.NavSchema.parse(readYaml('/content/nav', locale, dl).data)
+  const footer = schemas.FooterSchema.parse(readYaml('/content/footer', locale, dl).data)
 
-const expIndexRaw = readYaml('/content/experience/_index', locale, defaultLocale)
-const jobsRaw = readYaml('/content/experience/jobs', locale, defaultLocale)
-export const experience = {
-  ...schemas.ExperienceIndexSchema.parse(expIndexRaw.data),
-  jobs: schemas.JobsSchema.parse(jobsRaw.data).jobs,
-}
+  const heroRaw = readMd('/content/hero/hero', locale, dl)
+  const hero = { ...schemas.HeroFrontmatterSchema.parse(heroRaw.data), body: heroRaw.body }
 
-const skillsIndexRaw = readYaml('/content/skills/_index', locale, defaultLocale)
-const skillsGroupsRaw = readYaml('/content/skills/groups', locale, defaultLocale)
-export const skills = {
-  ...schemas.SkillsIndexSchema.parse(skillsIndexRaw.data),
-  groups: schemas.SkillsGroupsSchema.parse(skillsGroupsRaw.data).groups,
-}
+  const aboutRaw = readMd('/content/about/about', locale, dl)
+  const about = {
+    ...schemas.AboutFrontmatterSchema.parse(aboutRaw.data),
+    body: aboutRaw.body,
+    stats: schemas.AboutStatsSchema.parse(readYaml('/content/about/stats', locale, dl).data).stats,
+    philosophy: schemas.AboutPhilosophySchema.parse(readYaml('/content/about/philosophy', locale, dl).data).items,
+  }
 
-const contactRaw = readMd('/content/contact/contact', locale, defaultLocale)
-export const contact = {
-  ...schemas.ContactFrontmatterSchema.parse(contactRaw.data),
-  body: contactRaw.body,
+  const projects = loadProjects(locale, dl)
+  const projectsIndex = schemas.ProjectsIndexSchema.parse(readYaml('/content/projects/_index', locale, dl).data)
+  const projectsMeta = { ...projectsIndex, allTags: deriveAllTags(projects, projectsIndex.tagOrder) }
+
+  const githubProjects = schemas.GithubProjectsSchema
+    .parse(readYaml('/content/projects/github', locale, dl).data).projects
+
+  const experience = {
+    ...schemas.ExperienceIndexSchema.parse(readYaml('/content/experience/_index', locale, dl).data),
+    jobs: schemas.JobsSchema.parse(readYaml('/content/experience/jobs', locale, dl).data).jobs,
+  }
+
+  const skills = {
+    ...schemas.SkillsIndexSchema.parse(readYaml('/content/skills/_index', locale, dl).data),
+    groups: schemas.SkillsGroupsSchema.parse(readYaml('/content/skills/groups', locale, dl).data).groups,
+  }
+
+  const contactRaw = readMd('/content/contact/contact', locale, dl)
+  const contact = { ...schemas.ContactFrontmatterSchema.parse(contactRaw.data), body: contactRaw.body }
+
+  const content = {
+    site, nav, footer, hero, about,
+    projects, projectsMeta, githubProjects,
+    experience, skills, contact,
+  }
+  _cache.set(locale, content)
+  return content
 }

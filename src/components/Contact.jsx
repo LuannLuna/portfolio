@@ -2,9 +2,10 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Mail, Linkedin, Github, ArrowRight, Calendar } from 'lucide-react'
 import Section from './Section.jsx'
-import { contact, site } from '../content/loader.js'
+import { useContent } from '../i18n/locale.jsx'
 
 export default function Contact() {
+  const { contact, site } = useContent()
   const { profile } = site
   return (
     <Section

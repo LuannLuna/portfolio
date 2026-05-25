@@ -1,10 +1,11 @@
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import Section from './Section.jsx'
-import { about } from '../content/loader.js'
+import { useContent } from '../i18n/locale.jsx'
 import { Sparkles } from 'lucide-react'
 
 export default function About() {
+  const { about } = useContent()
   return (
     <Section
       id="about"
