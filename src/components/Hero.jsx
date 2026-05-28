@@ -18,55 +18,81 @@ export default function Hero() {
   return (
     <section id="top" className="relative pt-20 pb-24 sm:pt-28 sm:pb-32">
       <div className="container-prose">
-        <motion.p
-          initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
-          className="eyebrow">
-          <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
-          {hero.availability}
-        </motion.p>
+        <div className="grid gap-10 lg:gap-14 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start">
+          <div>
+            <motion.p
+              initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
+              className="eyebrow">
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+              {hero.availability}
+            </motion.p>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.05 }}
-          className="mt-5 font-display text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight">
-          {hero.headline.lead}{' '}
-          <span className="bg-gradient-to-r from-accent-500 via-fuchsia-400 to-cyan-400 bg-clip-text text-transparent">
-            {hero.headline.highlight}
-          </span>{' '}
-          {hero.headline.trail}
-        </motion.h1>
+            <motion.h1
+              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.05 }}
+              className="mt-5 font-display text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight">
+              {hero.headline.lead}{' '}
+              <span className="bg-gradient-to-r from-accent-500 via-fuchsia-400 to-cyan-400 bg-clip-text text-transparent">
+                {hero.headline.highlight}
+              </span>{' '}
+              {hero.headline.trail}
+            </motion.h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }}
-          className="mt-6 max-w-2xl text-lg sm:text-xl text-ink-600 dark:text-ink-300 leading-relaxed">
-          {hero.body}
-        </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }}
+              className="mt-6 max-w-2xl text-lg sm:text-xl text-ink-600 dark:text-ink-300 leading-relaxed">
+              {hero.body}
+            </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }}
-          className="mt-8 flex flex-wrap items-center gap-3">
-          <a href={hero.ctaPrimary.href}
-             className="group inline-flex items-center gap-2 rounded-xl bg-ink-900 dark:bg-white px-5 py-3
-                        text-sm font-medium text-white dark:text-ink-900 hover:opacity-90 transition">
-            {hero.ctaPrimary.label}
-            <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
-          </a>
-          <a href={hero.ctaSecondary.href} target="_blank" rel="noreferrer"
-             className="inline-flex items-center gap-2 rounded-xl border border-ink-200 dark:border-white/10
-                        px-5 py-3 text-sm font-medium hover:bg-ink-100/60 dark:hover:bg-white/5 transition">
-            <FileText size={16} /> {hero.ctaSecondary.label}
-          </a>
-          <div className="ml-2 flex items-center gap-1">
-            <IconLink href={profile.links.github} label="GitHub"><Github size={18} /></IconLink>
-            <IconLink href={profile.links.linkedin} label="LinkedIn"><Linkedin size={18} /></IconLink>
-            <IconLink href={`mailto:${profile.email}`} label="Email"><Mail size={18} /></IconLink>
+            <motion.div
+              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }}
+              className="mt-8 flex flex-wrap items-center gap-3">
+              <a href={hero.ctaPrimary.href}
+                 className="group inline-flex items-center gap-2 rounded-xl bg-ink-900 dark:bg-white px-5 py-3
+                            text-sm font-medium text-white dark:text-ink-900 hover:opacity-90 transition">
+                {hero.ctaPrimary.label}
+                <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
+              </a>
+              <a href={hero.ctaSecondary.href} target="_blank" rel="noreferrer"
+                 className="inline-flex items-center gap-2 rounded-xl border border-ink-200 dark:border-white/10
+                            px-5 py-3 text-sm font-medium hover:bg-ink-100/60 dark:hover:bg-white/5 transition">
+                <FileText size={16} /> {hero.ctaSecondary.label}
+              </a>
+              <div className="ml-2 flex items-center gap-1">
+                <IconLink href={profile.links.github} label="GitHub"><Github size={18} /></IconLink>
+                <IconLink href={profile.links.linkedin} label="LinkedIn"><Linkedin size={18} /></IconLink>
+                <IconLink href={`mailto:${profile.email}`} label="Email"><Mail size={18} /></IconLink>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.4 }}
+              className="mt-6 flex items-center gap-2 text-sm text-ink-500 dark:text-ink-400">
+              <MapPin size={14} /> {hero.location}
+            </motion.div>
           </div>
-        </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-6 flex items-center gap-2 text-sm text-ink-500 dark:text-ink-400">
-          <MapPin size={14} /> {hero.location}
-        </motion.div>
+          {profile.photoUrl && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="order-first lg:order-none mx-auto lg:mx-0">
+              <div className="relative">
+                <div aria-hidden className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br
+                                            from-accent-500/40 via-fuchsia-400/20 to-cyan-400/30 blur-2xl opacity-70" />
+                <div className="relative h-44 w-44 sm:h-56 sm:w-56 lg:h-64 lg:w-64 overflow-hidden
+                                rounded-3xl border border-ink-200/70 dark:border-white/10
+                                bg-ink-100 dark:bg-white/5 shadow-glow">
+                  <img
+                    src={profile.photoUrl}
+                    alt={profile.photoAlt || profile.name}
+                    width="512" height="512" loading="eager" decoding="async"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </div>
 
         <motion.div
           initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.5 }}

@@ -39,14 +39,23 @@ function readBareYaml(path) {
   return yaml.load(yamlFiles[path])
 }
 
-function resolveCover(coverPath, mdAbsPath) {
-  if (!coverPath) return undefined
-  if (/^https?:\/\//.test(coverPath)) return coverPath
-  if (coverPath.startsWith('/')) return imageUrls[coverPath]
-  const dir = mdAbsPath.replace(/\/[^/]+$/, '/')
-  const resolved = new URL(coverPath, `https://x${dir}`).pathname
+// Resolve an image reference into a URL that Vite has bundled.
+// - http(s) URLs pass through (use only for external assets).
+// - Absolute paths are looked up against /content/images/** as authored.
+// - Relative paths resolve against the source markdown's directory.
+// Returns undefined when the path cannot be resolved, so callers can guard the render.
+function resolveImage(imgPath, baseAbsPath) {
+  if (!imgPath) return undefined
+  if (/^https?:\/\//.test(imgPath)) return imgPath
+  if (imgPath.startsWith('/')) return imageUrls[imgPath]
+  if (!baseAbsPath) return undefined
+  const dir = baseAbsPath.replace(/\/[^/]+$/, '/')
+  const resolved = new URL(imgPath, `https://x${dir}`).pathname
   return imageUrls[resolved]
 }
+
+// Back-compat alias for the project cover field.
+const resolveCover = resolveImage
 
 function deriveAllTags(items, tagOrder) {
   const seen = new Set()
@@ -76,7 +85,15 @@ function loadProjects(locale, defaultLoc) {
     if (!chosen) continue
     const { data, content } = parseFrontmatter(chosen.raw)
     const fm = schemas.ProjectFrontmatterSchema.parse(data)
-    items.push({ ...fm, body: content, coverUrl: resolveCover(fm.cover, chosen.path) })
+    const gallery = fm.gallery
+      .map(g => ({ ...g, url: resolveImage(g.src, chosen.path) }))
+      .filter(g => g.url)
+    items.push({
+      ...fm,
+      body: content,
+      coverUrl: resolveImage(fm.cover, chosen.path),
+      gallery,
+    })
   }
   items.sort((a, b) => (a.order ?? 999) - (b.order ?? 999) || a.slug.localeCompare(b.slug))
   return items
@@ -100,6 +117,10 @@ export function getContent(locale) {
   const site = {
     ...siteParsed,
     site: { ...siteParsed.site, title: meta.title, description: meta.description },
+    profile: {
+      ...siteParsed.profile,
+      photoUrl: resolveImage(siteParsed.profile.photo),
+    },
   }
 
   const nav = schemas.NavSchema.parse(readYaml('/content/nav', locale, dl).data)

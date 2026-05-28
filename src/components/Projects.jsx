@@ -44,12 +44,14 @@ export default function Projects() {
               <div aria-hidden className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full
                                          bg-accent-500/10 blur-3xl opacity-0 group-hover:opacity-100 transition" />
               {p.coverUrl && (
-                <div className="aspect-[16/9] w-full overflow-hidden border-b border-ink-200/70 dark:border-white/10">
+                <div className={`aspect-[16/9] w-full overflow-hidden border-b border-ink-200/70 dark:border-white/10
+                                ${p.coverFit === 'contain' ? 'bg-ink-50 dark:bg-white/5' : ''}`}>
                   <img
                     src={p.coverUrl}
                     alt=""
                     loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className={`h-full w-full transition-transform duration-500 group-hover:scale-105
+                               ${p.coverFit === 'contain' ? 'object-contain' : 'object-cover'}`}
                   />
                 </div>
               )}
@@ -165,15 +167,20 @@ function ProjectModal({ project, onClose }) {
         </div>
 
         {project.coverUrl && (
-          <img
-            src={project.coverUrl}
-            alt=""
-            className="w-full aspect-[16/9] object-cover"
-          />
+          <div className={`w-full aspect-[16/9] overflow-hidden
+                          ${project.coverFit === 'contain' ? 'bg-ink-50 dark:bg-white/5' : ''}`}>
+            <img
+              src={project.coverUrl}
+              alt=""
+              className={`h-full w-full ${project.coverFit === 'contain' ? 'object-contain' : 'object-cover'}`}
+            />
+          </div>
         )}
 
         <div className="px-6 sm:px-8 py-6 space-y-8">
           <p className="text-lg text-ink-700 dark:text-ink-200 leading-relaxed">{project.tagline}</p>
+
+          {project.gallery.length > 0 && <Gallery items={project.gallery} />}
 
           {project.impact.length > 0 && (
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -223,6 +230,45 @@ function Block({ title, body }) {
     <div>
       <h4 className="text-xs font-mono uppercase tracking-[0.2em] text-ink-500 dark:text-ink-400">{title}</h4>
       <p className="mt-3 text-ink-700 dark:text-ink-200 leading-relaxed">{body}</p>
+    </div>
+  )
+}
+
+function Gallery({ items }) {
+  return (
+    <div>
+      <h4 className="text-xs font-mono uppercase tracking-[0.2em] text-ink-500 dark:text-ink-400 mb-3">
+        Screens
+      </h4>
+      <div className="-mx-6 sm:-mx-8 px-6 sm:px-8 overflow-x-auto pb-2
+                      [scrollbar-width:thin]">
+        <ul className="flex gap-4 snap-x snap-mandatory">
+          {items.map((g, i) => (
+            <li key={i} className="snap-start flex-none w-[180px] sm:w-[200px]">
+              <a
+                href={g.url}
+                target="_blank"
+                rel="noreferrer"
+                className="group block">
+                <div className="aspect-[9/19.5] overflow-hidden rounded-2xl border border-ink-200 dark:border-white/10
+                                bg-ink-50 dark:bg-white/5 shadow-sm group-hover:shadow-glow transition">
+                  <img
+                    src={g.url}
+                    alt={g.alt || g.caption || ''}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                </div>
+                {g.caption && (
+                  <p className="mt-2 text-xs text-ink-500 dark:text-ink-400 leading-snug">
+                    {g.caption}
+                  </p>
+                )}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   )
 }

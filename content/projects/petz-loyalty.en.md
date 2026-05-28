@@ -7,7 +7,18 @@ order: 2
 featured: true
 tagline: "Worked on Petz's loyalty experience, SwiftUI adoption, and production stability improvements."
 role: "Senior iOS Engineer contributing across architecture, SwiftUI migration, and crash investigation."
-cover: ""
+cover: "/content/images/projects/petz-loyalty/cover.png"
+gallery:
+  - { src: "/content/images/projects/petz-loyalty/01-clubz-wallet.jpg", caption: "Clubz wallet — CashPetz balance, benefits, and active offers." }
+  - { src: "/content/images/projects/petz-loyalty/02-clubz-levels.jpg", caption: "Clubz tiers — Prata / Ouro upgrade and benefit comparison." }
+  - { src: "/content/images/projects/petz-loyalty/03-clubz-faq.jpg",    caption: "Clubz in-app FAQ — accordion with renewal and benefit rules." }
+  - { src: "/content/images/projects/petz-loyalty/04-cashpetz-history.jpg", caption: "CashPetz history — earned, used, refunded, and expiring balance." }
+  - { src: "/content/images/projects/petz-loyalty/05-offers.jpg",       caption: "Personalised offers — recommended products with activation flow." }
+  - { src: "/content/images/projects/petz-loyalty/06-coupons.jpg",      caption: "Coupons — single-use discounts tied to the loyalty program." }
+  - { src: "/content/images/projects/petz-loyalty/07-home.jpg",         caption: "Petz home — category tiles and promotional banners." }
+  - { src: "/content/images/projects/petz-loyalty/08-orders-list.jpg",  caption: "Orders list — status-coded history with reorder shortcut." }
+  - { src: "/content/images/projects/petz-loyalty/09-order-completed.jpg", caption: "Completed pickup order — confirmation, address, and feedback prompt." }
+  - { src: "/content/images/projects/petz-loyalty/10-order-cancelled.jpg", caption: "Cancelled order — refund status and itemised payment details." }
 tags: ["iOS", "SwiftUI", "Architecture", "Performance"]
 stack:
   - "Swift"

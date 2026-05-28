@@ -20,6 +20,8 @@ export const SiteSchema = z.object({
     location: z.string().optional(),
     email: z.string().email(),
     phone: z.string().optional(),
+    photo: z.string().optional(),
+    photoAlt: z.string().optional(),
     shippedTo: z.array(z.string()),
     links: z.object({
       linkedin: z.string().url(),
@@ -86,6 +88,12 @@ export const ImpactSchema = z.object({
   label: z.string(),
 })
 
+export const GalleryItemSchema = z.object({
+  src: z.string().min(1),
+  alt: z.string().optional(),
+  caption: z.string().optional(),
+})
+
 export const ProjectFrontmatterSchema = z.object({
   slug: z.string().min(1),
   title: z.string().min(1),
@@ -96,6 +104,8 @@ export const ProjectFrontmatterSchema = z.object({
   tagline: z.string().min(1),
   role: z.string().min(1),
   cover: z.string().optional().default(''),
+  coverFit: z.enum(['cover', 'contain']).optional().default('cover'),
+  gallery: z.array(GalleryItemSchema).default([]),
   tags: z.array(z.string()).default([]),
   stack: z.array(z.string()).min(1),
   challenges: z.array(z.string()).default([]),

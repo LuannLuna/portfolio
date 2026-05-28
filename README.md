@@ -120,15 +120,43 @@ GitHub's Pages docs. Update the `og:url` and `sitemap.xml` to match.
 
 ---
 
-## Project screenshots / mockups (next iteration)
+## Images
 
-You currently have copy-only project cards. The strongest next move:
+All site images live under `content/images/`. They are bundled (fingerprinted) by Vite through
+`import.meta.glob('/content/images/**/*')` in `src/content/loader.js`, so any path you write in YAML
+or markdown frontmatter becomes a real URL at build time.
 
-1. Pick **one** "hero image" per case study — for LTK Search, a SwiftUI search screen mock; for Petz, the loyalty flow; for Next, an auth/loading sequence.
-2. Render at iPhone aspect ratio (e.g. 390×844 @2x), export as `webp`, drop into `public/projects/<slug>.webp`.
-3. Add an `image` field to each entry in `src/data/projects.js`, then render it inside the project card and modal header.
+```
+content/images/
+├── profile/                  # personal photos (hero portrait, etc.)
+└── projects/<slug>/          # per-project covers and screenshots
+    ├── cover.jpg
+    └── screen-*.png
+```
 
-If you can't share real product screens, build minimal SwiftUI/Figma mockups that show the *idea* of the screen (a search field, a results list, a loading state) — recruiters skim images before they read text.
+Reference them from content using an **absolute path from the repo root**:
+
+```yaml
+# content/site.yaml
+profile:
+  photo: "/content/images/profile/luann.jpg"
+
+# content/projects/<slug>.<locale>.md
+cover: "/content/images/projects/<slug>/cover.jpg"
+```
+
+Relative paths (`./cover.jpg`) also work and resolve against the source file. External `https://` URLs
+pass through. See `content/images/README.md` for size/format conventions.
+
+### Adding project screenshots
+
+1. Render at iPhone aspect ratio (e.g. 390×844 @2x), export as `.webp`.
+2. Drop the file at `content/images/projects/<slug>/cover.jpg` (or any name you like).
+3. Set `cover: "/content/images/projects/<slug>/cover.jpg"` in the project markdown frontmatter.
+4. Card and modal pick it up automatically through `coverUrl`.
+
+If you can't share real product screens, build minimal SwiftUI/Figma mockups that show the *idea* of the
+screen (a search field, a results list, a loading state) — recruiters skim images before they read text.
 
 ---
 

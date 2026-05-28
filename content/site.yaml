@@ -11,6 +11,8 @@ profile:
   name: "Luann Luna"
   email: "luann.marques@gmail.com"
   phone: "+55 98 98176-4061"
+  photo: "/content/images/profile/luann.jpg"
+  photoAlt: "Portrait of Luann Luna"
   shippedTo: ["G1", "GE", "Dafiti", "Kanui", "Tricae", "Next", "Petz", "LTK", "TocaLivros"]
   links:
     linkedin: "https://linkedin.com/in/luannluna"
