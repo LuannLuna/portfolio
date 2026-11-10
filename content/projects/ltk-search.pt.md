@@ -7,9 +7,17 @@ order: 1
 featured: true
 tagline: "Atuei na melhoria da experiência de busca, na modernização de fluxos assíncronos e no apoio à migração para Swift Concurrency."
 role: "Engenheiro iOS Sênior contribuindo com a experiência de busca, em melhorias na camada de dados e na UI."
+cover: "/content/images/projects/ltk-search/cover.png"
+coverFit: "contain"
 gallery:
-  - { src: "/content/images/projects/ltk-search/02-search-empty.png",       caption: "Estado vazio da busca — prompt inicial com filtros rápidos." }
-  - { src: "/content/images/projects/ltk-search/03-search-suggestions.png", caption: "Sugestões de busca — recentes, populares e criadores vistos recentemente." }
+  - { src: "/content/images/projects/ltk-search/01-home-feed.webp",        caption: "Home — hub editorial de “Pesquisar” com edits sazonais, categorias e posts populares." }
+  - { src: "/content/images/projects/ltk-search/02-search-empty.webp",     caption: "Estado vazio da busca — prompt inicial com filtros rápidos." }
+  - { src: "/content/images/projects/ltk-search/03-search-suggestions.webp", caption: "Sugestões de busca — recentes, populares e criadores vistos recentemente." }
+  - { src: "/content/images/projects/ltk-search/08-search-typing.webp",    caption: "Digitando — pesquisas populares enquanto a query é inserida." }
+  - { src: "/content/images/projects/ltk-search/07-search-matches.webp",   caption: "Correspondências — criadores, marcas e buscas relacionadas." }
+  - { src: "/content/images/projects/ltk-search/04-search-results.webp",   caption: "Resultados — visão geral da LTK AI, abas Posts / Creators e carrosséis de produtos." }
+  - { src: "/content/images/projects/ltk-search/05-creator-profile.webp",  caption: "Perfil de criador — seguidores, posts, produtos e guias de presentes." }
+  - { src: "/content/images/projects/ltk-search/06-brand-profile.webp",    caption: "Perfil de marca — produtos em alta e itens recentes." }
 tags: ["iOS", "SwiftUI", "Concurrency", "Performance"]
 stack:
   - "Swift"

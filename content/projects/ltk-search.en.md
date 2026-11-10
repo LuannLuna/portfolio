@@ -7,9 +7,17 @@ order: 1
 featured: true
 tagline: "Worked on improving the search experience, modernizing async flows, and supporting the migration to Swift Concurrency."
 role: "Senior iOS Engineer contributing to the search experience across data layer and UI improvements."
+cover: "/content/images/projects/ltk-search/cover.png"
+coverFit: "contain"
 gallery:
-  - { src: "/content/images/projects/ltk-search/02-search-empty.png",       caption: "Search empty state — entry prompt with quick filters." }
-  - { src: "/content/images/projects/ltk-search/03-search-suggestions.png", caption: "Search suggestions — recent searches, popular queries, recently viewed creators." }
+  - { src: "/content/images/projects/ltk-search/01-home-feed.webp",        caption: "Home feed — “Pesquisar” editorial hub with seasonal edits, categories, and popular posts." }
+  - { src: "/content/images/projects/ltk-search/02-search-empty.webp",     caption: "Search empty state — entry prompt with quick filters." }
+  - { src: "/content/images/projects/ltk-search/03-search-suggestions.webp", caption: "Search suggestions — recent searches, popular queries, recently viewed creators." }
+  - { src: "/content/images/projects/ltk-search/08-search-typing.webp",    caption: "Typing state — popular searches while the query is entered." }
+  - { src: "/content/images/projects/ltk-search/07-search-matches.webp",   caption: "Query matches — corresponding creators, brands, and related searches." }
+  - { src: "/content/images/projects/ltk-search/04-search-results.webp",   caption: "Search results — LTK AI overview, Posts / Creators tabs, and product carousels." }
+  - { src: "/content/images/projects/ltk-search/05-creator-profile.webp",  caption: "Creator profile — follower stats, posts, products, and gift guides." }
+  - { src: "/content/images/projects/ltk-search/06-brand-profile.webp",    caption: "Brand profile — products in high demand and recent items." }
 tags: ["iOS", "SwiftUI", "Concurrency", "Performance"]
 stack:
   - "Swift"
