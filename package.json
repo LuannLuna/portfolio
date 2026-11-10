@@ -12,6 +12,8 @@
     "banner:petz-en": "node scripts/render-petz-banner.mjs",
     "next:assets": "node scripts/render-next-assets.mjs",
     "banner:next": "node scripts/render-next-banner.mjs",
+    "globo:assets": "node scripts/render-globo-assets.mjs",
+    "banner:globo": "node scripts/render-globo-banner.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

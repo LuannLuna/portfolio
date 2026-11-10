@@ -7,8 +7,19 @@ order: 4
 featured: true
 tagline: "Worked on geolocated experiences for Globo apps and security-related improvements for Dafiti Group products."
 role: "Mid-Level iOS Developer contributing to mobile features, testing improvements, and security-related initiatives."
-cover: ""
+cover: "/content/images/projects/globo-dafiti/cover-en.webp"
+coverFit: "contain"
 tags: ["iOS", "Security", "Performance"]
+gallery:
+  - { src: "/content/images/projects/globo-dafiti/01-g1-home.webp",         caption: "G1 home — editorially curated headlines and local navigation." }
+  - { src: "/content/images/projects/globo-dafiti/02-g1-region.webp",       caption: "Regional edition — Maranhão feed with local highlights." }
+  - { src: "/content/images/projects/globo-dafiti/03-g1-menu.webp",         caption: "G1 navigation — editorials, elections, services, and account entry." }
+  - { src: "/content/images/projects/globo-dafiti/04-ge-splash.webp",       caption: "GE launch — sports app identity and loading state." }
+  - { src: "/content/images/projects/globo-dafiti/05-ge-team-picker.webp",  caption: "Team selection — Série A/B, Europe, and other clubs." }
+  - { src: "/content/images/projects/globo-dafiti/06-ge-championships.webp", caption: "Competition preferences — Libertadores, Brasileirão, Copa do Brasil, and more." }
+  - { src: "/content/images/projects/globo-dafiti/07-ge-notifications.webp", caption: "Notifications opt-in — match reminders and agenda updates." }
+  - { src: "/content/images/projects/globo-dafiti/08-ge-home.webp",         caption: "GE home — personalized team feed, trending stories, and match shortcuts." }
+  - { src: "/content/images/projects/globo-dafiti/09-ge-tables.webp",       caption: "Tables — favorite competitions, standings, and upcoming fixtures." }
 stack:
   - "Swift"
   - "Objective-C"

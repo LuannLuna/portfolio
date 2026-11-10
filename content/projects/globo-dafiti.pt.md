@@ -7,8 +7,19 @@ order: 4
 featured: true
 tagline: "Atuei em experiências geolocalizadas nos apps da Globo e em melhorias de segurança nos produtos do Grupo Dafiti."
 role: "Desenvolvedor iOS Pleno contribuindo com features mobile, melhorias de testes e iniciativas de segurança."
-cover: ""
+cover: "/content/images/projects/globo-dafiti/cover.webp"
+coverFit: "contain"
 tags: ["iOS", "Security", "Performance"]
+gallery:
+  - { src: "/content/images/projects/globo-dafiti/01-g1-home.webp",         caption: "Home do G1 — manchetes editoriais e navegação local." }
+  - { src: "/content/images/projects/globo-dafiti/02-g1-region.webp",       caption: "Edição regional — feed do Maranhão com destaques locais." }
+  - { src: "/content/images/projects/globo-dafiti/03-g1-menu.webp",         caption: "Navegação do G1 — editorias, eleições, serviços e entrada na conta." }
+  - { src: "/content/images/projects/globo-dafiti/04-ge-splash.webp",       caption: "Abertura do GE — identidade do app de esportes e estado de carregamento." }
+  - { src: "/content/images/projects/globo-dafiti/05-ge-team-picker.webp",  caption: "Seleção de time — Série A/B, Europa e outros clubes." }
+  - { src: "/content/images/projects/globo-dafiti/06-ge-championships.webp", caption: "Preferências de campeonatos — Libertadores, Brasileirão, Copa do Brasil e mais." }
+  - { src: "/content/images/projects/globo-dafiti/07-ge-notifications.webp", caption: "Ativar notificações — lembretes de jogos e atualizações da agenda." }
+  - { src: "/content/images/projects/globo-dafiti/08-ge-home.webp",         caption: "Home do GE — feed personalizado do time, notícias em alta e atalhos de jogos." }
+  - { src: "/content/images/projects/globo-dafiti/09-ge-tables.webp",       caption: "Tabelas — competições favoritas, classificações e próximos jogos." }
 stack:
   - "Swift"
   - "Objective-C"

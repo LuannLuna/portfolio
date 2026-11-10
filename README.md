@@ -193,6 +193,9 @@ Project covers are Playwright compositions of the real case-study screenshots:
 - **Next** — `scripts/next-banner.html` (PT) and `scripts/next-banner-en.html` (EN). Run `npm run banner:next`.
   Raw captures stay in `scripts/assets/next-private/` (gitignored); `npm run next:assets` regenerates the
   anonymized home/login screenshots and optimized gallery assets.
+- **Globo G1/GE** — `scripts/globo-banner.html` (PT) and `scripts/globo-banner-en.html` (EN). Run
+  `npm run banner:globo`. Raw captures stay in `scripts/assets/globo-private/` (gitignored);
+  `npm run globo:assets` regenerates the optimized gallery assets.
 
 Both commands use the installed Google Chrome through the `playwright-core` dev dependency. WebP outputs
 require `cwebp` (`brew install webp`).

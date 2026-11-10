@@ -7,3 +7,4 @@ dist-ssr
 .vite
 *.log
 scripts/assets/next-private/
+scripts/assets/globo-private/
