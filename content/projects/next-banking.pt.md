@@ -7,8 +7,14 @@ order: 3
 featured: true
 tagline: "Atuei em estudos de fluxo de autenticação, protótipos em RxSwift e no apoio a integrações de chat e assistente virtual."
 role: "Engenheiro iOS contribuindo em discussões sobre fluxo de autenticação, protótipos técnicos e integrações de SDK."
-cover: ""
+cover: "/content/images/projects/next-banking/cover.webp"
+coverFit: "contain"
 tags: ["iOS", "Architecture", "RxSwift", "Security"]
+gallery:
+  - { src: "/content/images/projects/next-banking/01-home.webp",        caption: "Home — visão da conta, ações rápidas e atalhos de serviços." }
+  - { src: "/content/images/projects/next-banking/02-chat-bia.webp",    caption: "Assistente BIA — chat no app com orientação proativa sobre a conta." }
+  - { src: "/content/images/projects/next-banking/03-login.webp",       caption: "Login — entrada de autenticação com atalhos, token e PIX." }
+  - { src: "/content/images/projects/next-banking/04-onboarding.webp",  caption: "Onboarding — fluxo de abertura de conta digital Next." }
 stack:
   - "Swift"
   - "RxSwift"

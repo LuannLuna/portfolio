@@ -190,6 +190,9 @@ Project covers are Playwright compositions of the real case-study screenshots:
 - **Petz EN** — `scripts/petz-banner-en.html` renders over `scripts/assets/petz-base-en.webp`, the original
   artwork with the Portuguese copy inpainted out. Run `npm run banner:petz-en`. The PT cover stays
   `content/images/projects/petz-loyalty/cover.png`.
+- **Next** — `scripts/next-banner.html` (PT) and `scripts/next-banner-en.html` (EN). Run `npm run banner:next`.
+  Raw captures stay in `scripts/assets/next-private/` (gitignored); `npm run next:assets` regenerates the
+  anonymized home/login screenshots and optimized gallery assets.
 
 Both commands use the installed Google Chrome through the `playwright-core` dev dependency. WebP outputs
 require `cwebp` (`brew install webp`).

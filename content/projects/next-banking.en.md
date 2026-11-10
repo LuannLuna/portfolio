@@ -7,8 +7,14 @@ order: 3
 featured: true
 tagline: "Worked on authentication flow studies, RxSwift prototypes, and support for chat and virtual assistant integrations."
 role: "iOS Engineer contributing to authentication flow discussions, technical prototypes, and SDK integrations."
-cover: ""
+cover: "/content/images/projects/next-banking/cover-en.webp"
+coverFit: "contain"
 tags: ["iOS", "Architecture", "RxSwift", "Security"]
+gallery:
+  - { src: "/content/images/projects/next-banking/01-home.webp",        caption: "Home — account overview, quick actions, and service shortcuts." }
+  - { src: "/content/images/projects/next-banking/02-chat-bia.webp",    caption: "BIA assistant — in-app chat with proactive account guidance." }
+  - { src: "/content/images/projects/next-banking/03-login.webp",       caption: "Login — authentication entry with shortcuts, token, and PIX access." }
+  - { src: "/content/images/projects/next-banking/04-onboarding.webp",  caption: "Onboarding — Next digital account acquisition flow." }
 stack:
   - "Swift"
   - "RxSwift"

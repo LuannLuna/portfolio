@@ -10,6 +10,8 @@
     "og:image": "node scripts/generate-og-image.mjs",
     "banner:ltk": "node scripts/render-banner.mjs",
     "banner:petz-en": "node scripts/render-petz-banner.mjs",
+    "next:assets": "node scripts/render-next-assets.mjs",
+    "banner:next": "node scripts/render-next-banner.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

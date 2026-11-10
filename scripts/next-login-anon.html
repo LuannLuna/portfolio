@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <title>Next login — anonymized</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;800&display=swap" rel="stylesheet" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      html, body {
+        width: 828px;
+        height: 1792px;
+        overflow: hidden;
+        background: #00ff5f;
+        font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+      }
+
+      .base {
+        position: absolute;
+        inset: 0;
+        width: 828px;
+        height: 1792px;
+      }
+
+      .avatar {
+        position: absolute;
+        left: 312px;
+        top: 268px;
+        width: 203px;
+        height: 203px;
+        border-radius: 50%;
+        background: #07100a;
+        display: grid;
+        place-items: center;
+        color: #00ff5f;
+      }
+
+      .name,
+      .account {
+        position: absolute;
+        background: #00ff5f;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #000;
+        white-space: nowrap;
+      }
+
+      .name {
+        left: 95px;
+        top: 490px;
+        width: 638px;
+        height: 54px;
+        font-size: 38px;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+      }
+
+      .account {
+        left: 280px;
+        top: 556px;
+        width: 268px;
+        height: 42px;
+        font-size: 28px;
+        font-weight: 500;
+        letter-spacing: 0.03em;
+      }
+    </style>
+  </head>
+  <body>
+    <img class="base" src="./assets/next-private/IMG_7858.PNG" alt="" />
+
+    <div class="avatar">
+      <svg width="104" height="104" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9Zm0 2c-4.4 0-8 2.5-8 5.5V21h16v-1.5c0-3-3.6-5.5-8-5.5Z" />
+      </svg>
+    </div>
+
+    <div class="name">Maria Oliveira</div>
+    <div class="account">123456-7</div>
+  </body>
+</html>

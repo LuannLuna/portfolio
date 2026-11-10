@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <title>Next home — anonymized</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;800&display=swap" rel="stylesheet" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      html, body {
+        width: 828px;
+        height: 1792px;
+        overflow: hidden;
+        background: #000;
+        font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+      }
+
+      .base {
+        position: absolute;
+        inset: 0;
+        width: 828px;
+        height: 1792px;
+      }
+
+      .photo-wrap {
+        position: absolute;
+        left: 18px;
+        top: 199px;
+        width: 128px;
+        height: 139px;
+        background: #000;
+        display: grid;
+        place-items: center;
+      }
+
+      .photo {
+        width: 102px;
+        height: 102px;
+        border-radius: 50%;
+        background: #17191d;
+        border: 1px solid #2b2f36;
+        display: grid;
+        place-items: center;
+        color: #9aa0aa;
+      }
+
+      .name {
+        position: absolute;
+        left: 145px;
+        top: 247px;
+        width: 345px;
+        height: 40px;
+        background: #000;
+        display: flex;
+        align-items: center;
+        padding-left: 9px;
+        color: #fff;
+        font-size: 26px;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        white-space: nowrap;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <img class="base" src="./assets/next-private/IMG_7856.PNG" alt="" />
+
+    <div class="photo-wrap">
+      <div class="photo">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9Zm0 2c-4.4 0-8 2.5-8 5.5V21h16v-1.5c0-3-3.6-5.5-8-5.5Z" />
+        </svg>
+      </div>
+    </div>
+
+    <div class="name">Maria Oliveira</div>
+  </body>
+</html>
