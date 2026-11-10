@@ -9,6 +9,7 @@
     "build": "npm run validate && vite build",
     "og:image": "node scripts/generate-og-image.mjs",
     "banner:ltk": "node scripts/render-banner.mjs",
+    "banner:petz-en": "node scripts/render-petz-banner.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

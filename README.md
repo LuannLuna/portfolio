@@ -184,9 +184,15 @@ tags for `BASE_PATH`, and `npm run validate` will fail if they drift.
 
 ### Project banners
 
-`content/images/projects/ltk-search/cover.png` is a Playwright composition of the real case-study
-screenshots. Edit `scripts/ltk-banner.html` and run `npm run banner:ltk` to regenerate it (uses the
-installed Google Chrome through the `playwright-core` dev dependency).
+Project covers are Playwright compositions of the real case-study screenshots:
+
+- **LTK** — `scripts/ltk-banner.html` (PT) and `scripts/ltk-banner-en.html` (EN). Run `npm run banner:ltk`.
+- **Petz EN** — `scripts/petz-banner-en.html` renders over `scripts/assets/petz-base-en.webp`, the original
+  artwork with the Portuguese copy inpainted out. Run `npm run banner:petz-en`. The PT cover stays
+  `content/images/projects/petz-loyalty/cover.png`.
+
+Both commands use the installed Google Chrome through the `playwright-core` dev dependency. WebP outputs
+require `cwebp` (`brew install webp`).
 
 ---
 

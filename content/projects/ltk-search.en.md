@@ -7,7 +7,7 @@ order: 1
 featured: true
 tagline: "Worked on improving the search experience, modernizing async flows, and supporting the migration to Swift Concurrency."
 role: "Senior iOS Engineer contributing to the search experience across data layer and UI improvements."
-cover: "/content/images/projects/ltk-search/cover.png"
+cover: "/content/images/projects/ltk-search/cover-en.webp"
 coverFit: "contain"
 gallery:
   - { src: "/content/images/projects/ltk-search/01-home-feed.webp",        caption: "Home feed — “Pesquisar” editorial hub with seasonal edits, categories, and popular posts." }

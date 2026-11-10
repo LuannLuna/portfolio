@@ -7,7 +7,7 @@ order: 2
 featured: true
 tagline: "Worked on Petz's loyalty experience, SwiftUI adoption, and production stability improvements."
 role: "Senior iOS Engineer contributing across architecture, SwiftUI migration, and crash investigation."
-cover: "/content/images/projects/petz-loyalty/cover.png"
+cover: "/content/images/projects/petz-loyalty/cover-en.webp"
 coverFit: "contain"
 gallery:
   - { src: "/content/images/projects/petz-loyalty/04-cashpetz-history.jpg", caption: "CashPetz history — earned, used, refunded, and expiring balance." }
