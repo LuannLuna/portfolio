@@ -11,7 +11,8 @@ content/images/
 ├── profile/        # personal photos (hero portrait, etc.)
 └── projects/       # per-project covers and in-app screenshots
     └── <slug>/     # one folder per project slug — e.g. ltk-search/, petz-loyalty/
-        ├── cover.jpg
+        ├── cover.webp
+        ├── cover-en.webp  # optional English variant
         ├── screen-search.png
         └── screen-results.png
 ```
@@ -28,6 +29,9 @@ profile:
   photo: "/content/images/profile/luann.jpg"
 
 # content/projects/ltk-search.en.md
+cover: "/content/images/projects/ltk-search/cover-en.webp"
+
+# content/projects/ltk-search.pt.md
 cover: "/content/images/projects/ltk-search/cover.png"
 ```
 

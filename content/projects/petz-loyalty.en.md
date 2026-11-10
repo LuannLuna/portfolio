@@ -5,8 +5,8 @@ company: "Petz (via Sebratec)"
 period: "2022 — 2025"
 order: 2
 featured: true
-tagline: "Worked on Petz's loyalty experience, SwiftUI adoption, and production stability improvements."
-role: "Senior iOS Engineer contributing across architecture, SwiftUI migration, and crash investigation."
+tagline: "I shipped Petz's first production SwiftUI loyalty flow, migrated eight screens, and helped restore service during a crash affecting 1.5M+ users."
+role: "I architected the loyalty module, led an eight-screen UIKit-to-SwiftUI migration, and joined production crash response."
 cover: "/content/images/projects/petz-loyalty/cover-en.webp"
 coverFit: "contain"
 gallery:
@@ -27,26 +27,24 @@ stack:
   - "Firebase"
   - "Remote Config"
 challenges:
-  - "The app still had many UIKit-based flows while the team was starting to introduce SwiftUI into production."
-  - "Some features depended heavily on remote configuration, which increased the complexity of debugging production issues."
-  - "Part of the migration work needed to happen without blocking feature delivery for the business."
+  - "Petz still relied on UIKit across the app; the loyalty flow would be its first production SwiftUI feature with business logic."
+  - "A bad Remote Config value could affect the live app and was not obvious from the crash alone."
+  - "We had to move eight screens to SwiftUI without pausing feature delivery."
 decisions:
-  - "Contributed to one of the first production SwiftUI flows in the app, helping establish patterns the team could reuse later."
-  - "Worked on improving architecture and module organization to make the migration between UIKit and SwiftUI more manageable."
-  - "Participated in production incident investigations involving crashes and remote configuration behavior."
+  - "Built the loyalty module with MVVM and Clean Architecture, then shipped it as Petz's first production SwiftUI flow with real business logic."
+  - "Migrated the eight screens in stages with a two-developer team; feature delivery went from three months to six weeks."
+  - "In the crash war room, traced the incident to a misconfigured Remote Config value and restored service in about three hours."
 impact:
-  - { metric: "SwiftUI adoption", label: "Helped introduce production SwiftUI flows" }
-  - { metric: "Improved maintainability", label: "Migration and architecture improvements" }
-  - { metric: "Production stability", label: "Support during crash investigations and fixes" }
-  - { metric: "Faster delivery", label: "Migration work alongside feature development" }
+  - { metric: "1,000+ sales", label: "Organic sales in the loyalty flow's first week" }
+  - { metric: "~3 hours", label: "To restore service after the production crash" }
+  - { metric: "8 screens", label: "Moved from UIKit to SwiftUI with a two-developer team" }
+  - { metric: "3 months → 6 weeks", label: "Feature delivery time after the migration" }
 ---
 
-## Overview
+## The work
 
-At **Petz**, I worked on features related to the loyalty experience, architecture improvements, and the gradual adoption of **SwiftUI** inside the app. Part of the work involved modernizing existing UIKit flows while keeping feature delivery moving for the business team.
+The loyalty module was Petz's first production SwiftUI flow with real business logic. I designed it with MVVM and Clean Architecture; it generated more than 1,000 organic sales in its first week.
 
-I also participated in production issue investigations, especially around crashes and Remote Config behavior, working together with the team to identify causes and stabilize affected flows.
+I also led a UIKit-to-SwiftUI migration across eight screens with one other developer. We kept feature work moving and cut delivery time from three months to six weeks.
 
-## Lessons learned
-
-One thing this project reinforced for me is that introducing new technologies into an existing product is rarely just a technical challenge. The biggest part is creating patterns that the rest of the team can understand, maintain, and feel comfortable adopting over time.
+When a production crash hit an app used by more than 1.5M people, I joined the war room, found a misconfigured Remote Config value, and helped restore service in about three hours. I then triaged the 12 most frequent crashes with Crashlytics and Instruments; crash-free sessions stayed around 99%.

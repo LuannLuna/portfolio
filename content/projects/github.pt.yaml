@@ -1,15 +1,15 @@
 projects:
   - name: "anilist-graphql"
     url: "https://github.com/LuannLuna/anilist-graphql"
-    description: "Um cliente iOS elegante baseado em GraphQL, usando Apollo e Apollo Code Gen para comunicação type-safe e robusta com a API."
+    description: "Cliente iOS para a API GraphQL do AniList. Usa Apollo e tipos Swift gerados para as requisições e respostas."
     stack: ["GraphQL", "Apollo", "Apollo Code Gen", "SwiftUI"]
 
   - name: "FlickFinder"
     url: "https://github.com/LuannLuna/FlickFinder"
-    description: "Um app de descoberta de filmes construído com GraphQL e Apollo, demonstrando navegação programática entre telas e integração profunda com o NavigationStack do SwiftUI."
+    description: "App de descoberta de filmes com GraphQL e Apollo. As telas e os detalhes são navegados com o NavigationStack do SwiftUI."
     stack: ["SwiftUI", "NavigationStack", "GraphQL", "Apollo", "MVVM"]
 
   - name: "DictationKit"
     url: "https://github.com/LuannLuna/DictationKit"
-    description: "Um app nativo de voz para texto com a API da Deepgram e SwiftUI. Inclui uma extensão de teclado customizada, networking isolado por actor, compartilhamento via App Groups e captura de áudio com AVFoundation."
+    description: "App de ditado em SwiftUI com Deepgram. Inclui extensão de teclado, networking isolado por actor, App Groups e gravação com AVFoundation."
     stack: ["SwiftUI", "Deepgram API", "Keyboard Extension", "App Groups", "AVFoundation", "MVVM", "Actors"]

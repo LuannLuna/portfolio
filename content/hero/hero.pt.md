@@ -1,16 +1,16 @@
 ---
 availability: "Disponível para vagas sênior de iOS"
 headline:
-  lead: "Desenvolvedor iOS Sênior focado em"
-  highlight: "clean architecture"
-  trail: "e ótima experiência do usuário."
+  lead: "Engenheiro iOS sênior."
+  highlight: "Swift & SwiftUI."
+  trail: "Da tela à camada de dados."
 ctaPrimary:
   label: "Ver trabalhos selecionados"
   href: "#projects"
 ctaSecondary:
   label: "Currículo"
   href: "https://github.com/LuannLuna/Resume/raw/main/pdf/Luann_Luna_Resume_EN.pdf"
-shippedToLabel: "Projetos e produtos"
+shippedToLabel: "Apps no ar"
 location: "São Luís, Brasil · Remoto (US / EU / LATAM)"
 spec:
   - { label: "Cargo", value: "Engenheiro iOS Sênior" }
@@ -18,6 +18,4 @@ spec:
   - { label: "Base", value: "São Luís, Brasil — remoto" }
 ---
 
-Sou desenvolvedor iOS com mais de 7 anos de experiência criando apps com Swift e SwiftUI. Já trabalhei em produtos de áreas como mídia, e-commerce, esportes e bancos, sempre focado em criar soluções fáceis de manter e entregar uma boa experiência para os usuários.
-
-Gosto de trabalhar com arquitetura, desenvolvimento de UI e melhoria da qualidade do código nos projetos. Recentemente, também venho explorando recursos modernos do Swift, como async/await e Swift Concurrency, para construir aplicações mais limpas e escaláveis.
+Meu trabalho recente inclui a busca da LTK, o módulo de fidelidade da Petz, um protótipo de autenticação para a Next e recursos de localização no G1 e no GE. Antes, criei apps internos de iOS na Verité. Nesse caminho, trabalhei principalmente com Swift, SwiftUI, testes e a camada de dados por trás das telas.

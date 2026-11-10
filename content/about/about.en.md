@@ -1,10 +1,12 @@
 ---
 eyebrow: "About"
-title: "I build iOS apps with a focus on architecture, product quality, and developer experience."
-lede: "I enjoy working on products where good user experience and maintainable code need to coexist. Most of the time, the interesting part is balancing product speed with long-term sustainability."
-howIWorkLabel: "How I work"
+title: "How I work."
+lede: "G1/GE, Dafiti, Next, Petz and LTK. News, retail, banking and sports apps, all already in use when I joined."
+howIWorkLabel: "Notes from the work"
 ---
 
-I started working with iOS development in 2018, and since then I’ve worked across different domains, including media, sports, e-commerce, and banking. During this time, I’ve been involved in feature development, architecture evolution, design system adoption, performance improvements, and modernization of legacy codebases.
+I started at Verité in 2018, building internal business apps. At Dextra I worked on G1/GE and Dafiti; later, at Next, Petz and LTK, I moved through authentication, loyalty and search.
 
-More recently, I’ve been spending a lot of time with SwiftUI, GraphQL, and Swift Concurrency, especially around async flows, modularization, and improving the overall developer experience inside projects. In practice, I care a lot about code readability and maintainability. I like environments where engineers collaborate closely, challenge decisions openly, and continuously improve both the product and the codebase over time.
+At LTK, I put three search endpoints behind one async/await layer; response time went from 900ms to 200ms. At Petz, I helped restore service after a bad Remote Config value caused a crash in an app used by 1.5M+ people.
+
+I prefer this kind of work because the result is visible in the app: a faster search, a recovered service, or fewer screens that are hard to change.

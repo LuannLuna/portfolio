@@ -1,16 +1,16 @@
 ---
 availability: "Available for senior iOS roles"
 headline:
-  lead: "Senior iOS developer focused on"
-  highlight: "clean architecture"
-  trail: "and great user experience."
+  lead: "Senior iOS engineer."
+  highlight: "Swift & SwiftUI."
+  trail: "From screen to data layer."
 ctaPrimary:
   label: "See selected work"
   href: "#projects"
 ctaSecondary:
   label: "Resume"
   href: "https://github.com/LuannLuna/Resume/raw/main/pdf/Luann_Luna_Resume_EN.pdf"
-shippedToLabel: "Projects and products"
+shippedToLabel: "Apps shipped"
 location: "São Luís, Brazil · Remote (US / EU / LATAM)"
 spec:
   - { label: "Role", value: "Senior iOS Engineer" }
@@ -18,6 +18,4 @@ spec:
   - { label: "Based in", value: "São Luís, Brazil — remote" }
 ---
 
-I’m an iOS developer with more than 7 years of experience building apps with Swift and SwiftUI. I’ve worked on products in areas like media, e-commerce, sports, and banking, always focusing on creating maintainable solutions and delivering a good experience for users.
-
-I enjoy working on architecture, UI development, and improving code quality across projects. Recently, I’ve also been exploring modern Swift features like async/await and Swift Concurrency to build cleaner and more scalable applications.
+My recent work includes the LTK search flow, Petz's loyalty module, an authentication prototype for Next, and location features for G1 and GE. Before that, I built internal iOS apps at Verité. Most of this work has been in Swift, SwiftUI, tests, and the data layer behind the screen.

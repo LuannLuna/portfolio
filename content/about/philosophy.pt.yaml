@@ -1,5 +1,5 @@
 items:
-  - "Gosto de construir soluções simples, fáceis de manter e de evoluir."
-  - "Boa arquitetura deve ajudar os times a irem mais rápido, não complicar as coisas."
-  - "Experiência do usuário e qualidade de código são partes igualmente importantes de um produto."
-  - "Valorizo colaboração, comunicação clara e melhoria contínua."
+  - "Meça o fluxo antes de mexer nele. Na LTK, a busca caiu de 900ms para 200ms."
+  - "Migre em etapas. Na Petz, mudamos oito telas sem parar as entregas de features."
+  - "Teste o código compartilhado. No G1/GE, a cobertura foi de 18% para 67%."
+  - "Em dia de incidente, restabeleça o serviço primeiro. Depois, encontre o valor errado no Remote Config."

@@ -5,8 +5,8 @@ company: "Next (via Capgemini)"
 period: "2021 — 2022"
 order: 3
 featured: true
-tagline: "Atuei em estudos de fluxo de autenticação, protótipos em RxSwift e no apoio a integrações de chat e assistente virtual."
-role: "Engenheiro iOS contribuindo em discussões sobre fluxo de autenticação, protótipos técnicos e integrações de SDK."
+tagline: "Prototipei autenticação sob demanda em RxSwift e fiz pair com o time de Chat na integração do SDK da Bia."
+role: "Criei o protótipo de autenticação e documentei o ciclo de vida do login; também apoiei a integração do SDK da Bia."
 cover: "/content/images/projects/next-banking/cover.webp"
 coverFit: "contain"
 tags: ["iOS", "Architecture", "RxSwift", "Security"]
@@ -23,25 +23,21 @@ stack:
   - "UML Modeling"
   - "SDK Integration"
 challenges:
-  - "O fluxo de autenticação envolvia várias premissas de segurança e permissão já espalhadas pelo app."
-  - "Parte do trabalho exigia alinhamento entre diferentes times e discussões de arquitetura."
-  - "A experiência de chat precisava de apoio para integrar novos recursos de assistente virtual aos fluxos existentes."
+  - "O login existente pedia permissões antes de o usuário precisar delas."
+  - "A proposta precisava de alinhamento entre o Principal Engineer do cliente e o time do app antes da implementação."
+  - "O novo SDK da assistente Bia precisava transferir a conversa para o atendimento humano sem quebrar o fluxo do chat."
 decisions:
-  - "Trabalhei em um protótipo em RxSwift explorando abordagens alternativas para autenticação e tratamento de permissões."
-  - "Criei diagramas de sequência UML para ajudar a documentar e discutir o comportamento do ciclo de vida da autenticação com o time."
-  - "Apoiei os esforços de integração relacionados aos fluxos de SDK de chat e assistente virtual."
+  - "Prototipei em RxSwift a escalada de privilégio sob demanda, em vez de carregar todas as permissões no login."
+  - "Revisei a proposta com o Principal Engineer do cliente e documentei o ciclo de vida do login com diagramas UML e de sequência."
+  - "Fiz pair com o squad de Chat na integração do SDK da Bia, participando de code reviews e triagem de bugs."
 impact:
-  - { metric: "Discussões de arquitetura", label: "Estudos e protótipos de fluxo de autenticação" }
-  - { metric: "Documentação técnica", label: "Modelagem de ciclo de vida e sequência" }
-  - { metric: "Integração de chat", label: "Apoio aos fluxos de SDK do assistente virtual" }
+  - { metric: "RxSwift", label: "Protótipo de autenticação entregue como parte da proposta" }
+  - { metric: "UML", label: "Diagramas do ciclo de vida do login para revisão" }
+  - { metric: "Bia", label: "Apoio à integração do SDK junto com o squad de Chat" }
 ---
 
-## Visão geral
+## O trabalho
 
-Na **Next**, trabalhei em iniciativas ligadas a fluxos de autenticação e integrações de chat dentro do app do banco. Parte do trabalho envolveu construir protótipos técnicos com **RxSwift**, documentar comportamentos do ciclo de vida por meio de diagramas UML e colaborar com outros times durante discussões de arquitetura.
+O login pedia permissões antes de o usuário precisar delas. Prototipei outra abordagem em RxSwift: pedir o privilégio quando a pessoa chega ao recurso que precisa dele. Revisei a proposta com o Principal Engineer do cliente e desenhei diagramas UML e de sequência para o ciclo de vida do login. O protótipo e os diagramas foram entregues como proposta; não chegaram ao app.
 
-Também apoiei esforços ligados a experiências de chat e a integrações envolvendo fluxos de assistente virtual dentro do app.
-
-## Lições aprendidas
-
-Esse projeto reforçou o quanto comunicação e documentação são importantes em produtos grandes com vários times envolvidos. Às vezes, o maior valor não está na implementação final em si, mas em ajudar todo mundo a se alinhar sobre como o fluxo deve se comportar antes de o desenvolvimento seguir em frente.
+Em paralelo, fiz pair com o squad de Chat na integração do SDK da Bia, a assistente virtual da Next. Participei de code reviews e triagem de bugs, inclusive no fluxo de transferência do bot para uma pessoa do atendimento.

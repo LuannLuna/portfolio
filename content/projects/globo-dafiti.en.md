@@ -5,8 +5,8 @@ company: "Globo & Dafiti Group (via Dextra)"
 period: "2019 — 2021"
 order: 4
 featured: true
-tagline: "Worked on geolocated experiences for Globo apps and security-related improvements for Dafiti Group products."
-role: "Mid-Level iOS Developer contributing to mobile features, testing improvements, and security-related initiatives."
+tagline: "Location-based discovery doubled average session time from 4.2 to 8.7 minutes. I also raised test coverage and fixed card-compliance issues in Dafiti apps."
+role: "I built location-based news discovery for G1/GE, raised test coverage, and fixed Objective-C security issues across Dafiti apps."
 cover: "/content/images/projects/globo-dafiti/cover-en.webp"
 coverFit: "contain"
 tags: ["iOS", "Security", "Performance"]
@@ -29,27 +29,21 @@ stack:
   - "XCTest"
   - "Quick/Nimble"
 challenges:
-  - "The Globo apps needed location-based experiences without negatively impacting user privacy or app performance."
-  - "Some shared modules had low automated test coverage, making regression prevention difficult."
-  - "Part of the Dafiti Group codebase still relied on legacy Objective-C implementations shared across multiple apps."
+  - "G1 and GE needed local news and sports discovery based on the reader's location."
+  - "Shared modules had 18% test coverage, leaving regressions to reach production."
+  - "Dafiti, Kanui and Tricae shared Objective-C code with session and cryptography gaps that blocked card compliance."
 decisions:
-  - "Worked on geolocation-related features and integrations for content personalization in Globo apps."
-  - "Contributed to improving automated test coverage in important application modules."
-  - "Participated in security-related maintenance and improvements across Dafiti Group applications."
+  - "Used CoreLocation, MapKit and GraphQL to build location-based news discovery for G1/GE."
+  - "Raised test coverage from 18% to 67% with XCTest and Quick/Nimble."
+  - "Fixed session-control and cryptographic issues in shared Objective-C code across Dafiti Group apps."
 impact:
-  - { metric: "Location-based experiences", label: "Features for Globo news and sports apps" }
-  - { metric: "Improved test coverage", label: "More reliable shared modules" }
-  - { metric: "Security improvements", label: "Support for shared Dafiti Group applications" }
+  - { metric: "4.2 → 8.7 min", label: "Average session time after location-based discovery" }
+  - { metric: "18% → 67%", label: "Test coverage across shared modules" }
+  - { metric: "25+ bugs", label: "Production bugs prevented over 18 months" }
 ---
 
-## Overview
+## The work
 
-During my time at **Dextra**, I worked on projects for both **Globo** and **Dafiti Group**. At Globo, I contributed to features involving geolocation and personalized content experiences for apps like G1 and GE.
+At Globo, I built news discovery based on the reader's location using CoreLocation, MapKit and GraphQL. Average session time went from 4.2 to 8.7 minutes. I also raised test coverage in shared modules from 18% to 67% with XCTest and Quick/Nimble; those tests helped prevent more than 25 production bugs over 18 months.
 
-I also worked on initiatives related to testing and code quality, helping improve confidence in shared modules through automated tests.
-
-For Dafiti Group projects, part of the work involved maintenance and security-related improvements in legacy codebases shared across multiple applications.
-
-## Lessons learned
-
-This period taught me a lot about working with large and long-lived mobile applications. Many times, the challenge is not building something new from scratch, but improving existing systems carefully without impacting products that already have a large user base.
+At Dafiti, Kanui and Tricae, I fixed session-control and cryptographic issues in shared Objective-C code. The fixes were required for credit-card compliance.

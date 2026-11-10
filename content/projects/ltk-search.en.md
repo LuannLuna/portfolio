@@ -5,8 +5,8 @@ company: "LikeToKnow.It"
 period: "2025 — 2026"
 order: 1
 featured: true
-tagline: "Worked on improving the search experience, modernizing async flows, and supporting the migration to Swift Concurrency."
-role: "Senior iOS Engineer contributing to the search experience across data layer and UI improvements."
+tagline: "Search response time fell from 900ms to 200ms after I unified three legacy endpoints."
+role: "I owned the search data layer, shipped three SwiftUI components, and added end-to-end Maestro coverage."
 cover: "/content/images/projects/ltk-search/cover-en.webp"
 coverFit: "contain"
 gallery:
@@ -28,28 +28,24 @@ stack:
   - "Maestro"
   - "XCTest"
 challenges:
-  - "The search flow depended on multiple legacy endpoints with different response structures and behaviors."
-  - "Part of the project involved adapting flows to newer Swift Concurrency patterns."
-  - "The search experience touched multiple screens, which increased the risk of regressions during changes."
+  - "Three legacy search endpoints returned different response shapes and behaved differently."
+  - "The app was adopting Swift 6 strict concurrency while search still depended on older async flows."
+  - "The journey crossed login, tabs, search results, and creator shops; unit tests could not catch every cross-screen regression."
 decisions:
-  - "Contributed to improvements in the async data layer to simplify how search data was consumed by the UI."
-  - "Worked with shared UI components and design-system patterns to keep the experience more consistent."
-  - "Helped improve automated test coverage for important user flows involving search and navigation."
+  - "Put the three endpoints behind one async/await data layer in the Swift 6 strict-concurrency codebase."
+  - "Shipped three SwiftUI components in the LTK design system so other feature teams could reuse them."
+  - "Built a Maestro journey from login to creator shop and kept XCTest UI coverage for individual screens."
 impact:
-  - { metric: "Improved performance", label: "Search experience and async flow optimizations" }
-  - { metric: "Shared components", label: "Contributions to reusable UI patterns" }
-  - { metric: "Better coverage", label: "Expanded UI and flow testing" }
+  - { metric: "900 → 200ms", label: "Search response time after consolidating three endpoints" }
+  - { metric: "3 components", label: "SwiftUI components shipped to the LTK design system" }
+  - { metric: "End to end", label: "Maestro coverage from login through creator shop" }
 seo:
-  title: "LTK Search case study"
-  description: "Contributions to improving the LTK search experience using SwiftUI and modern concurrency patterns."
+  title: "LTK Search — 900ms to 200ms"
+  description: "Three legacy search endpoints unified behind async/await. Search response time dropped from 900ms to 200ms."
 ---
 
-## Overview
+## The work
 
-At LTK, I worked as part of the team responsible for the search experience inside the app. The project involved improving existing search flows, modernizing parts of the async data layer, and supporting UI updates built with SwiftUI.
+Search called three legacy endpoints. Each had its own response shape and timing, so the UI had to deal with the differences. I put them behind one async/await data layer in the Swift 6 strict-concurrency codebase. Search response time dropped from 900ms to 200ms.
 
-I also contributed to test improvements and reusable UI components that helped keep the experience more consistent across the app.
-
-## Lessons learned
-
-One thing I learned during this project is how much modern concurrency features can improve code readability and maintainability when introduced carefully into existing projects. I also reinforced the importance of collaboration when working on flows shared across multiple teams and features.
+I also shipped three SwiftUI components into the LTK design system. To cover the full journey, I built a Maestro flow from login through search to a creator shop; XCTest continued to cover individual screens.

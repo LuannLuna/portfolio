@@ -167,7 +167,8 @@ or markdown frontmatter becomes a real URL at build time.
 content/images/
 ├── profile/                  # personal photos (hero portrait, etc.)
 └── projects/<slug>/          # per-project covers and screenshots
-    ├── cover.jpg
+    ├── cover.webp
+    ├── cover-en.webp         # localized cover variant, when available
     └── screen-*.png
 ```
 
@@ -179,7 +180,7 @@ profile:
   photo: "/content/images/profile/luann.jpg"
 
 # content/projects/<slug>.<locale>.md
-cover: "/content/images/projects/<slug>/cover.png"
+cover: "/content/images/projects/<slug>/cover.webp"
 ```
 
 Relative paths (`./cover.jpg`) also work and resolve against the source file. External `https://` URLs
@@ -188,8 +189,8 @@ pass through. See `content/images/README.md` for size/format conventions.
 ### Adding project screenshots
 
 1. Render at iPhone aspect ratio (e.g. 390×844 @2x), export as `.webp`.
-2. Drop the file at `content/images/projects/<slug>/cover.png` (or any name you like).
-3. Set `cover: "/content/images/projects/<slug>/cover.png"` in the project markdown frontmatter.
+2. Drop the file at `content/images/projects/<slug>/cover.webp` (or any name you like).
+3. Set `cover: "/content/images/projects/<slug>/cover.webp"` in the project markdown frontmatter.
 4. Card and modal pick it up automatically through `coverUrl`.
 
 If you can't share real product screens, build minimal SwiftUI/Figma mockups that show the *idea* of the
@@ -207,9 +208,10 @@ tags for `BASE_PATH`, and `npm run validate` will fail if they drift.
 Project covers are Playwright compositions of the real case-study screenshots:
 
 - **LTK** — `scripts/ltk-banner.html` (PT) and `scripts/ltk-banner-en.html` (EN). Run `npm run banner:ltk`.
-- **Petz EN** — `scripts/petz-banner-en.html` renders over `scripts/assets/petz-base-en.webp`, the original
-  artwork with the Portuguese copy inpainted out. Run `npm run banner:petz-en`. The PT cover stays
-  `content/images/projects/petz-loyalty/cover.png`.
+- **Petz** — `scripts/petz-banner-pt.html` and `scripts/petz-banner-en.html` render over
+  `scripts/assets/petz-base-en.webp`, the original artwork with its old copy inpainted out. The original
+  Portuguese art is preserved as `scripts/assets/petz-original-pt.png`. Run `npm run banner:petz` to
+  regenerate both language variants.
 - **Next** — `scripts/next-banner.html` (PT) and `scripts/next-banner-en.html` (EN). Run `npm run banner:next`.
   Raw captures stay in `scripts/assets/next-private/` (gitignored); `npm run next:assets` regenerates the
   anonymized home/login screenshots and optimized gallery assets.

@@ -5,8 +5,8 @@ company: "Globo & Grupo Dafiti (via Dextra)"
 period: "2019 — 2021"
 order: 4
 featured: true
-tagline: "Atuei em experiências geolocalizadas nos apps da Globo e em melhorias de segurança nos produtos do Grupo Dafiti."
-role: "Desenvolvedor iOS Pleno contribuindo com features mobile, melhorias de testes e iniciativas de segurança."
+tagline: "A descoberta por localização dobrou o tempo médio de sessão: de 4,2 para 8,7 minutos. Também ampliei a cobertura de testes e corrigi falhas exigidas para conformidade de cartão nos apps da Dafiti."
+role: "Implementei descoberta de notícias por localização no G1/GE, ampliei a cobertura de testes e corrigi falhas de segurança em Objective-C nos apps da Dafiti."
 cover: "/content/images/projects/globo-dafiti/cover.webp"
 coverFit: "contain"
 tags: ["iOS", "Security", "Performance"]
@@ -29,27 +29,21 @@ stack:
   - "XCTest"
   - "Quick/Nimble"
 challenges:
-  - "Os apps da Globo precisavam de experiências baseadas em localização sem impactar negativamente a privacidade do usuário ou a performance do app."
-  - "Alguns módulos compartilhados tinham baixa cobertura de testes automatizados, o que dificultava a prevenção de regressões."
-  - "Parte da base de código do Grupo Dafiti ainda dependia de implementações legadas em Objective-C compartilhadas entre vários apps."
+  - "G1 e GE precisavam mostrar notícias e conteúdo esportivo da região do leitor."
+  - "Módulos compartilhados tinham 18% de cobertura de testes, deixando regressões chegarem à produção."
+  - "Dafiti, Kanui e Tricae compartilhavam código Objective-C com falhas de sessão e criptografia que impediam a conformidade de cartão."
 decisions:
-  - "Trabalhei em features de geolocalização e integrações para personalização de conteúdo nos apps da Globo."
-  - "Contribuí para melhorar a cobertura de testes automatizados em módulos importantes da aplicação."
-  - "Participei de manutenção e melhorias de segurança nas aplicações do Grupo Dafiti."
+  - "Usei CoreLocation, MapKit e GraphQL para implementar descoberta de notícias por localização no G1/GE."
+  - "Elevei a cobertura de testes de 18% para 67% com XCTest e Quick/Nimble."
+  - "Corrigi problemas de controle de sessão e criptografia no código Objective-C compartilhado pelos apps do Grupo Dafiti."
 impact:
-  - { metric: "Experiências por localização", label: "Features para os apps de notícias e esportes da Globo" }
-  - { metric: "Mais cobertura de testes", label: "Módulos compartilhados mais confiáveis" }
-  - { metric: "Melhorias de segurança", label: "Apoio às aplicações compartilhadas do Grupo Dafiti" }
+  - { metric: "4,2 → 8,7 min", label: "Tempo médio de sessão após a descoberta por localização" }
+  - { metric: "18% → 67%", label: "Cobertura de testes nos módulos compartilhados" }
+  - { metric: "25+ bugs", label: "Bugs de produção evitados em 18 meses" }
 ---
 
-## Visão geral
+## O trabalho
 
-No meu tempo na **Dextra**, trabalhei em projetos tanto para a **Globo** quanto para o **Grupo Dafiti**. Na Globo, contribuí com features envolvendo geolocalização e experiências de conteúdo personalizado para apps como G1 e GE.
+Na Globo, implementei descoberta de notícias baseada na localização do leitor com CoreLocation, MapKit e GraphQL. O tempo médio de sessão passou de 4,2 para 8,7 minutos. Também levei a cobertura de testes dos módulos compartilhados de 18% para 67% com XCTest e Quick/Nimble; os testes ajudaram a evitar mais de 25 bugs em produção em 18 meses.
 
-Também trabalhei em iniciativas ligadas a testes e qualidade de código, ajudando a aumentar a confiança nos módulos compartilhados por meio de testes automatizados.
-
-Nos projetos do Grupo Dafiti, parte do trabalho envolveu manutenção e melhorias de segurança em bases de código legadas compartilhadas entre vários aplicativos.
-
-## Lições aprendidas
-
-Esse período me ensinou muito sobre trabalhar com aplicativos mobile grandes e de vida longa. Muitas vezes, o desafio não é construir algo novo do zero, mas melhorar sistemas existentes com cuidado, sem impactar produtos que já têm uma base grande de usuários.
+Na Dafiti, Kanui e Tricae, corrigi problemas de controle de sessão e criptografia em código Objective-C compartilhado. As correções eram necessárias para a conformidade de cartão de crédito.

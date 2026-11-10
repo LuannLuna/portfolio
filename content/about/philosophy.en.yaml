@@ -1,5 +1,5 @@
 items:
-  - "I like building solutions that are simple, maintainable, and easy to evolve."
-  - "Good architecture should help teams move faster, not make things more complicated."
-  - "User experience and code quality are both important parts of a product."
-  - "I value collaboration, clear communication, and continuous improvement."
+  - "Measure the flow before changing it. LTK search went from 900ms to 200ms."
+  - "Migrate in steps. At Petz, we moved eight screens and kept feature work going."
+  - "Test the shared code. G1/GE coverage went from 18% to 67%."
+  - "On incident day, restore service first. Then find the bad config."

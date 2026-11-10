@@ -1,5 +1,5 @@
 stats:
-  - { value: "7+ yrs", label: "shipping native iOS" }
-  - { value: "1.5M+", label: "users on apps I own" }
-  - { value: "9 brands", label: "in production" }
-  - { value: "78%", label: "biggest perf win" }
+  - { value: "7+ yrs", label: "writing Swift in production" }
+  - { value: "1.5M+", label: "users in the Petz app" }
+  - { value: "9 brands", label: "apps shipped to production" }
+  - { value: "78%", label: "search latency cut at LTK" }

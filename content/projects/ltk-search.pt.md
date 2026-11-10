@@ -5,8 +5,8 @@ company: "LikeToKnow.It"
 period: "2025 — 2026"
 order: 1
 featured: true
-tagline: "Atuei na melhoria da experiência de busca, na modernização de fluxos assíncronos e no apoio à migração para Swift Concurrency."
-role: "Engenheiro iOS Sênior contribuindo com a experiência de busca, em melhorias na camada de dados e na UI."
+tagline: "A busca caiu de 900ms para 200ms depois que unifiquei três endpoints legados."
+role: "Fiquei responsável pela camada de dados da busca, entreguei três componentes SwiftUI e testes ponta a ponta com Maestro."
 cover: "/content/images/projects/ltk-search/cover.png"
 coverFit: "contain"
 gallery:
@@ -28,28 +28,24 @@ stack:
   - "Maestro"
   - "XCTest"
 challenges:
-  - "O fluxo de busca dependia de vários endpoints legados com estruturas de resposta e comportamentos diferentes."
-  - "Parte do projeto envolveu adaptar fluxos para os padrões mais recentes de Swift Concurrency."
-  - "A experiência de busca passava por várias telas, o que aumentava o risco de regressões durante as mudanças."
+  - "Três endpoints legados de busca retornavam estruturas diferentes e tinham comportamentos próprios."
+  - "O app adotava strict concurrency do Swift 6 enquanto a busca ainda dependia de fluxos assíncronos antigos."
+  - "A jornada passava por login, abas, resultados e loja do criador; testes unitários não cobriam todas as regressões entre telas."
 decisions:
-  - "Contribuí com melhorias na camada de dados assíncrona para simplificar como a UI consumia os dados de busca."
-  - "Trabalhei com componentes de UI compartilhados e padrões de design system para manter a experiência mais consistente."
-  - "Ajudei a melhorar a cobertura de testes automatizados em fluxos importantes envolvendo busca e navegação."
+  - "Coloquei os três endpoints atrás de uma camada única com async/await na base com strict concurrency do Swift 6."
+  - "Entreguei três componentes SwiftUI no design system da LTK para que outros times pudessem reutilizá-los."
+  - "Montei uma jornada no Maestro do login até a loja do criador e mantive a cobertura de telas com XCTest."
 impact:
-  - { metric: "Mais performance", label: "Otimizações na experiência de busca e em fluxos assíncronos" }
-  - { metric: "Componentes compartilhados", label: "Contribuições para padrões de UI reutilizáveis" }
-  - { metric: "Mais cobertura", label: "Ampliação dos testes de UI e de fluxos" }
+  - { metric: "900 → 200ms", label: "Tempo de resposta da busca após unificar três endpoints" }
+  - { metric: "3 componentes", label: "Componentes SwiftUI entregues ao design system da LTK" }
+  - { metric: "Ponta a ponta", label: "Cobertura Maestro do login até a loja do criador" }
 seo:
-  title: "Estudo de caso: busca da LTK"
-  description: "Contribuições para melhorar a experiência de busca da LTK com SwiftUI e padrões modernos de concorrência."
+  title: "Busca da LTK — de 900ms para 200ms"
+  description: "Três endpoints de busca unificados com async/await. O tempo de resposta caiu de 900ms para 200ms."
 ---
 
-## Visão geral
+## O trabalho
 
-Na LTK, fiz parte do time responsável pela experiência de busca dentro do app. O projeto envolveu melhorar fluxos de busca existentes, modernizar partes da camada de dados assíncrona e apoiar atualizações de UI construídas com SwiftUI.
+A busca chamava três endpoints legados. Cada um tinha estrutura de resposta e tempo próprios, e a UI precisava lidar com essas diferenças. Coloquei os três atrás de uma camada única com async/await na base com strict concurrency do Swift 6. O tempo de resposta caiu de 900ms para 200ms.
 
-Também contribuí com melhorias de testes e componentes de UI reutilizáveis que ajudaram a manter a experiência mais consistente no app.
-
-## Lições aprendidas
-
-Uma coisa que aprendi nesse projeto é o quanto recursos modernos de concorrência podem melhorar a legibilidade e a manutenibilidade do código quando introduzidos com cuidado em projetos existentes. Também reforcei a importância da colaboração ao trabalhar em fluxos compartilhados entre vários times e features.
+Também entreguei três componentes SwiftUI no design system da LTK. Para cobrir a jornada inteira, montei um fluxo no Maestro do login à busca e à loja do criador; o XCTest continuou cobrindo as telas individuais.

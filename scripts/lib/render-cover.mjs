@@ -1,7 +1,7 @@
 // Shared Playwright renderer for 1983x793 banner covers.
 import { execFileSync } from 'node:child_process'
 import { existsSync, mkdirSync, rmSync } from 'node:fs'
-import { basename, dirname, resolve } from 'node:path'
+import { dirname, relative, resolve } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { chromium } from 'playwright-core'
 
@@ -19,7 +19,8 @@ function commandAvailable(command) {
 export async function renderCover({ source, output }) {
   const sourcePath = resolve(root, source)
   const outputPath = resolve(root, output)
-  const tmpBase = resolve(root, 'scripts/assets', `${basename(outputPath, '.webp')}@2x.png`)
+  const outputKey = relative(root, outputPath).replace(/[\\/]/g, '-')
+  const tmpBase = resolve(root, 'scripts/assets', `${outputKey.replace(/\.[^.]+$/, '')}@2x.png`)
   const tmpOneX = tmpBase.replace(/@2x\.png$/, '@1x.png')
 
   if (!existsSync(sourcePath)) throw new Error(`Missing banner source: ${source}`)

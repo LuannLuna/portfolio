@@ -1,5 +1,5 @@
 stats:
-  - { value: "7+ anos", label: "entregando iOS nativo" }
-  - { value: "1.5M+", label: "usuários em apps em que atuei" }
-  - { value: "9 marcas", label: "em produção" }
-  - { value: "78%", label: "maior ganho de performance" }
+  - { value: "7+ anos", label: "escrevendo Swift em produção" }
+  - { value: "1.5M+", label: "usuários no app da Petz" }
+  - { value: "9 marcas", label: "apps em produção" }
+  - { value: "78%", label: "de corte na latência da busca na LTK" }

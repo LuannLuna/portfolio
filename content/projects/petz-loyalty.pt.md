@@ -5,9 +5,9 @@ company: "Petz (via Sebratec)"
 period: "2022 — 2025"
 order: 2
 featured: true
-tagline: "Atuei na experiência de fidelidade da Petz, na adoção de SwiftUI e em melhorias de estabilidade em produção."
-role: "Engenheiro iOS Sênior contribuindo em arquitetura, migração para SwiftUI e investigação de crashes."
-cover: "/content/images/projects/petz-loyalty/cover.png"
+tagline: "Entreguei o primeiro fluxo SwiftUI da Petz em produção, migrei oito telas e ajudei a restabelecer o serviço durante um crash que afetou mais de 1,5M de usuários."
+role: "Arquitetei o módulo de fidelidade, liderei a migração de oito telas de UIKit para SwiftUI e participei da resposta a incidentes."
+cover: "/content/images/projects/petz-loyalty/cover-pt.webp"
 coverFit: "contain"
 gallery:
   - { src: "/content/images/projects/petz-loyalty/04-cashpetz-history.jpg", caption: "Histórico do CashPetz — créditos, usos, estornos e saldo a expirar." }
@@ -27,26 +27,24 @@ stack:
   - "Firebase"
   - "Remote Config"
 challenges:
-  - "O app ainda tinha muitos fluxos baseados em UIKit enquanto o time começava a introduzir SwiftUI em produção."
-  - "Algumas features dependiam bastante de remote config, o que aumentava a complexidade de debugar problemas em produção."
-  - "Parte do trabalho de migração precisava acontecer sem bloquear a entrega de features para o negócio."
+  - "A Petz ainda usava UIKit em boa parte do app; o fluxo de fidelidade seria a primeira feature SwiftUI em produção com lógica de negócio."
+  - "Um valor incorreto no Remote Config podia afetar o app no ar e não era óbvio olhando só para o crash."
+  - "Precisávamos migrar oito telas sem parar a entrega de novas features."
 decisions:
-  - "Contribuí com um dos primeiros fluxos SwiftUI em produção no app, ajudando a estabelecer padrões que o time pôde reutilizar depois."
-  - "Trabalhei na melhoria da arquitetura e da organização de módulos para tornar a migração entre UIKit e SwiftUI mais gerenciável."
-  - "Participei de investigações de incidentes em produção envolvendo crashes e comportamento de remote config."
+  - "Desenhei o módulo de fidelidade com MVVM e Clean Architecture. Ele virou o primeiro fluxo SwiftUI em produção da Petz com lógica de negócio real."
+  - "Migramos as oito telas em etapas, em uma dupla de desenvolvimento; o prazo de entrega caiu de três meses para seis semanas."
+  - "No war room do crash, encontrei um valor incorreto no Remote Config e ajudei a restabelecer o serviço em cerca de três horas."
 impact:
-  - { metric: "Adoção de SwiftUI", label: "Ajudei a introduzir fluxos SwiftUI em produção" }
-  - { metric: "Mais manutenibilidade", label: "Melhorias de migração e arquitetura" }
-  - { metric: "Estabilidade em produção", label: "Apoio em investigações e correções de crashes" }
-  - { metric: "Entrega mais rápida", label: "Migração junto com o desenvolvimento de features" }
+  - { metric: "1.000+ vendas", label: "Vendas orgânicas na primeira semana do fluxo de fidelidade" }
+  - { metric: "~3 horas", label: "Para restabelecer o serviço após o crash em produção" }
+  - { metric: "8 telas", label: "Migradas de UIKit para SwiftUI por uma dupla de devs" }
+  - { metric: "3 meses → 6 semanas", label: "Prazo de entrega de features após a migração" }
 ---
 
-## Visão geral
+## O trabalho
 
-Na **Petz**, trabalhei em features ligadas à experiência de fidelidade, melhorias de arquitetura e a adoção gradual de **SwiftUI** dentro do app. Parte do trabalho envolveu modernizar fluxos existentes em UIKit mantendo a entrega de features fluindo para o time de negócio.
+O módulo de fidelidade foi o primeiro fluxo SwiftUI da Petz em produção com lógica de negócio real. Desenhei a arquitetura com MVVM e Clean Architecture; na primeira semana, o fluxo gerou mais de 1.000 vendas orgânicas.
 
-Também participei de investigações de problemas em produção, especialmente em torno de crashes e do comportamento do Remote Config, trabalhando junto com o time para identificar causas e estabilizar os fluxos afetados.
+Também liderei, com mais uma pessoa, a migração de oito telas de UIKit para SwiftUI. Mantivemos a entrega de features e reduzimos o prazo de três meses para seis semanas.
 
-## Lições aprendidas
-
-Uma coisa que esse projeto reforçou para mim é que introduzir novas tecnologias em um produto existente raramente é só um desafio técnico. A maior parte é criar padrões que o resto do time consiga entender, manter e se sentir confortável em adotar ao longo do tempo.
+Quando um crash atingiu um app usado por mais de 1,5M de pessoas, entrei no war room, encontrei um valor incorreto no Remote Config e ajudei a restabelecer o serviço em cerca de três horas. Depois tratei os 12 crashes mais frequentes com Crashlytics e Instruments; as sessões sem crash ficaram em torno de 99%.

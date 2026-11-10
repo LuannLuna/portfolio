@@ -5,8 +5,8 @@ company: "Next (via Capgemini)"
 period: "2021 — 2022"
 order: 3
 featured: true
-tagline: "Worked on authentication flow studies, RxSwift prototypes, and support for chat and virtual assistant integrations."
-role: "iOS Engineer contributing to authentication flow discussions, technical prototypes, and SDK integrations."
+tagline: "I prototyped on-demand authentication in RxSwift and paired with the Chat team on Bia's SDK integration."
+role: "I built the authentication prototype and documented the login lifecycle; I also supported the Bia SDK integration."
 cover: "/content/images/projects/next-banking/cover-en.webp"
 coverFit: "contain"
 tags: ["iOS", "Architecture", "RxSwift", "Security"]
@@ -23,25 +23,21 @@ stack:
   - "UML Modeling"
   - "SDK Integration"
 challenges:
-  - "The authentication flow involved multiple existing security and permission assumptions spread across the app."
-  - "Part of the work required alignment between different teams and architectural discussions."
-  - "The chat experience needed support for integrating new virtual assistant capabilities into existing flows."
+  - "The existing login flow requested permissions up front, before the user needed them."
+  - "The proposal needed agreement between the client Principal Engineer and the app team before implementation."
+  - "Bia's new assistant SDK had to hand conversations off to human support without breaking the chat flow."
 decisions:
-  - "Worked on an RxSwift prototype exploring alternative approaches for authentication and permission handling."
-  - "Created UML sequence diagrams to help document and discuss authentication lifecycle behaviors with the team."
-  - "Supported integration efforts related to chat and virtual assistant SDK flows."
+  - "Prototyped on-demand privilege escalation in RxSwift instead of loading every permission at login."
+  - "Reviewed the proposal with the client's Principal Engineer and documented the login lifecycle with UML and sequence diagrams."
+  - "Paired with the Chat squad on Bia's SDK integration through code reviews and bug triage."
 impact:
-  - { metric: "Architecture discussions", label: "Authentication flow studies and prototypes" }
-  - { metric: "Technical documentation", label: "Lifecycle and sequence modeling" }
-  - { metric: "Chat integration", label: "Support for virtual assistant SDK flows" }
+  - { metric: "RxSwift", label: "Authentication prototype delivered as part of the proposal" }
+  - { metric: "UML", label: "Login lifecycle and sequence diagrams for review" }
+  - { metric: "Bia", label: "SDK integration support with the Chat squad" }
 ---
 
-## Overview
+## The work
 
-At **Next**, I worked on initiatives related to authentication flows and chat integrations inside the banking app. Part of the work involved building technical prototypes with **RxSwift**, documenting lifecycle behaviors through UML diagrams, and collaborating with other teams during architectural discussions.
+The login flow requested permissions before the user needed them. I prototyped a different approach in RxSwift: ask for a privilege when the user reaches the feature that needs it. I reviewed the proposal with the client's Principal Engineer and drew UML and sequence diagrams for the login lifecycle. The prototype and diagrams were delivered as a proposal, not shipped as a feature.
 
-I also supported efforts related to chat experiences and integrations involving virtual assistant flows inside the app.
-
-## Lessons learned
-
-This project reinforced how important communication and documentation are in large products with multiple teams involved. Sometimes the biggest value is not the final implementation itself, but helping everyone align on how the flow should behave before development moves forward.
+I also paired with the Chat squad on the SDK for Bia, Next's virtual assistant. I reviewed code and triaged bugs, including the handoff from the bot to a human support agent.
