@@ -5,7 +5,7 @@ availableLocales: [en, pt]
 site:
   url: "https://luannluna.github.io/portfolio/"
   ogImage: "https://luannluna.github.io/portfolio/og-image.png"
-  themeColor: "#0f1320"
+  themeColor: "#F3F0E9"
 
 profile:
   name: "Luann Luna"

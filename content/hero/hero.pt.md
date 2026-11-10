@@ -12,6 +12,10 @@ ctaSecondary:
   href: "https://github.com/LuannLuna/Resume/raw/main/pdf/Luann_Luna_Resume_EN.pdf"
 shippedToLabel: "Projetos e produtos"
 location: "São Luís, Brasil · Remoto (US / EU / LATAM)"
+spec:
+  - { label: "Cargo", value: "Engenheiro iOS Sênior" }
+  - { label: "Foco", value: "Swift 6 · SwiftUI · Arquitetura" }
+  - { label: "Base", value: "São Luís, Brasil — remoto" }
 ---
 
 Sou desenvolvedor iOS com mais de 7 anos de experiência criando apps com Swift e SwiftUI. Já trabalhei em produtos de áreas como mídia, e-commerce, esportes e bancos, sempre focado em criar soluções fáceis de manter e entregar uma boa experiência para os usuários.

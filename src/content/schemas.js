@@ -58,6 +58,7 @@ export const HeroFrontmatterSchema = z.object({
   ctaSecondary: Cta,
   shippedToLabel: z.string(),
   location: z.string(),
+  spec: z.array(z.object({ label: z.string(), value: z.string() })).default([]),
 })
 
 export const AboutFrontmatterSchema = z.object({
@@ -75,12 +76,29 @@ export const AboutPhilosophySchema = z.object({
   items: z.array(z.string()).min(1),
 })
 
+export const ProjectLabelsSchema = z.object({
+  filter: z.string().default('Filter'),
+  openSource: z.string().default('Open source'),
+  repositories: z.string().default('Selected repositories'),
+  caseStudy: z.string().default('Case study'),
+  role: z.string().default('My role'),
+  challenges: z.string().default('Challenges'),
+  decisions: z.string().default('Architecture & decisions'),
+  impact: z.string().default('Impact'),
+  stack: z.string().default('Stack'),
+  tags: z.string().default('Tags'),
+  screens: z.string().default('Screens'),
+  close: z.string().default('Close'),
+  next: z.string().default('Next project'),
+})
+
 export const ProjectsIndexSchema = z.object({
   eyebrow: z.string(),
   title: z.string(),
   lede: z.string(),
   allLabel: z.string().default('All'),
   tagOrder: z.array(z.string()).default([]),
+  labels: ProjectLabelsSchema.default({}),
 })
 
 export const ImpactSchema = z.object({

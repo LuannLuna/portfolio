@@ -1,139 +1,169 @@
-import { motion } from 'framer-motion'
-import { ArrowRight, Github, Linkedin, Mail, FileText, MapPin } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import { useContent } from '../i18n/locale.jsx'
 
 const APP_STORE_LINKS = {
-  "Petz": "https://apps.apple.com/br/app/petz-tudo-que-seu-pet-precisa/id1250491446",
-  "LTK": "https://apps.apple.com/br/app/ltk-liketoknow-it/id1154027990",
-  "Next": "https://apps.apple.com/br/app/next-conta-digital-e-cart%C3%A3o/id1133682678",
-  "G1": "https://apps.apple.com/br/app/g1-portal-de-not%C3%ADcias-da-globo/id413333281",
-  "GE": "https://apps.apple.com/br/app/ge-not%C3%ADcias-de-esportes/id361393520",
-  "Dafiti": "https://apps.apple.com/br/app/dafiti-shopping-no-seu-bolso/id564924168",
-  "TocaLivros": "https://apps.apple.com/br/app/audiolivros-da-tocalivros/id919766261"
+  Petz: 'https://apps.apple.com/br/app/petz-tudo-que-seu-pet-precisa/id1250491446',
+  LTK: 'https://apps.apple.com/br/app/ltk-liketoknow-it/id1154027990',
+  Next: 'https://apps.apple.com/br/app/next-conta-digital-e-cart%C3%A3o/id1133682678',
+  G1: 'https://apps.apple.com/br/app/g1-portal-de-not%C3%ADcias-da-globo/id413333281',
+  GE: 'https://apps.apple.com/br/app/ge-not%C3%ADcias-de-esportes/id361393520',
+  Dafiti: 'https://apps.apple.com/br/app/dafiti-shopping-no-seu-bolso/id564924168',
+  TocaLivros: 'https://apps.apple.com/br/app/audiolivros-da-tocalivros/id919766261',
 }
 
 export default function Hero() {
   const { hero, site } = useContent()
   const { profile } = site
+  const nameParts = profile.name.toUpperCase().split(' ')
+
   return (
-    <section id="top" className="relative pt-20 pb-24 sm:pt-28 sm:pb-32">
-      <div className="container-prose">
-        <div className="grid gap-10 lg:gap-14 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start">
-          <div>
-            <motion.p
-              initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
-              className="eyebrow">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
-              {hero.availability}
-            </motion.p>
+    <section id="top" className="relative">
+      <div className="container-grid">
+        <div className="flex flex-wrap items-center justify-between gap-x-8 gap-y-2 border-b border-rule py-3">
+          <span className="meta flex items-center gap-2">
+            <span className="h-1.5 w-1.5 bg-signal" aria-hidden="true" />
+            {hero.availability}
+          </span>
+          <span className="meta hidden sm:inline">{hero.location}</span>
+          <span className="meta">Portfolio / {new Date().getFullYear()}</span>
+        </div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.05 }}
-              className="mt-5 font-display text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tight">
+        <div className="grid grid-cols-12 gap-x-6 gap-y-12 pt-8 lg:pt-12">
+          <div className="col-span-12 lg:col-span-9">
+            <h1 className="display text-[clamp(4.5rem,11.5vw,11rem)] uppercase leading-[0.8]">
+              {nameParts.map((part, index) => (
+                <span key={part} className="reveal-line">
+                  <span style={{ animationDelay: `${index * 90}ms` }}>
+                    {part}
+                    {index === nameParts.length - 1 && (
+                      <span className="text-signal">.</span>
+                    )}
+                  </span>
+                </span>
+              ))}
+            </h1>
+
+            <p className="mt-8 max-w-4xl text-balance text-[clamp(1.4rem,2.6vw,2.2rem)] leading-[1.22] tracking-[-0.02em]">
               {hero.headline.lead}{' '}
-              <span className="bg-gradient-to-r from-accent-500 via-fuchsia-400 to-cyan-400 bg-clip-text text-transparent">
-                {hero.headline.highlight}
-              </span>{' '}
+              <span className="text-signal">{hero.headline.highlight}</span>{' '}
               {hero.headline.trail}
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }}
-              className="mt-6 max-w-2xl text-lg sm:text-xl text-ink-600 dark:text-ink-300 leading-relaxed">
-              {hero.body}
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }}
-              className="mt-8 flex flex-wrap items-center gap-3">
-              <a href={hero.ctaPrimary.href}
-                 className="group inline-flex items-center gap-2 rounded-xl bg-ink-900 dark:bg-white px-5 py-3
-                            text-sm font-medium text-white dark:text-ink-900 hover:opacity-90 transition">
-                {hero.ctaPrimary.label}
-                <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
-              </a>
-              <a href={hero.ctaSecondary.href} target="_blank" rel="noreferrer"
-                 className="inline-flex items-center gap-2 rounded-xl border border-ink-200 dark:border-white/10
-                            px-5 py-3 text-sm font-medium hover:bg-ink-100/60 dark:hover:bg-white/5 transition">
-                <FileText size={16} /> {hero.ctaSecondary.label}
-              </a>
-              <div className="ml-2 flex items-center gap-1">
-                <IconLink href={profile.links.github} label="GitHub"><Github size={18} /></IconLink>
-                <IconLink href={profile.links.linkedin} label="LinkedIn"><Linkedin size={18} /></IconLink>
-                <IconLink href={`mailto:${profile.email}`} label="Email"><Mail size={18} /></IconLink>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.4 }}
-              className="mt-6 flex items-center gap-2 text-sm text-ink-500 dark:text-ink-400">
-              <MapPin size={14} /> {hero.location}
-            </motion.div>
+            </p>
           </div>
 
-          {profile.photoUrl && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="order-first lg:order-none mx-auto lg:mx-0">
-              <div className="relative">
-                <div aria-hidden className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br
-                                            from-accent-500/40 via-fuchsia-400/20 to-cyan-400/30 blur-2xl opacity-70" />
-                <div className="relative h-64 w-64 sm:h-80 sm:w-80 lg:h-[22rem] lg:w-[22rem] xl:h-[26rem] xl:w-[26rem]
-                                overflow-hidden rounded-3xl border border-ink-200/70 dark:border-white/10
-                                bg-ink-100 dark:bg-white/5 shadow-glow">
+          <figure className="col-span-12 lg:col-span-3">
+            {profile.photoUrl && (
+              <>
+                <div className="aspect-[4/5] w-full max-w-sm overflow-hidden border border-rule bg-surface">
                   <img
                     src={profile.photoUrl}
                     alt={profile.photoAlt || profile.name}
-                    width="640" height="640" loading="eager" decoding="async"
-                    className="h-full w-full object-contain"
+                    width="640"
+                    height="800"
+                    loading="eager"
+                    decoding="async"
+                    className="h-full w-full object-cover grayscale contrast-[1.05]"
                   />
                 </div>
-              </div>
-            </motion.div>
-          )}
+                <figcaption className="mt-2 flex items-center justify-between gap-4 border-t border-rule pt-2">
+                  <span className="meta">{profile.name}</span>
+                  <span className="meta">{hero.location.split('·')[0].trim()}</span>
+                </figcaption>
+              </>
+            )}
+          </figure>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-16">
-          <p className="text-xs font-mono uppercase tracking-[0.2em] text-ink-500 dark:text-ink-400">
-            {hero.shippedToLabel}
-          </p>
-          <div className="mt-4 flex flex-wrap gap-x-8 gap-y-3 text-ink-500 dark:text-ink-300">
-            {profile.shippedTo.map(name => {
+        <div className="mt-12 grid grid-cols-12 gap-x-6 gap-y-10 border-t border-rule pt-8">
+          <div className="col-span-12 lg:col-span-7">
+            <p className="max-w-2xl text-pretty text-[17px] leading-[1.7] text-muted">
+              {hero.body}
+            </p>
+
+            <div className="mt-8 flex flex-wrap items-center gap-x-7 gap-y-4">
+              <a href={hero.ctaPrimary.href} className="btn btn-signal">
+                {hero.ctaPrimary.label}
+                <ArrowUpRight size={14} strokeWidth={1.5} />
+              </a>
+              <a
+                href={hero.ctaSecondary.href}
+                target="_blank"
+                rel="noreferrer"
+                className="link-line font-mono text-[10px] uppercase tracking-[0.16em]">
+                {hero.ctaSecondary.label} ↗
+              </a>
+
+              <span className="hidden h-4 w-px bg-rule sm:block" aria-hidden="true" />
+
+              <a
+                href={profile.links.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="link-line font-mono text-[10px] uppercase tracking-[0.16em]">
+                LinkedIn ↗
+              </a>
+              <a
+                href={profile.links.github}
+                target="_blank"
+                rel="noreferrer"
+                className="link-line font-mono text-[10px] uppercase tracking-[0.16em]">
+                GitHub ↗
+              </a>
+              <a
+                href={`mailto:${profile.email}`}
+                className="link-line font-mono text-[10px] uppercase tracking-[0.16em]">
+                Email ↗
+              </a>
+            </div>
+          </div>
+
+          <aside className="col-span-12 lg:col-span-5">
+            <dl className="border-t border-rule">
+              {hero.spec.map((item) => (
+                <div
+                  key={item.label}
+                  className="flex items-baseline justify-between gap-6 border-b border-rule py-3">
+                  <dt className="meta">{item.label}</dt>
+                  <dd className="text-right font-mono text-[11px] leading-relaxed text-ink">
+                    {item.value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </aside>
+        </div>
+
+        <div className="mt-14 border-t border-rule pt-5">
+          <div className="flex items-baseline justify-between gap-4">
+            <p className="eyebrow">{hero.shippedToLabel}</p>
+            <span className="meta">
+              {String(profile.shippedTo.length).padStart(2, '0')}
+            </span>
+          </div>
+          <ul className="mt-4 grid grid-cols-2 gap-x-6 sm:grid-cols-3 lg:grid-cols-5">
+            {profile.shippedTo.map((name) => {
               const url = APP_STORE_LINKS[name]
-              if (url) {
-                return (
-                  <a
-                    key={name}
-                    href={url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="font-display text-lg sm:text-xl tracking-tight opacity-80 hover:opacity-100 hover:text-accent-500 dark:hover:text-accent-300 transition duration-200">
-                    {name}
-                  </a>
-                )
-              }
               return (
-                <span key={name} className="font-display text-lg sm:text-xl tracking-tight opacity-40">
-                  {name}
-                </span>
+                <li key={name} className="border-t border-rule py-2">
+                  {url ? (
+                    <a
+                      href={url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex items-center justify-between font-display text-lg tracking-[-0.02em] text-ink transition-colors hover:text-signal">
+                      {name}
+                      <ArrowUpRight size={13} strokeWidth={1.5} />
+                    </a>
+                  ) : (
+                    <span className="font-display text-lg tracking-[-0.02em] text-muted">
+                      {name}
+                    </span>
+                  )}
+                </li>
               )
             })}
-          </div>
-        </motion.div>
+          </ul>
+        </div>
       </div>
     </section>
-  )
-}
-
-function IconLink({ href, label, children }) {
-  return (
-    <a href={href} target="_blank" rel="noreferrer" aria-label={label}
-       className="grid h-10 w-10 place-items-center rounded-lg border border-ink-200 dark:border-white/10
-                  hover:bg-ink-100 dark:hover:bg-white/5 transition">
-      {children}
-    </a>
   )
 }

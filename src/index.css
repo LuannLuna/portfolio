@@ -3,58 +3,211 @@
 @tailwind utilities;
 
 :root {
+  --paper: 243 240 233;
+  --surface: 234 230 221;
+  --ink: 18 18 15;
+  --muted: 110 106 97;
+  --rule: 207 201 188;
+  --signal: 215 38 30;
   color-scheme: light;
 }
+
 .dark {
+  --paper: 17 17 15;
+  --surface: 25 25 22;
+  --ink: 241 238 230;
+  --muted: 161 156 145;
+  --rule: 46 44 38;
+  --signal: 255 59 48;
   color-scheme: dark;
 }
 
-html { -webkit-font-smoothing: antialiased; }
-body { font-feature-settings: 'cv11', 'ss01'; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  @apply bg-paper text-ink font-sans;
+  font-feature-settings: 'ss01', 'cv05';
+  text-rendering: optimizeLegibility;
+}
 
 ::selection {
-  background: theme('colors.accent.500');
-  color: white;
+  background: rgb(var(--signal));
+  color: rgb(var(--paper));
+}
+
+:where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid rgb(var(--signal));
+  outline-offset: 3px;
 }
 
 @layer components {
-  .container-prose {
-    @apply mx-auto w-full max-w-6xl px-6 sm:px-8;
+  .container-grid {
+    @apply mx-auto w-full max-w-[1440px] px-6 sm:px-8 lg:px-12;
   }
-  .section {
-    @apply py-24 sm:py-32;
+
+  .display {
+    @apply font-display font-bold;
+    font-stretch: 112%;
+    letter-spacing: -0.045em;
   }
+
   .eyebrow {
-    @apply inline-flex items-center gap-2 text-xs font-mono uppercase tracking-[0.2em]
-           text-accent-600 dark:text-accent-300;
+    @apply font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-muted;
   }
-  .heading {
-    @apply font-display text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight
-           text-ink-900 dark:text-white;
+
+  .meta {
+    @apply font-mono text-[10px] uppercase tracking-[0.16em] text-muted;
   }
-  .lede {
-    @apply mt-4 max-w-2xl text-lg text-ink-600 dark:text-ink-300 leading-relaxed;
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 border border-ink px-4 py-3
+           font-mono text-[10px] font-medium uppercase tracking-[0.16em] text-ink
+           transition-colors duration-200;
   }
-  .card {
-    @apply rounded-2xl border border-ink-200/70 dark:border-white/10
-           bg-white dark:bg-ink-900/40 backdrop-blur
-           transition-colors;
+
+  .btn:hover {
+    @apply bg-ink text-paper;
   }
-  .chip {
-    @apply inline-flex items-center rounded-full border border-ink-200 dark:border-white/10
-           bg-ink-50 dark:bg-white/5
-           px-3 py-1 text-xs font-medium text-ink-700 dark:text-ink-200;
+
+  .btn-signal {
+    @apply border-signal bg-signal text-paper;
   }
-  .link {
-    @apply text-accent-600 dark:text-accent-300 hover:underline underline-offset-4;
+
+  .btn-signal:hover {
+    @apply border-ink bg-ink text-paper;
+  }
+
+  .link-line {
+    @apply relative inline-flex items-center gap-1.5 text-ink no-underline
+           underline-offset-4 hover:text-signal hover:underline hover:decoration-signal;
+  }
+
+  .prose-editorial {
+    @apply max-w-measure text-[17px] leading-[1.7] text-muted;
+  }
+
+  .prose-editorial > * + * {
+    margin-top: 1.1em;
+  }
+
+  .prose-editorial h2 {
+    @apply mt-10 font-display text-[28px] font-bold leading-[1.05] tracking-[-0.035em] text-ink;
+    font-stretch: 112%;
+  }
+
+  .prose-editorial h3 {
+    @apply mt-8 font-display text-[21px] font-bold leading-tight tracking-[-0.02em] text-ink;
+  }
+
+  .prose-editorial a {
+    @apply text-ink underline decoration-signal decoration-1 underline-offset-4 hover:text-signal;
+  }
+
+  .prose-editorial strong {
+    @apply font-semibold text-ink;
+  }
+
+  .prose-editorial ul {
+    @apply list-none space-y-2 pl-0;
+  }
+
+  .prose-editorial li {
+    @apply relative pl-5;
+  }
+
+  .prose-editorial li::before {
+    content: '—';
+    @apply absolute left-0 text-signal;
+  }
+
+  .prose-editorial code {
+    @apply bg-surface px-1 py-0.5 font-mono text-[0.85em] text-ink;
+  }
+
+  .prose-editorial pre {
+    @apply overflow-x-auto border border-rule bg-surface p-4 font-mono text-[13px] leading-relaxed text-ink;
+  }
+
+  .prose-editorial pre code {
+    @apply bg-transparent p-0 text-inherit;
+  }
+
+  .prose-editorial blockquote {
+    @apply border-l-2 border-signal pl-5 font-display text-xl leading-snug text-ink;
+  }
+
+  .prose-editorial hr {
+    @apply border-rule;
+  }
+
+  .dropcap > p:first-of-type::first-letter {
+    @apply float-left mr-[0.08em] font-display font-bold text-signal;
+    font-size: 5.1em;
+    line-height: 0.76;
+    font-stretch: 112%;
   }
 }
 
-/* Subtle background grid */
-.bg-grid {
-  background-image: theme('backgroundImage.grid-light');
-  background-size: 24px 24px;
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .vertical-rl {
+    writing-mode: vertical-rl;
+  }
+
+  .reveal-line {
+    display: block;
+    overflow: hidden;
+  }
+
+  .reveal-line > span {
+    display: block;
+    animation: line-rise 0.85s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  .reveal-fade {
+    animation: fade-in 0.7s ease-out both;
+  }
+
+  .overlay-in {
+    animation: fade-in 0.2s ease-out both;
+  }
+
+  .sheet-in {
+    animation: sheet-in 0.32s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
 }
-.dark .bg-grid {
-  background-image: theme('backgroundImage.grid-dark');
+
+@keyframes line-rise {
+  from { transform: translateY(108%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes sheet-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

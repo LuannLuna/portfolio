@@ -8,7 +8,7 @@
     <title>Luann Luna · Senior iOS Engineer</title>
     <meta name="description" content="Senior iOS Engineer. Swift 6, SwiftUI, Clean Architecture. 7+ years shipping native iOS to millions of users." />
     <meta name="author" content="Luann Luna" />
-    <meta name="theme-color" content="#0f1320" />
+    <meta name="theme-color" content="#F3F0E9" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -29,15 +29,17 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
 
     <script>
       // Apply theme before paint to avoid flash
       (function () {
         try {
           const stored = localStorage.getItem('theme');
-          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-          const theme = stored || (prefersDark ? 'dark' : 'light');
+          const theme = stored || 'light';
           if (theme === 'dark') document.documentElement.classList.add('dark');
         } catch (e) {}
       })();
@@ -58,7 +60,7 @@
       }
     </script>
   </head>
-  <body class="bg-white text-ink-900 dark:bg-ink-950 dark:text-ink-100 antialiased">
+  <body class="bg-paper text-ink antialiased">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

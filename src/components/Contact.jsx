@@ -1,71 +1,72 @@
-import ReactMarkdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
-import { Mail, Linkedin, Github, ArrowRight, Calendar } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import Section from './Section.jsx'
+import Markdown from './Markdown.jsx'
 import { useContent } from '../i18n/locale.jsx'
 
 export default function Contact() {
   const { contact, site } = useContent()
   const { profile } = site
+
   return (
     <Section
       id="contact"
+      number="05"
       eyebrow={contact.eyebrow}
       title={contact.title}
       lede={contact.lede}>
-      <div className="card p-8 sm:p-10">
-        <div className="grid gap-8 md:grid-cols-[1.2fr_1fr] md:items-center">
-          <div>
-            <div className="text-ink-700 dark:text-ink-200 leading-relaxed space-y-4">
-              <ReactMarkdown
-                remarkPlugins={[remarkGfm]}
-                components={{ p: ({ node, ...props }) => <p {...props} /> }}>
-                {contact.body}
-              </ReactMarkdown>
-            </div>
-            <div className="mt-6 flex flex-wrap items-center gap-3">
-              {profile.links.schedule && (
-                <a href={profile.links.schedule} target="_blank" rel="noreferrer"
-                   className="group inline-flex items-center gap-2 rounded-xl bg-ink-900 dark:bg-white px-5 py-3
-                              text-sm font-medium text-white dark:text-ink-900 hover:opacity-90 transition">
-                  <Calendar size={16} />
-                  Schedule a call
-                  <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
-                </a>
-              )}
-              <a href={`mailto:${profile.email}`}
-                 className="inline-flex items-center gap-2 rounded-xl border border-ink-200 dark:border-white/10 px-5 py-3
-                            text-sm font-medium hover:bg-ink-100/60 dark:hover:bg-white/5 transition">
-                <Mail size={16} />
-                {profile.email}
-              </a>
-            </div>
+      <div className="grid grid-cols-12 gap-x-6 gap-y-12">
+        <div className="col-span-12 lg:col-span-7">
+          <a
+            href={`mailto:${profile.email}`}
+            className="group block border-b border-rule pb-6">
+            <span className="eyebrow">Email</span>
+            <span className="mt-3 block break-words font-display text-[clamp(1.5rem,4vw,3.5rem)] font-bold tracking-[-0.04em] transition-colors group-hover:text-signal">
+              {profile.email}
+            </span>
+          </a>
+
+          <div className="mt-8">
+            <Markdown>{contact.body}</Markdown>
           </div>
-          <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-1">
-            {profile.links.schedule && (
-              <ContactRow icon={<Calendar size={16} />} label="Schedule" value="cal.com/luann-luna/30min" href={profile.links.schedule} />
-            )}
-            <ContactRow icon={<Mail size={16} />} label="Email" value={profile.email} href={`mailto:${profile.email}`} />
-            <ContactRow icon={<Linkedin size={16} />} label="LinkedIn" value={contact.linkedinDisplay} href={profile.links.linkedin} />
-            <ContactRow icon={<Github size={16} />} label="GitHub" value={contact.githubDisplay} href={profile.links.github} />
-          </div>
+
+          {profile.links.schedule && (
+            <a
+              href={profile.links.schedule}
+              target="_blank"
+              rel="noreferrer"
+              className="btn mt-8">
+              30 min
+              <ArrowUpRight size={14} strokeWidth={1.5} />
+            </a>
+          )}
         </div>
+
+        <aside className="col-span-12 lg:col-span-5">
+          <div className="border-t border-rule">
+            <ContactRow label="LinkedIn" value={contact.linkedinDisplay} href={profile.links.linkedin} />
+            <ContactRow label="GitHub" value={contact.githubDisplay} href={profile.links.github} />
+            {profile.links.schedule && (
+              <ContactRow label="Cal.com" value="cal.com/luann-luna" href={profile.links.schedule} />
+            )}
+            <ContactRow label="Resume" value="PDF" href={profile.links.resume} />
+          </div>
+        </aside>
       </div>
     </Section>
   )
 }
 
-function ContactRow({ icon, label, value, href }) {
+function ContactRow({ label, value, href }) {
   return (
-    <a href={href} target="_blank" rel="noreferrer"
-       className="flex items-center gap-3 rounded-xl border border-ink-200 dark:border-white/10 px-4 py-3
-                  hover:bg-ink-100/60 dark:hover:bg-white/5 transition">
-      <span className="grid h-8 w-8 place-items-center rounded-lg bg-accent/10 text-accent-600 dark:text-accent-300">
-        {icon}
-      </span>
-      <span className="min-w-0">
-        <span className="block text-xs font-mono uppercase tracking-[0.2em] text-ink-500 dark:text-ink-400">{label}</span>
-        <span className="block truncate text-sm">{value}</span>
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className="group flex items-baseline justify-between gap-4 border-b border-rule py-4">
+      <span className="meta">{label}</span>
+      <span className="flex min-w-0 items-center gap-2 text-[14px] text-ink transition-colors group-hover:text-signal">
+        <span className="truncate">{value}</span>
+        <ArrowUpRight size={13} strokeWidth={1.5} className="flex-none" />
       </span>
     </a>
   )

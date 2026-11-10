@@ -26,35 +26,42 @@ Node 20+ recommended.
 .
 ├── index.html                 # SEO + OG + JSON-LD + theme bootstrap
 ├── public/
-│   ├── favicon.svg            # gradient "LL" mark
+│   ├── favicon.svg            # editorial "LL" mark
 │   ├── og-image.png           # 1200x630 social card (generated)
 │   ├── 404.html               # SPA fallback for GitHub Pages deep links
 │   ├── robots.txt
 │   └── sitemap.xml
+├── content/
+│   ├── site.yaml              # profile, links, locales
+│   ├── hero/ about/ projects/ experience/ skills/ contact/
+│   └── images/                # profile photo + project covers/galleries
 ├── src/
 │   ├── main.jsx
-│   ├── App.jsx                # ambient background + section composition
-│   ├── index.css              # Tailwind layers + design tokens
-│   ├── hooks/useTheme.js      # dark mode (class strategy, persisted)
-│   ├── data/
-│   │   ├── profile.js         # name, links, philosophy, shippedTo
-│   │   ├── projects.js        # case studies (overview / decisions / impact / lessons)
-│   │   ├── experience.js      # timeline
-│   │   └── skills.js          # grouped tech stack
+│   ├── App.jsx                # page composition + skip link
+│   ├── index.css              # editorial tokens, grid, prose, motion
+│   ├── hooks/useTheme.js      # light-first dark mode (persisted)
+│   ├── i18n/locale.jsx        # EN / PT content context
+│   ├── content/
+│   │   ├── loader.js          # MD/YAML loader with locale fallback
+│   │   └── schemas.js         # Zod content contracts
 │   └── components/
-│       ├── Navbar.jsx         # sticky, blur-on-scroll, mobile menu
-│       ├── Hero.jsx           # gradient headline + CTA + logo strip
-│       ├── About.jsx          # bio + philosophy + stat tiles
-│       ├── Section.jsx        # shared section shell
-│       ├── Projects.jsx       # cards → modal case study
-│       ├── Skills.jsx
-│       ├── Experience.jsx     # vertical timeline
+│       ├── Navbar.jsx         # sticky masthead + mobile index
+│       ├── Hero.jsx           # oversized name, portrait, spec table
+│       ├── About.jsx          # bio, philosophy, stats table
+│       ├── Section.jsx        # numbered editorial section shell
+│       ├── Projects.jsx       # project index rows → case-study sheet
+│       ├── TagFilter.jsx      # text filter with counts
+│       ├── Skills.jsx         # ruled stack matrix
+│       ├── Experience.jsx     # ruled career table
 │       ├── Contact.jsx
 │       └── Footer.jsx
 ├── scripts/
 │   ├── validate-content.mjs   # build-time content + asset validator
 │   ├── og-image.html          # social card template
-│   └── generate-og-image.mjs  # renders the template with headless Chrome
+│   ├── generate-og-image.mjs  # renders the template with headless Chrome
+│   ├── *-banner*.html         # PT/EN project banner templates
+│   ├── render-*.mjs           # Playwright/cwebp renderers
+│   └── lib/render-cover.mjs   # shared banner renderer
 ├── tailwind.config.js
 ├── postcss.config.js
 ├── vite.config.js             # honors BASE_PATH env var
@@ -67,12 +74,14 @@ Node 20+ recommended.
 
 Almost everything is data-driven. Update these files and the UI follows:
 
-| What                    | Where                       |
-| ----------------------- | --------------------------- |
-| Name, bio, links        | `src/data/profile.js`       |
-| Project case studies    | `src/data/projects.js`      |
-| Experience timeline     | `src/data/experience.js`    |
-| Skills (grouped chips)  | `src/data/skills.js`        |
+| What                    | Where                                    |
+| ----------------------- | ---------------------------------------- |
+| Name, links, photo      | `content/site.yaml`                      |
+| Hero copy + spec        | `content/hero/hero.<locale>.md`          |
+| Project case studies    | `content/projects/<slug>.<locale>.md`    |
+| Experience              | `content/experience/jobs.<locale>.yaml`  |
+| Skills                  | `content/skills/groups.<locale>.yaml`    |
+| About / contact / nav   | `content/about/`, `contact/`, `nav.*`    |
 
 To swap the resume PDF, drop a file at `public/resume-en.pdf` (referenced from `profile.links.resume`).
 
@@ -119,21 +128,32 @@ GitHub's Pages docs. Update the `og:url` and `sitemap.xml` to match.
 ## Architecture decisions
 
 - **Vite + React over Next.js static export** — the site is a single page with anchor sections. Next's SSR/routing would be overhead with no payoff; Vite gives a faster dev loop and a smaller bundle.
-- **Tailwind with a tiny custom layer** — design tokens live in `tailwind.config.js`; reusable patterns (`section`, `card`, `chip`, `eyebrow`) are CSS components in `index.css`. This keeps JSX readable without a CSS-in-JS runtime.
-- **Class-based dark mode with no-flash bootstrap** — the inline `<script>` in `index.html` reads `localStorage` and the OS preference *before* React mounts, so there's no light flash on a dark refresh.
-- **Data-driven content modules** — copy lives in `src/data/*` so non-engineers can edit the site through a single PR without touching layout code.
-- **Framer Motion for in-view reveals** — used sparingly. Animation amplifies hierarchy; it doesn't create it.
-- **Modal case studies, not separate routes** — keeps deep linking simple, removes a router dependency, and respects the "one URL, fast load" model that suits a portfolio.
-- **Accessibility** — semantic landmarks (`header`/`main`/`section`/`footer`), focusable controls, `aria-label`s on icon-only buttons, modal closes on backdrop click. Color contrast meets WCAG AA in both themes.
+- **Tailwind with CSS-variable tokens** — palette roles (`paper`, `surface`, `ink`, `muted`, `rule`, `signal`) live as CSS custom properties in `index.css` and are consumed by Tailwind. Editorial patterns (`container-grid`, `display`, `eyebrow`, `btn`, `prose-editorial`) are small CSS components, so components stay readable without a CSS-in-JS runtime.
+- **Light-first dark mode with no-flash bootstrap** — the inline `<script>` in `index.html` reads `localStorage` before React mounts. The paper system is the default; dark mode is an explicit persisted choice, so there is never a flash.
+- **Data-driven content modules** — copy and case studies live in `content/` as Markdown/YAML and are validated by Zod at build time. Non-engineers can edit the site through one PR without touching layout code.
+- **CSS-only motion** — the hero line rise, hover states and modal entrance are CSS keyframes/transitions. No animation runtime; `prefers-reduced-motion` is respected globally.
+- **Case-study sheet, not a route** — keeps the one-URL model, removes a router, and gives the work a print-like reading surface. It traps focus, closes on Escape/backdrop, locks body scroll and restores the trigger.
+- **Accessibility** — semantic landmarks, skip link, 44px mobile targets, visible focus rings, `aria-modal`, keyboard trap, `aria-pressed` filters and AA contrast in both themes.
 - **SEO** — title, description, Open Graph, Twitter card, JSON-LD `Person`, sitemap, robots. The site is fully static, so crawlers index it without JS execution after the first paint.
 
 ---
 
-## Suggested visual direction
+## Design system
 
-- **Color palette** — deep ink (`#0f1320`) base, indigo `#6366f1` as the accent, cyan `#22d3ee` for the gradient highlight. The palette is calm in light mode and confident in dark — the intended default.
-- **Typography** — `Space Grotesk` for display (modern, slightly geometric, friendly), `Inter` for UI body (boring on purpose — readable at every size), `JetBrains Mono` for eyebrows and metadata (signals craft).
-- **Spacing** — generous vertical rhythm (`py-24 sm:py-32` per section) so each section reads as a chapter, not a row.
+The rebrand follows the **web-design-engineer** workflow from
+[`ConardLi/garden-skills`](https://github.com/ConardLi/garden-skills), using the Swiss editorial /
+Pentagram–Vignelli school as the anchor.
+
+- **Palette** — paper `#F3F0E9`, surface `#EAE6DD`, ink `#12120F`, muted `#6E6A61`, rule `#CFC9BC`,
+  signal red `#D7261E`. Dark mode swaps the same roles to ink paper, cream type and `#FF3B30`.
+- **Typography** — Archivo for display (112% width, tight tracking), IBM Plex Sans for body,
+  IBM Plex Mono for metadata. No serif, no gradients.
+- **Layout** — 12-column grid, max 1440px, asymmetric 3/9 section headers, numbered index, 1px rules.
+  Zero border radius, zero shadows, no card grids.
+- **Signature** — the oversized name, project index rows whose grayscale covers colorize on hover, and
+  a full-width case-study sheet with a metadata rail.
+- **Motion** — a single hero line-rise plus 200–500ms hover/modal transitions; everything respects
+  `prefers-reduced-motion`.
 
 ---
 

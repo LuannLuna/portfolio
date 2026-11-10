@@ -10,17 +10,17 @@ import SEO from './components/SEO.jsx'
 
 export default function App() {
   return (
-    <div className="relative min-h-screen overflow-x-hidden">
-      <SEO />
-      {/* ambient background */}
-      <div aria-hidden className="pointer-events-none fixed inset-0 -z-10">
-        <div className="absolute inset-0 bg-grid opacity-60" />
-        <div className="absolute -top-40 left-1/2 h-[600px] w-[900px] -translate-x-1/2 rounded-full
-                        bg-accent-500/20 blur-[120px] dark:bg-accent-500/25" />
-      </div>
+    <div className="min-h-screen overflow-x-hidden bg-paper text-ink">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-ink focus:px-4 focus:py-2 focus:font-mono focus:text-[10px] focus:uppercase focus:tracking-[0.16em] focus:text-paper">
+        Skip to content
+      </a>
 
+      <SEO />
       <Navbar />
-      <main>
+
+      <main id="main">
         <Hero />
         <About />
         <Projects />
@@ -28,6 +28,7 @@ export default function App() {
         <Experience />
         <Contact />
       </main>
+
       <Footer />
     </div>
   )

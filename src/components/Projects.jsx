@@ -1,6 +1,6 @@
-import { useMemo, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowUpRight, X, Github } from 'lucide-react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
+import { ArrowUpRight, X } from 'lucide-react'
 import Section from './Section.jsx'
 import Markdown from './Markdown.jsx'
 import TagFilter from './TagFilter.jsx'
@@ -8,17 +8,31 @@ import { useContent } from '../i18n/locale.jsx'
 
 export default function Projects() {
   const { projects, projectsMeta, githubProjects } = useContent()
+  const { labels } = projectsMeta
   const [active, setActive] = useState(null)
   const [tag, setTag] = useState(null)
 
   const visible = useMemo(
-    () => (tag ? projects.filter(p => p.tags.includes(tag)) : projects),
+    () => (tag ? projects.filter((project) => project.tags.includes(tag)) : projects),
     [tag, projects]
   )
+
+  const counts = useMemo(() => {
+    const result = { all: projects.length }
+    for (const project of projects) {
+      for (const item of project.tags) result[item] = (result[item] || 0) + 1
+    }
+    return result
+  }, [projects])
+
+  const activeIndex = active ? projects.findIndex((project) => project.slug === active.slug) : -1
+  const nextProject =
+    activeIndex >= 0 ? projects[(activeIndex + 1) % projects.length] : null
 
   return (
     <Section
       id="projects"
+      number="02"
       eyebrow={projectsMeta.eyebrow}
       title={projectsMeta.title}
       lede={projectsMeta.lede}>
@@ -27,252 +41,340 @@ export default function Projects() {
         active={tag}
         onChange={setTag}
         allLabel={projectsMeta.allLabel}
+        counts={counts}
+        label={labels.filter}
       />
 
-      <motion.div layout className="grid gap-6 sm:grid-cols-2">
-        <AnimatePresence mode="popLayout">
-          {visible.map((p, i) => (
-            <motion.button
-              key={p.slug}
-              layout
-              onClick={() => setActive(p)}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.4, delay: i * 0.04 }}
-              className="group relative text-left card overflow-hidden hover:shadow-glow hover:-translate-y-0.5 transition-all">
-              <div aria-hidden className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full
-                                         bg-accent-500/10 blur-3xl opacity-0 group-hover:opacity-100 transition" />
-              {p.coverUrl && (
-                <div className={`w-full overflow-hidden border-b border-ink-200/70 dark:border-white/10
-                                ${p.coverFit === 'contain'
-                                  ? 'bg-ink-50 dark:bg-white/5'
-                                  : 'aspect-[16/9]'}`}>
-                  <img
-                    src={p.coverUrl}
-                    alt=""
-                    loading="lazy"
-                    className={`w-full transition-transform duration-500 group-hover:scale-105
-                               ${p.coverFit === 'contain' ? 'h-auto object-contain' : 'h-full object-cover'}`}
-                  />
-                </div>
-              )}
-              <div className="p-6 sm:p-7">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className="text-xs font-mono uppercase tracking-[0.2em] text-accent-600 dark:text-accent-300">
-                      {p.company} · {p.period}
-                    </p>
-                    <h3 className="mt-2 font-display text-2xl font-semibold tracking-tight">{p.title}</h3>
-                  </div>
-                  <ArrowUpRight size={20} className="flex-none text-ink-400 group-hover:text-accent transition" />
-                </div>
-                <p className="mt-3 text-ink-600 dark:text-ink-300">{p.tagline}</p>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {p.stack.slice(0, 5).map(s => <span key={s} className="chip">{s}</span>)}
-                  {p.stack.length > 5 && <span className="chip">+{p.stack.length - 5}</span>}
-                </div>
-              </div>
-            </motion.button>
-          ))}
-        </AnimatePresence>
-      </motion.div>
-
-      {/* Open Source Highlights Section */}
-      <div className="mt-20 sm:mt-28 border-t border-ink-200/50 dark:border-white/5 pt-16">
-        <div className="max-w-3xl">
-          <p className="eyebrow">
-            <Github size={14} /> Open Source
-          </p>
-          <h3 className="mt-3 font-display text-2xl sm:text-3xl font-semibold tracking-tight text-ink-900 dark:text-white">
-            Featured GitHub Repositories
-          </h3>
-          <p className="mt-2 text-ink-600 dark:text-ink-300">
-            A selection of native iOS libraries, toolkits, and architecture blueprints illustrating modern Swift patterns, modular architecture, and platform APIs.
-          </p>
-        </div>
-
-        <div className="mt-8 grid gap-6 sm:grid-cols-3">
-          {githubProjects.map((p, i) => (
-            <motion.a
-              key={p.name}
-              href={p.url}
-              target="_blank"
-              rel="noreferrer"
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.05 }}
-              className="group card p-6 hover:shadow-glow hover:-translate-y-0.5 hover:border-accent-500/30 transition-all flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-ink-900 dark:text-white group-hover:text-accent-500 dark:group-hover:text-accent-300 transition duration-200">
-                    <Github size={18} className="opacity-80" />
-                    <span className="font-mono text-sm font-semibold tracking-tight">{p.name}</span>
-                  </div>
-                  <ArrowUpRight size={16} className="text-ink-400 group-hover:text-accent transition duration-200" />
-                </div>
-                <p className="mt-4 text-sm text-ink-600 dark:text-ink-300 leading-relaxed">
-                  {p.description}
-                </p>
-              </div>
-              <div className="mt-6">
-                <div className="flex flex-wrap gap-1.5">
-                  {p.stack.map(s => (
-                    <span key={s} className="inline-flex items-center rounded-full bg-ink-50 dark:bg-white/5 border border-ink-100 dark:border-white/5 px-2 py-0.5 text-[10px] font-medium text-ink-700 dark:text-ink-200">
-                      {s}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.a>
-          ))}
-        </div>
+      <div className="border-t border-rule">
+        {visible.map((project) => (
+          <ProjectRow
+            key={project.slug}
+            project={project}
+            index={projects.indexOf(project)}
+            labels={labels}
+            onOpen={() => setActive(project)}
+          />
+        ))}
       </div>
 
-      <AnimatePresence>
-        {active && <ProjectModal project={active} onClose={() => setActive(null)} />}
-      </AnimatePresence>
+      <OpenSource projects={githubProjects} labels={labels} />
+
+      {active &&
+        createPortal(
+          <ProjectModal
+            key={active.slug}
+            project={active}
+            labels={labels}
+            nextProject={nextProject}
+            onNext={setActive}
+            onClose={() => setActive(null)}
+          />,
+          document.body
+        )}
     </Section>
   )
 }
 
-function ProjectModal({ project, onClose }) {
-  return (
-    <motion.div
-      className="fixed inset-0 z-50 grid place-items-end sm:place-items-center p-0 sm:p-6"
-      initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-      <button
-        aria-label="Close"
-        onClick={onClose}
-        className="absolute inset-0 bg-ink-950/60 backdrop-blur-sm"
-      />
-      <motion.div
-        role="dialog" aria-modal="true"
-        initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 20, opacity: 0 }}
-        transition={{ type: 'spring', damping: 24, stiffness: 220 }}
-        className="relative w-full sm:max-w-3xl max-h-[90vh] overflow-y-auto rounded-t-3xl sm:rounded-3xl
-                   border border-ink-200 dark:border-white/10 bg-white dark:bg-ink-900 shadow-2xl">
-        <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-ink-200/70 dark:border-white/10
-                        bg-white/90 dark:bg-ink-900/90 backdrop-blur px-6 sm:px-8 py-5">
-          <div>
-            <p className="text-xs font-mono uppercase tracking-[0.2em] text-accent-600 dark:text-accent-300">
-              {project.company} · {project.period}
-            </p>
-            <h3 className="mt-1 font-display text-2xl font-semibold">{project.title}</h3>
-          </div>
-          <button onClick={onClose}
-                  className="grid h-9 w-9 flex-none place-items-center rounded-lg border border-ink-200 dark:border-white/10
-                             hover:bg-ink-100 dark:hover:bg-white/5">
-            <X size={16} />
-          </button>
-        </div>
+function ProjectRow({ project, index, labels, onOpen }) {
+  const impact = project.impact[0]
 
-        {project.coverUrl && (
-          <div className={`w-full overflow-hidden
-                          ${project.coverFit === 'contain'
-                            ? 'bg-ink-50 dark:bg-white/5'
-                            : 'aspect-[16/9]'}`}>
+  return (
+    <button
+      type="button"
+      onClick={onOpen}
+      className="group grid w-full grid-cols-12 gap-x-6 gap-y-5 border-b border-rule py-8 text-left">
+      <span className="col-span-2 font-mono text-[10px] tracking-[0.16em] text-muted transition-colors group-hover:text-signal sm:col-span-1">
+        {String(index + 1).padStart(2, '0')}
+      </span>
+
+      <span className="col-span-10 sm:col-span-11 lg:col-span-5">
+        <span className="meta block">
+          {project.company} / {project.period}
+        </span>
+        <span className="mt-2 block font-display text-[clamp(1.7rem,2.8vw,2.6rem)] font-bold leading-[0.98] tracking-[-0.04em]">
+          {project.title}
+        </span>
+        <span className="mt-3 block max-w-md text-[15px] leading-relaxed text-muted">
+          {project.tagline}
+        </span>
+        <span className="mt-4 block font-mono text-[10px] uppercase tracking-[0.14em] text-muted">
+          {project.tags.join(' / ')}
+        </span>
+      </span>
+
+      <span className="col-span-12 sm:col-span-6 lg:col-span-2">
+        {impact && (
+          <>
+            <span className="meta block">{labels.impact}</span>
+            <span className="mt-2 block font-display text-xl font-bold leading-tight tracking-[-0.03em]">
+              {impact.metric}
+            </span>
+            <span className="mt-1 block text-[11px] leading-snug text-muted">
+              {impact.label}
+            </span>
+          </>
+        )}
+      </span>
+
+      <span className="col-span-12 sm:col-span-6 lg:col-span-4">
+        {project.coverUrl ? (
+          <span className="block aspect-[5/2] overflow-hidden border border-rule bg-surface">
             <img
               src={project.coverUrl}
               alt=""
-              className={`w-full ${project.coverFit === 'contain' ? 'h-auto object-contain' : 'h-full object-cover'}`}
+              loading="lazy"
+              className="h-full w-full object-cover grayscale transition duration-500 group-hover:grayscale-0"
             />
-          </div>
+          </span>
+        ) : (
+          <span className="flex aspect-[5/2] items-center justify-center border border-rule bg-surface font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
+            No cover
+          </span>
         )}
+      </span>
 
-        <div className="px-6 sm:px-8 py-6 space-y-8">
-          <p className="text-lg text-ink-700 dark:text-ink-200 leading-relaxed">{project.tagline}</p>
-
-          {project.gallery.length > 0 && <Gallery items={project.gallery} />}
-
-          {project.impact.length > 0 && (
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              {project.impact.map(m => (
-                <div key={m.label} className="rounded-xl border border-ink-200 dark:border-white/10 p-4 bg-ink-50/60 dark:bg-white/5">
-                  <div className="font-display text-xl font-semibold">{m.metric}</div>
-                  <div className="mt-1 text-xs text-ink-500 dark:text-ink-400 leading-snug">{m.label}</div>
-                </div>
-              ))}
-            </div>
-          )}
-
-          <Block title="My role" body={project.role} />
-          {project.challenges.length > 0 && <ListBlock title="Challenges" items={project.challenges} />}
-          {project.decisions.length > 0 && <ListBlock title="Architecture & decisions" items={project.decisions} />}
-
-          {project.body && (
-            <div>
-              <h4 className="text-xs font-mono uppercase tracking-[0.2em] text-ink-500 dark:text-ink-400 mb-3">Case study</h4>
-              <Markdown>{project.body}</Markdown>
-            </div>
-          )}
-
-          <div>
-            <h4 className="text-xs font-mono uppercase tracking-[0.2em] text-ink-500 dark:text-ink-400">Tech</h4>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {project.stack.map(s => <span key={s} className="chip">{s}</span>)}
-            </div>
-          </div>
-
-          {project.tags.length > 0 && (
-            <div>
-              <h4 className="text-xs font-mono uppercase tracking-[0.2em] text-ink-500 dark:text-ink-400">Tags</h4>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {project.tags.map(t => <span key={t} className="chip">{t}</span>)}
-              </div>
-            </div>
-          )}
-        </div>
-      </motion.div>
-    </motion.div>
+      <span className="col-span-12 flex items-center justify-between border-t border-rule pt-3 lg:hidden">
+        <span className="meta">{labels.caseStudy}</span>
+        <ArrowUpRight size={14} strokeWidth={1.5} />
+      </span>
+    </button>
   )
 }
 
-function Block({ title, body }) {
+function OpenSource({ projects, labels }) {
+  if (!projects || projects.length === 0) return null
+
   return (
-    <div>
-      <h4 className="text-xs font-mono uppercase tracking-[0.2em] text-ink-500 dark:text-ink-400">{title}</h4>
-      <p className="mt-3 text-ink-700 dark:text-ink-200 leading-relaxed">{body}</p>
+    <div className="mt-20">
+      <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-rule pb-4">
+        <div>
+          <p className="eyebrow">{labels.openSource}</p>
+          <h3 className="mt-2 font-display text-3xl font-bold tracking-[-0.04em]">
+            {labels.repositories}
+          </h3>
+        </div>
+        <span className="meta">{String(projects.length).padStart(2, '0')}</span>
+      </div>
+
+      <ul>
+        {projects.map((project, index) => (
+          <li key={project.name} className="border-b border-rule">
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noreferrer"
+              className="group grid grid-cols-12 gap-x-6 gap-y-2 py-6">
+              <span className="col-span-1 font-mono text-[10px] text-muted transition-colors group-hover:text-signal">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <span className="col-span-11 flex items-baseline justify-between gap-4 lg:col-span-3">
+                <span className="font-display text-2xl font-bold tracking-[-0.03em]">
+                  {project.name}
+                </span>
+                <ArrowUpRight
+                  size={14}
+                  strokeWidth={1.5}
+                  className="text-muted transition-colors group-hover:text-signal"
+                />
+              </span>
+              <span className="col-span-12 text-[14px] leading-relaxed text-muted lg:col-span-5">
+                {project.description}
+              </span>
+              <span className="col-span-12 font-mono text-[10px] uppercase tracking-[0.14em] text-muted lg:col-span-3">
+                {project.stack.join(' / ')}
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
 
-function Gallery({ items }) {
+function ProjectModal({ project, labels, nextProject, onNext, onClose }) {
+  const sheetRef = useRef(null)
+
+  useEffect(() => {
+    const previous = document.activeElement
+    const sheet = sheetRef.current
+    const focusables = sheet
+      ? [...sheet.querySelectorAll('button, [href], [tabindex]:not([tabindex="-1"])')]
+      : []
+    focusables[0]?.focus()
+
+    const onKey = (event) => {
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        onClose()
+        return
+      }
+      if (event.key !== 'Tab' || focusables.length === 0) return
+      const first = focusables[0]
+      const last = focusables[focusables.length - 1]
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault()
+        last.focus()
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault()
+        first.focus()
+      }
+    }
+
+    document.addEventListener('keydown', onKey)
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.body.style.overflow = previousOverflow
+      if (previous instanceof HTMLElement) previous.focus()
+    }
+  }, [onClose])
+
   return (
-    <div>
-      <h4 className="text-xs font-mono uppercase tracking-[0.2em] text-ink-500 dark:text-ink-400 mb-3">
-        Screens
-      </h4>
-      <div className="-mx-6 sm:-mx-8 px-6 sm:px-8 overflow-x-auto pb-2
-                      [scrollbar-width:thin]">
-        <ul className="flex gap-4 snap-x snap-mandatory">
-          {items.map((g, i) => (
-            <li key={i} className="snap-start flex-none w-[180px] sm:w-[200px]">
-              <a
-                href={g.url}
-                target="_blank"
-                rel="noreferrer"
-                className="group block">
-                <div className="aspect-[9/19.5] overflow-hidden rounded-2xl border border-ink-200 dark:border-white/10
-                                bg-ink-50 dark:bg-white/5 shadow-sm group-hover:shadow-glow transition">
-                  <img
-                    src={g.url}
-                    alt={g.alt || g.caption || ''}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                  />
-                </div>
-                {g.caption && (
-                  <p className="mt-2 text-xs text-ink-500 dark:text-ink-400 leading-snug">
-                    {g.caption}
+    <div
+      className="overlay-in fixed inset-0 z-50 overflow-y-auto bg-ink/80"
+      onClick={onClose}>
+      <div className="flex min-h-full justify-center p-0 sm:p-6">
+        <div
+          ref={sheetRef}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="case-study-title"
+          onClick={(event) => event.stopPropagation()}
+          className="sheet-in relative flex w-full max-w-[1400px] flex-col bg-paper sm:max-h-[calc(100vh-3rem)]">
+          <header className="sticky top-0 z-10 flex items-center justify-between gap-4 border-b border-rule bg-paper px-5 py-3 sm:px-8">
+            <p className="meta truncate">
+              {labels.caseStudy} / {project.company} / {project.period}
+            </p>
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label={labels.close}
+              className="grid h-11 w-11 flex-none place-items-center border border-rule text-muted transition-colors hover:border-ink hover:text-ink sm:h-9 sm:w-9">
+              <X size={16} strokeWidth={1.5} />
+            </button>
+          </header>
+
+          <div className="overflow-y-auto">
+            <div className="container-grid py-10 sm:py-14">
+              <div className="grid grid-cols-12 gap-x-6 gap-y-8">
+                <div className="col-span-12 lg:col-span-9">
+                  <h2
+                    id="case-study-title"
+                    className="display text-balance text-[clamp(2.5rem,5.5vw,5.5rem)] leading-[0.9]">
+                    {project.title}
+                  </h2>
+                  <p className="mt-5 max-w-3xl text-pretty text-lg leading-relaxed text-muted">
+                    {project.tagline}
                   </p>
-                )}
-              </a>
-            </li>
-          ))}
-        </ul>
+                </div>
+
+                <aside className="col-span-12 lg:col-span-3">
+                  <dl className="border-t border-rule">
+                    <ModalMeta label={labels.stack} value={project.stack.join(' / ')} />
+                    <ModalMeta label={labels.tags} value={project.tags.join(' / ')} />
+                  </dl>
+                </aside>
+              </div>
+
+              {project.coverUrl && (
+                <figure className="mt-10 border border-rule">
+                  <img src={project.coverUrl} alt="" className="w-full" />
+                  <figcaption className="flex items-baseline justify-between gap-4 border-t border-rule px-4 py-2">
+                    <span className="meta">Fig. 01 — {project.title}</span>
+                    <span className="meta">{project.period}</span>
+                  </figcaption>
+                </figure>
+              )}
+
+              <div className="mt-12 grid grid-cols-12 gap-x-6 gap-y-12">
+                <div className="col-span-12 lg:col-span-8">
+                  <p className="eyebrow">{labels.caseStudy}</p>
+                  {project.body && <Markdown>{project.body}</Markdown>}
+                  <Gallery items={project.gallery} labels={labels} />
+                </div>
+
+                <aside className="col-span-12 space-y-10 lg:col-span-4">
+                  <div>
+                    <p className="eyebrow">{labels.role}</p>
+                    <p className="mt-3 text-[15px] leading-relaxed text-muted">
+                      {project.role}
+                    </p>
+                  </div>
+
+                  {project.challenges.length > 0 && (
+                    <ListBlock title={labels.challenges} items={project.challenges} />
+                  )}
+                  {project.decisions.length > 0 && (
+                    <ListBlock title={labels.decisions} items={project.decisions} />
+                  )}
+                  {project.impact.length > 0 && (
+                    <ImpactTable items={project.impact} label={labels.impact} />
+                  )}
+                </aside>
+              </div>
+
+              {nextProject && nextProject.slug !== project.slug && (
+                <div className="mt-16 border-t border-rule pt-6">
+                  <button
+                    type="button"
+                    onClick={() => onNext(nextProject)}
+                    className="group flex w-full flex-wrap items-baseline justify-between gap-4 text-left">
+                    <span className="meta">{labels.next}</span>
+                    <span className="flex items-center gap-3 font-display text-2xl font-bold tracking-[-0.03em] transition-colors group-hover:text-signal sm:text-3xl">
+                      {nextProject.title}
+                      <ArrowUpRight size={18} strokeWidth={1.5} />
+                    </span>
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+  )
+}
+
+function ModalMeta({ label, value }) {
+  return (
+    <div className="border-b border-rule py-3">
+      <dt className="meta">{label}</dt>
+      <dd className="mt-1 font-mono text-[11px] leading-relaxed text-ink">{value}</dd>
+    </div>
+  )
+}
+
+function Gallery({ items, labels }) {
+  if (!items || items.length === 0) return null
+
+  return (
+    <div className="mt-12">
+      <p className="eyebrow">
+        {labels.screens} — {String(items.length).padStart(2, '0')}
+      </p>
+      <ul className="mt-4 flex snap-x gap-4 overflow-x-auto pb-4">
+        {items.map((item, index) => (
+          <li key={`${item.url}-${index}`} className="w-[180px] flex-none snap-start sm:w-[210px]">
+            <a href={item.url} target="_blank" rel="noreferrer" className="group block">
+              <span className="block aspect-[9/19.5] overflow-hidden border border-rule bg-surface">
+                <img
+                  src={item.url}
+                  alt={item.alt || item.caption || ''}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                />
+              </span>
+              {item.caption && (
+                <span className="mt-2 block text-[11px] leading-snug text-muted">
+                  {item.caption}
+                </span>
+              )}
+            </a>
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
@@ -280,15 +382,39 @@ function Gallery({ items }) {
 function ListBlock({ title, items }) {
   return (
     <div>
-      <h4 className="text-xs font-mono uppercase tracking-[0.2em] text-ink-500 dark:text-ink-400">{title}</h4>
-      <ul className="mt-3 space-y-2">
-        {items.map((it, i) => (
-          <li key={i} className="flex gap-3 text-ink-700 dark:text-ink-200">
-            <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-accent" />
-            <span>{it}</span>
+      <p className="eyebrow">{title}</p>
+      <ul className="mt-3 border-t border-rule">
+        {items.map((item, index) => (
+          <li
+            key={index}
+            className="grid grid-cols-[2rem_1fr] gap-2 border-b border-rule py-3 text-[14px] leading-relaxed text-muted">
+            <span className="font-mono text-[10px] text-signal">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <span>{item}</span>
           </li>
         ))}
       </ul>
+    </div>
+  )
+}
+
+function ImpactTable({ items, label }) {
+  return (
+    <div>
+      <p className="eyebrow">{label}</p>
+      <dl className="mt-3 border-t border-rule">
+        {items.map((item) => (
+          <div
+            key={item.label}
+            className="flex items-baseline justify-between gap-4 border-b border-rule py-3">
+            <dt className="max-w-[60%] text-[12px] leading-snug text-muted">{item.label}</dt>
+            <dd className="text-right font-display text-lg font-bold tracking-[-0.03em]">
+              {item.metric}
+            </dd>
+          </div>
+        ))}
+      </dl>
     </div>
   )
 }
