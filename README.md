@@ -10,8 +10,10 @@ React + Vite + TailwindCSS · deploys to GitHub Pages via GitHub Actions.
 ```bash
 npm install
 npm run dev      # http://localhost:5173
-npm run build    # outputs to ./dist
+npm run validate # content schemas + image assets + SEO config
+npm run build    # validates, then outputs to ./dist
 npm run preview  # serve the production build locally
+npm run og:image # regenerate public/og-image.png from scripts/og-image.html
 ```
 
 Node 20+ recommended.
@@ -25,6 +27,7 @@ Node 20+ recommended.
 ├── index.html                 # SEO + OG + JSON-LD + theme bootstrap
 ├── public/
 │   ├── favicon.svg            # gradient "LL" mark
+│   ├── og-image.png           # 1200x630 social card (generated)
 │   ├── 404.html               # SPA fallback for GitHub Pages deep links
 │   ├── robots.txt
 │   └── sitemap.xml
@@ -48,6 +51,10 @@ Node 20+ recommended.
 │       ├── Experience.jsx     # vertical timeline
 │       ├── Contact.jsx
 │       └── Footer.jsx
+├── scripts/
+│   ├── validate-content.mjs   # build-time content + asset validator
+│   ├── og-image.html          # social card template
+│   └── generate-og-image.mjs  # renders the template with headless Chrome
 ├── tailwind.config.js
 ├── postcss.config.js
 ├── vite.config.js             # honors BASE_PATH env var
@@ -69,6 +76,11 @@ Almost everything is data-driven. Update these files and the UI follows:
 
 To swap the resume PDF, drop a file at `public/resume-en.pdf` (referenced from `profile.links.resume`).
 
+`npm run validate` (also run automatically by `npm run build`) checks every content file against the Zod
+schemas, verifies that referenced images exist, and keeps `index.html`, `og-image`, `robots.txt`, and
+`sitemap.xml` consistent with `content/site.yaml`. Missing assets and invalid frontmatter fail the build
+instead of rendering a blank page in production.
+
 ---
 
 ## Deploying to GitHub Pages
@@ -83,6 +95,11 @@ The included workflow (`.github/workflows/deploy.yml`) builds on every push to `
    - **Settings → Secrets and variables → Actions → Variables → New repository variable**
    - Name: `BASE_PATH`  ·  Value: `/<repo-name>/` (e.g. `/portfolio/`)
 4. Push to `main` — the workflow runs and the URL appears in the Pages settings.
+
+> **Project-page note:** GitHub Pages serves this repo under `/portfolio/`, so `robots.txt` is published at
+> `/portfolio/robots.txt` and crawlers will ignore it (they only read the domain root). Submit
+> `https://luannluna.github.io/portfolio/sitemap.xml` directly in Search Console instead. The sitemap and
+> `robots.txt` are kept in sync with `site.url` by `npm run validate`.
 
 ### User/org page (`luannluna.github.io`)
 
@@ -142,7 +159,7 @@ profile:
   photo: "/content/images/profile/luann.jpg"
 
 # content/projects/<slug>.<locale>.md
-cover: "/content/images/projects/<slug>/cover.jpg"
+cover: "/content/images/projects/<slug>/cover.png"
 ```
 
 Relative paths (`./cover.jpg`) also work and resolve against the source file. External `https://` URLs
@@ -151,12 +168,19 @@ pass through. See `content/images/README.md` for size/format conventions.
 ### Adding project screenshots
 
 1. Render at iPhone aspect ratio (e.g. 390×844 @2x), export as `.webp`.
-2. Drop the file at `content/images/projects/<slug>/cover.jpg` (or any name you like).
-3. Set `cover: "/content/images/projects/<slug>/cover.jpg"` in the project markdown frontmatter.
+2. Drop the file at `content/images/projects/<slug>/cover.png` (or any name you like).
+3. Set `cover: "/content/images/projects/<slug>/cover.png"` in the project markdown frontmatter.
 4. Card and modal pick it up automatically through `coverUrl`.
 
 If you can't share real product screens, build minimal SwiftUI/Figma mockups that show the *idea* of the
 screen (a search field, a results list, a loading state) — recruiters skim images before they read text.
+
+### Social card
+
+`public/og-image.png` (1200×630) is rendered from `scripts/og-image.html`. Edit the template and run
+`npm run og:image` to regenerate it. Keep `site.ogImage` in `content/site.yaml` and the `og:image` /
+`twitter:image` tags in `index.html` pointing at the **absolute** deployed URL — Vite does not rewrite meta
+tags for `BASE_PATH`, and `npm run validate` will fail if they drift.
 
 ---
 

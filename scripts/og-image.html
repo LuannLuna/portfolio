@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Luann Luna — OG image</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      html, body {
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+      }
+
+      body {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 72px 80px;
+        background: #0b0e18;
+        color: #f4f5f9;
+        font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+      }
+
+      /* ambient glows */
+      body::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(680px 420px at 88% 8%, rgba(99, 102, 241, 0.42), transparent 68%),
+          radial-gradient(620px 460px at 8% 96%, rgba(34, 211, 238, 0.16), transparent 70%),
+          radial-gradient(900px 600px at 50% 120%, rgba(168, 85, 247, 0.12), transparent 70%);
+      }
+
+      /* dot grid */
+      body::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.07) 1px, transparent 0);
+        background-size: 28px 28px;
+        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.25));
+      }
+
+      .top, .bottom { position: relative; z-index: 1; }
+
+      .top { display: flex; align-items: center; gap: 18px; }
+
+      .mark {
+        display: grid;
+        place-items: center;
+        width: 58px;
+        height: 58px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, #6366f1 0%, #a855f7 55%, #22d3ee 100%);
+        box-shadow: 0 18px 50px -18px rgba(99, 102, 241, 0.9);
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: #fff;
+      }
+
+      .eyebrow {
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        font-size: 17px;
+        font-weight: 500;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: #a3a8ff;
+      }
+
+      .eyebrow .dot {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        margin-right: 10px;
+        border-radius: 999px;
+        background: #22d3ee;
+        vertical-align: 1px;
+      }
+
+      .main { position: relative; z-index: 1; margin-top: 4px; }
+
+      h1 {
+        font-family: 'Space Grotesk', 'Inter', sans-serif;
+        font-size: 104px;
+        font-weight: 700;
+        letter-spacing: -0.045em;
+        line-height: 0.98;
+        background: linear-gradient(100deg, #ffffff 20%, #d8dbff 55%, #8fe6f5 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .rule {
+        width: 112px;
+        height: 6px;
+        margin: 30px 0 26px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #6366f1, #a855f7, #22d3ee);
+      }
+
+      .role {
+        font-size: 34px;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        color: #e2e5f2;
+      }
+
+      .detail {
+        margin-top: 12px;
+        font-size: 25px;
+        font-weight: 400;
+        color: #8b93ad;
+      }
+
+      .bottom {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+      }
+
+      .stack {
+        display: flex;
+        gap: 10px;
+      }
+
+      .chip {
+        padding: 8px 16px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.05);
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        font-size: 16px;
+        color: #c6cadd;
+      }
+
+      .url {
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        font-size: 18px;
+        letter-spacing: 0.02em;
+        color: #737b96;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="top">
+      <div class="mark">LL</div>
+      <p class="eyebrow"><span class="dot"></span>Senior iOS Engineer</p>
+    </header>
+
+    <main class="main">
+      <h1>Luann Luna</h1>
+      <div class="rule"></div>
+      <p class="role">Swift 6 · SwiftUI · Clean Architecture</p>
+      <p class="detail">7+ years shipping native iOS to millions of users</p>
+    </main>
+
+    <footer class="bottom">
+      <div class="stack">
+        <span class="chip">iOS</span>
+        <span class="chip">Swift</span>
+        <span class="chip">SwiftUI</span>
+        <span class="chip">Architecture</span>
+      </div>
+      <p class="url">luannluna.github.io/portfolio</p>
+    </footer>
+  </body>
+</html>

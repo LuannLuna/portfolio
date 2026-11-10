@@ -28,7 +28,7 @@ profile:
   photo: "/content/images/profile/luann.jpg"
 
 # content/projects/ltk-search.en.md
-cover: "/content/images/projects/ltk-search/cover.jpg"
+cover: "/content/images/projects/ltk-search/cover.png"
 ```
 
 Relative paths (`./cover.jpg`, `../foo.png`) also work and resolve against the source file's directory.

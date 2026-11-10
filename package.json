@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "validate": "node scripts/validate-content.mjs",
+    "build": "npm run validate && vite build",
+    "og:image": "node scripts/generate-og-image.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
