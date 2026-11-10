@@ -44,14 +44,16 @@ export default function Projects() {
               <div aria-hidden className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full
                                          bg-accent-500/10 blur-3xl opacity-0 group-hover:opacity-100 transition" />
               {p.coverUrl && (
-                <div className={`aspect-[16/9] w-full overflow-hidden border-b border-ink-200/70 dark:border-white/10
-                                ${p.coverFit === 'contain' ? 'bg-ink-50 dark:bg-white/5' : ''}`}>
+                <div className={`w-full overflow-hidden border-b border-ink-200/70 dark:border-white/10
+                                ${p.coverFit === 'contain'
+                                  ? 'bg-ink-50 dark:bg-white/5'
+                                  : 'aspect-[16/9]'}`}>
                   <img
                     src={p.coverUrl}
                     alt=""
                     loading="lazy"
-                    className={`h-full w-full transition-transform duration-500 group-hover:scale-105
-                               ${p.coverFit === 'contain' ? 'object-contain' : 'object-cover'}`}
+                    className={`w-full transition-transform duration-500 group-hover:scale-105
+                               ${p.coverFit === 'contain' ? 'h-auto object-contain' : 'h-full object-cover'}`}
                   />
                 </div>
               )}
@@ -167,12 +169,14 @@ function ProjectModal({ project, onClose }) {
         </div>
 
         {project.coverUrl && (
-          <div className={`w-full aspect-[16/9] overflow-hidden
-                          ${project.coverFit === 'contain' ? 'bg-ink-50 dark:bg-white/5' : ''}`}>
+          <div className={`w-full overflow-hidden
+                          ${project.coverFit === 'contain'
+                            ? 'bg-ink-50 dark:bg-white/5'
+                            : 'aspect-[16/9]'}`}>
             <img
               src={project.coverUrl}
               alt=""
-              className={`h-full w-full ${project.coverFit === 'contain' ? 'object-contain' : 'object-cover'}`}
+              className={`w-full ${project.coverFit === 'contain' ? 'h-auto object-contain' : 'h-full object-cover'}`}
             />
           </div>
         )}

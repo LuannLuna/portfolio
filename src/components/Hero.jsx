@@ -79,14 +79,14 @@ export default function Hero() {
               <div className="relative">
                 <div aria-hidden className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br
                                             from-accent-500/40 via-fuchsia-400/20 to-cyan-400/30 blur-2xl opacity-70" />
-                <div className="relative h-44 w-44 sm:h-56 sm:w-56 lg:h-64 lg:w-64 overflow-hidden
-                                rounded-3xl border border-ink-200/70 dark:border-white/10
+                <div className="relative h-64 w-64 sm:h-80 sm:w-80 lg:h-[22rem] lg:w-[22rem] xl:h-[26rem] xl:w-[26rem]
+                                overflow-hidden rounded-3xl border border-ink-200/70 dark:border-white/10
                                 bg-ink-100 dark:bg-white/5 shadow-glow">
                   <img
                     src={profile.photoUrl}
                     alt={profile.photoAlt || profile.name}
-                    width="512" height="512" loading="eager" decoding="async"
-                    className="h-full w-full object-cover"
+                    width="640" height="640" loading="eager" decoding="async"
+                    className="h-full w-full object-contain"
                   />
                 </div>
               </div>

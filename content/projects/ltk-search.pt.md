@@ -7,7 +7,9 @@ order: 1
 featured: true
 tagline: "Atuei na melhoria da experiência de busca, na modernização de fluxos assíncronos e no apoio à migração para Swift Concurrency."
 role: "Engenheiro iOS Sênior contribuindo com a experiência de busca, em melhorias na camada de dados e na UI."
-cover: ""
+gallery:
+  - { src: "/content/images/projects/ltk-search/02-search-empty.png",       caption: "Estado vazio da busca — prompt inicial com filtros rápidos." }
+  - { src: "/content/images/projects/ltk-search/03-search-suggestions.png", caption: "Sugestões de busca — recentes, populares e criadores vistos recentemente." }
 tags: ["iOS", "SwiftUI", "Concurrency", "Performance"]
 stack:
   - "Swift"

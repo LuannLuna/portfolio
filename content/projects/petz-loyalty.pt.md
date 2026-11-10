@@ -8,14 +8,11 @@ featured: true
 tagline: "Atuei na experiência de fidelidade da Petz, na adoção de SwiftUI e em melhorias de estabilidade em produção."
 role: "Engenheiro iOS Sênior contribuindo em arquitetura, migração para SwiftUI e investigação de crashes."
 cover: "/content/images/projects/petz-loyalty/cover.png"
+coverFit: "contain"
 gallery:
-  - { src: "/content/images/projects/petz-loyalty/01-clubz-wallet.jpg", caption: "Carteira Clubz — saldo CashPetz, benefícios e ofertas ativas." }
-  - { src: "/content/images/projects/petz-loyalty/02-clubz-levels.jpg", caption: "Níveis Clubz — upgrade Prata/Ouro e comparativo de benefícios." }
-  - { src: "/content/images/projects/petz-loyalty/03-clubz-faq.jpg",    caption: "FAQ do Clubz no app — accordion com regras de renovação e benefícios." }
   - { src: "/content/images/projects/petz-loyalty/04-cashpetz-history.jpg", caption: "Histórico do CashPetz — créditos, usos, estornos e saldo a expirar." }
   - { src: "/content/images/projects/petz-loyalty/05-offers.jpg",       caption: "Minhas ofertas — produtos recomendados com fluxo de ativação." }
   - { src: "/content/images/projects/petz-loyalty/06-coupons.jpg",      caption: "Cupons — descontos vinculados ao programa de fidelidade." }
-  - { src: "/content/images/projects/petz-loyalty/07-home.jpg",         caption: "Home da Petz — categorias e banners promocionais." }
   - { src: "/content/images/projects/petz-loyalty/08-orders-list.jpg",  caption: "Lista de pedidos — histórico com status e atalho para recomprar." }
   - { src: "/content/images/projects/petz-loyalty/09-order-completed.jpg", caption: "Pedido retirado — confirmação, endereço e prompt de feedback." }
   - { src: "/content/images/projects/petz-loyalty/10-order-cancelled.jpg", caption: "Pedido cancelado — status do reembolso e itens do pagamento." }
