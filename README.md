@@ -182,6 +182,12 @@ screen (a search field, a results list, a loading state) — recruiters skim ima
 `twitter:image` tags in `index.html` pointing at the **absolute** deployed URL — Vite does not rewrite meta
 tags for `BASE_PATH`, and `npm run validate` will fail if they drift.
 
+### Project banners
+
+`content/images/projects/ltk-search/cover.png` is a Playwright composition of the real case-study
+screenshots. Edit `scripts/ltk-banner.html` and run `npm run banner:ltk` to regenerate it (uses the
+installed Google Chrome through the `playwright-core` dev dependency).
+
 ---
 
 ## Future improvements
