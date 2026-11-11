@@ -1,5 +1,18 @@
 jobs:
   - role: "Engenheiro de Software iOS Sênior"
+    company: "L M Tecnologia — alocado na BeSafe"
+    period: "Mai 2026 — Atual"
+    current: true
+    appLinks:
+      - name: "BeSafe"
+        url: "https://apps.apple.com/br/app/besafe-bloqueador-de-apostas/id6803982275"
+    bullets:
+      - "Assumi o app iOS como principal contribuidor: cerca de 1.400 commits e 125 pull requests integrados em cinco meses, com 33 builds no TestFlight."
+      - "Construí o bloqueio de sites de apostas na camada de DNS em uma Network Extension, com lista global baixada, lista no aparelho para bloqueios instantâneos e recuperação do túnel na troca de rede."
+      - "Separei o app em 25 módulos Tuist com fronteiras verificadas pelo compilador e ampliei a suíte para 3.169 testes em Swift Testing; um gate de CI mantém SDKs de terceiros fora da extensão."
+      - "Entreguei telemedicina, check-ins de humor, modo guardião e fluxos de assinatura, e enviei a versão 1.1.0 para revisão da Apple."
+
+  - role: "Engenheiro de Software iOS Sênior"
     company: "Hi-Tech Talents — alocado na LikeToKnow.It (LTK)"
     period: "Out 2025 — Abr 2026"
     current: false

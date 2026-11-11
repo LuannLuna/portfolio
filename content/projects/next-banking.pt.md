@@ -3,7 +3,7 @@ slug: "next-banking"
 title: "Next: Autenticação & Integrações de Chat"
 company: "Next (via Capgemini)"
 period: "2021 — 2022"
-order: 3
+order: 4
 featured: true
 tagline: "Prototipei autenticação sob demanda em RxSwift e fiz pair com o time de Chat na integração do SDK da Bia."
 role: "Criei o protótipo de autenticação e documentei o ciclo de vida do login; também apoiei a integração do SDK da Bia."

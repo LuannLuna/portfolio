@@ -3,7 +3,7 @@ slug: "petz-loyalty"
 title: "Petz: Loyalty & SwiftUI Migration"
 company: "Petz (via Sebratec)"
 period: "2022 — 2025"
-order: 2
+order: 3
 featured: true
 tagline: "I shipped Petz's first production SwiftUI loyalty flow, migrated eight screens, and helped restore service during a crash affecting 1.5M+ users."
 role: "I architected the loyalty module, led an eight-screen UIKit-to-SwiftUI migration, and joined production crash response."

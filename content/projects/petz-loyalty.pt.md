@@ -3,7 +3,7 @@ slug: "petz-loyalty"
 title: "Petz: Fidelidade & Migração para SwiftUI"
 company: "Petz (via Sebratec)"
 period: "2022 — 2025"
-order: 2
+order: 3
 featured: true
 tagline: "Entreguei o primeiro fluxo SwiftUI da Petz em produção, migrei oito telas e ajudei a restabelecer o serviço durante um crash que afetou mais de 1,5M de usuários."
 role: "Arquitetei o módulo de fidelidade, liderei a migração de oito telas de UIKit para SwiftUI e participei da resposta a incidentes."

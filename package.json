@@ -15,6 +15,7 @@
     "banner:next": "node scripts/render-next-banner.mjs",
     "globo:assets": "node scripts/render-globo-assets.mjs",
     "banner:globo": "node scripts/render-globo-banner.mjs",
+    "banner:besafe": "node scripts/render-besafe-banner.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

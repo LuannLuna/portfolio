@@ -3,7 +3,7 @@ slug: "globo-dafiti"
 title: "Globo G1 / GE & Dafiti Group"
 company: "Globo & Dafiti Group (via Dextra)"
 period: "2019 — 2021"
-order: 4
+order: 5
 featured: true
 tagline: "Location-based discovery doubled average session time from 4.2 to 8.7 minutes. I also raised test coverage and fixed card-compliance issues in Dafiti apps."
 role: "I built location-based news discovery for G1/GE, raised test coverage, and fixed Objective-C security issues across Dafiti apps."

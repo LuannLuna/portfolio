@@ -3,7 +3,7 @@ slug: "ltk-search"
 title: "LTK: Busca"
 company: "LikeToKnow.It"
 period: "2025 — 2026"
-order: 1
+order: 2
 featured: true
 tagline: "A busca caiu de 900ms para 200ms depois que unifiquei três endpoints legados."
 role: "Fiquei responsável pela camada de dados da busca, entreguei três componentes SwiftUI e testes ponta a ponta com Maestro."

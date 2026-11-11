@@ -1,5 +1,18 @@
 jobs:
   - role: "Senior iOS Software Engineer"
+    company: "L M Tecnologia — contracted to BeSafe"
+    period: "May 2026 — Present"
+    current: true
+    appLinks:
+      - name: "BeSafe"
+        url: "https://apps.apple.com/br/app/besafe-bloqueador-de-apostas/id6803982275"
+    bullets:
+      - "Took over the iOS app as its main contributor: about 1,400 commits and 125 merged pull requests in five months, with 33 TestFlight builds."
+      - "Built DNS-level betting-site blocking in a Network Extension, with a downloaded global blocklist, an on-device list for instant requests, and tunnel recovery when the network changes."
+      - "Split the app into 25 Tuist modules with compiler-enforced boundaries and grew the suite to 3,169 Swift Testing cases; a CI gate keeps third-party SDKs out of the extension."
+      - "Shipped telemedicine, mood check-ins, guardian mode and subscription flows, and submitted v1.1.0 for App Review."
+
+  - role: "Senior iOS Software Engineer"
     company: "Hi-Tech Talents — contracted to LikeToKnow.It (LTK)"
     period: "Oct 2025 — Apr 2026"
     current: false

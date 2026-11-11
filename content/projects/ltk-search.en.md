@@ -3,7 +3,7 @@ slug: "ltk-search"
 title: "LTK: Search"
 company: "LikeToKnow.It"
 period: "2025 — 2026"
-order: 1
+order: 2
 featured: true
 tagline: "Search response time fell from 900ms to 200ms after I unified three legacy endpoints."
 role: "I owned the search data layer, shipped three SwiftUI components, and added end-to-end Maestro coverage."
