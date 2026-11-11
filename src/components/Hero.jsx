@@ -2,6 +2,7 @@ import { ArrowUpRight } from 'lucide-react'
 import { useContent } from '../i18n/locale.jsx'
 
 const APP_STORE_LINKS = {
+  BeSafe: 'https://apps.apple.com/br/app/besafe-bloqueador-de-apostas/id6803982275',
   Petz: 'https://apps.apple.com/br/app/petz-tudo-que-seu-pet-precisa/id1250491446',
   LTK: 'https://apps.apple.com/br/app/ltk-liketoknow-it/id1154027990',
   Next: 'https://apps.apple.com/br/app/next-conta-digital-e-cart%C3%A3o/id1133682678',
