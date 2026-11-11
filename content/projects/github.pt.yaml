@@ -1,4 +1,9 @@
 projects:
+  - name: "BudgetLens"
+    url: "https://github.com/LuannLuna/BudgetLens"
+    description: "App em SwiftUI para ler um orçamento local e conversar sobre ele com cinco provedores de LLM. As chaves ficam no Keychain e cada requisição envia só o contexto necessário para responder à pergunta."
+    stack: ["SwiftUI", "Swift 6", "Keychain", "Swift Testing", "LLM APIs"]
+
   - name: "anilist-graphql"
     url: "https://github.com/LuannLuna/anilist-graphql"
     description: "Cliente iOS para a API GraphQL do AniList. Usa Apollo e tipos Swift gerados para as requisições e respostas."
