@@ -4,17 +4,17 @@ projects:
     description: "App em SwiftUI para ler um orçamento local e conversar sobre ele com cinco provedores de LLM. As chaves ficam no Keychain e cada requisição envia só o contexto necessário para responder à pergunta."
     stack: ["SwiftUI", "Swift 6", "Keychain", "Swift Testing", "LLM APIs"]
 
+  - name: "DictationKit"
+    url: "https://github.com/LuannLuna/DictationKit"
+    description: "App de ditado em SwiftUI com Deepgram. Inclui extensão de teclado, networking isolado por actor, App Groups e gravação com AVFoundation."
+    stack: ["SwiftUI", "Deepgram API", "Keyboard Extension", "App Groups", "AVFoundation", "MVVM", "Actors"]
+
   - name: "anilist-graphql"
     url: "https://github.com/LuannLuna/anilist-graphql"
     description: "Cliente iOS para a API GraphQL do AniList. Usa Apollo e tipos Swift gerados para as requisições e respostas."
     stack: ["GraphQL", "Apollo", "Apollo Code Gen", "SwiftUI"]
 
-  - name: "FlickFinder"
-    url: "https://github.com/LuannLuna/FlickFinder"
-    description: "App de descoberta de filmes com GraphQL e Apollo. As telas e os detalhes são navegados com o NavigationStack do SwiftUI."
-    stack: ["SwiftUI", "NavigationStack", "GraphQL", "Apollo", "MVVM"]
-
-  - name: "DictationKit"
-    url: "https://github.com/LuannLuna/DictationKit"
-    description: "App de ditado em SwiftUI com Deepgram. Inclui extensão de teclado, networking isolado por actor, App Groups e gravação com AVFoundation."
-    stack: ["SwiftUI", "Deepgram API", "Keyboard Extension", "App Groups", "AVFoundation", "MVVM", "Actors"]
+  - name: "PricePulse"
+    url: "https://github.com/LuannLuna/PricePulse"
+    description: "App em SwiftUI para acompanhar o preço de compras de supermercado ao longo do tempo. Importa o histórico de compras de um CSV para o SwiftData e mostra histórico de preço unitário, comparação entre mercados e gastos mensais com Swift Charts."
+    stack: ["SwiftUI", "SwiftData", "Swift Charts", "Observation", "CSV Import"]
