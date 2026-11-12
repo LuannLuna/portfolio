@@ -31,13 +31,13 @@ decisions:
   - "Reviewed the proposal with the client's Principal Engineer and documented the login lifecycle with UML and sequence diagrams."
   - "Paired with the Chat squad on Bia's SDK integration through code reviews and bug triage."
 impact:
-  - { metric: "RxSwift", label: "Authentication prototype delivered as part of the proposal" }
+  - { metric: "4.2s → 1.5s", label: "Login time in the validation environment, with the RxSwift prototype" }
   - { metric: "UML", label: "Login lifecycle and sequence diagrams for review" }
   - { metric: "Bia", label: "SDK integration support with the Chat squad" }
 ---
 
 ## The work
 
-The login flow requested permissions before the user needed them. I prototyped a different approach in RxSwift: ask for a privilege when the user reaches the feature that needs it. I reviewed the proposal with the client's Principal Engineer and drew UML and sequence diagrams for the login lifecycle. The prototype and diagrams were delivered as a proposal, not shipped as a feature.
+The login flow requested permissions before the user needed them. I prototyped a different approach in RxSwift: ask for a privilege when the user reaches the feature that needs it. I reviewed the proposal with the client's Principal Engineer and drew UML and sequence diagrams for the login lifecycle. In the test and validation environment built for the prototype, login time fell from 4.2s to 1.5s. The prototype and diagrams were delivered as a proposal, not shipped as a feature.
 
 I also paired with the Chat squad on the SDK for Bia, Next's virtual assistant. I reviewed code and triaged bugs, including the handoff from the bot to a human support agent.

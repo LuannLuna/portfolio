@@ -31,13 +31,13 @@ decisions:
   - "Revisei a proposta com o Principal Engineer do cliente e documentei o ciclo de vida do login com diagramas UML e de sequência."
   - "Fiz pair com o squad de Chat na integração do SDK da Bia, participando de code reviews e triagem de bugs."
 impact:
-  - { metric: "RxSwift", label: "Protótipo de autenticação entregue como parte da proposta" }
+  - { metric: "4,2s → 1,5s", label: "Tempo de login no ambiente de validação, com o protótipo em RxSwift" }
   - { metric: "UML", label: "Diagramas do ciclo de vida do login para revisão" }
   - { metric: "Bia", label: "Apoio à integração do SDK junto com o squad de Chat" }
 ---
 
 ## O trabalho
 
-O login pedia permissões antes de o usuário precisar delas. Prototipei outra abordagem em RxSwift: pedir o privilégio quando a pessoa chega ao recurso que precisa dele. Revisei a proposta com o Principal Engineer do cliente e desenhei diagramas UML e de sequência para o ciclo de vida do login. O protótipo e os diagramas foram entregues como proposta; não chegaram ao app.
+O login pedia permissões antes de o usuário precisar delas. Prototipei outra abordagem em RxSwift: pedir o privilégio quando a pessoa chega ao recurso que precisa dele. Revisei a proposta com o Principal Engineer do cliente e desenhei diagramas UML e de sequência para o ciclo de vida do login. No ambiente de teste e validação montado para o protótipo, o tempo de login caiu de 4,2s para 1,5s. O protótipo e os diagramas foram entregues como proposta; não chegaram ao app.
 
 Em paralelo, fiz pair com o squad de Chat na integração do SDK da Bia, a assistente virtual da Next. Participei de code reviews e triagem de bugs, inclusive no fluxo de transferência do bot para uma pessoa do atendimento.

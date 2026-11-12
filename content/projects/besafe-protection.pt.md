@@ -36,6 +36,7 @@ challenges:
 decisions:
   - "Encaminhar o DNS por um túnel de pacotes até o resolver DoT do BeSafe, aplicar a lista global baixada e responder aos domínios bloqueados no próprio aparelho antes de eles saírem do celular."
   - "Manter a lista de cada usuário no App Group para um domínio reportado ser bloqueado em segundos, e expor caminho ativo, geração da lista e contadores de erro no diagnóstico."
+  - "Migrar a base de UIKit/MVC para SwiftUI com Clean Architecture, tela a tela, em vez de reescrever o app."
   - "Adicionar reconexão e recuperação do túnel na troca de rede, com verificações de saúde que mostram quando a proteção está desligada."
   - "Separar o app em 25 módulos Tuist com fronteiras verificadas pelo compilador; um gate de CI impede SDKs de terceiros na extensão de rede."
   - "Padronizar os testes em Swift Testing e a entrega em fastlane e TestFlight, e enviar a versão 1.1.0 para revisão da Apple."
@@ -53,6 +54,6 @@ seo:
 
 O BeSafe bloqueia sites de apostas no iPhone. O iOS não permite que um app leia o tráfego de outro, então o bloqueio vive em uma Network Extension: um túnel de pacotes captura as consultas DNS, encaminha para o resolver DoT do BeSafe e responde aos domínios bloqueados no próprio aparelho. O app baixa uma lista global e mantém os domínios reportados por cada usuário no App Group, para que um site novo seja bloqueado em segundos, sem esperar uma nova versão.
 
-Entrei em maio de 2026 e me tornei o principal contribuidor iOS — cerca de 1.400 dos 1.499 commits do repositório, com 128 pull requests abertos e 125 integrados em cinco meses. Separei o app em 25 módulos Tuist com fronteiras verificadas pelo compilador, mantive a extensão livre de SDKs de terceiros com um gate de CI e ampliei a suíte para 3.169 testes em Swift Testing. Também conduzi a esteira de fastlane e TestFlight em 33 builds e enviei a versão 1.1.0 para revisão da Apple.
+Entrei em maio de 2026 e me tornei o principal contribuidor iOS — cerca de 1.400 dos 1.499 commits do repositório, com 128 pull requests abertos e 125 integrados em cinco meses. Separei o app em 25 módulos Tuist com fronteiras verificadas pelo compilador, mantive a extensão livre de SDKs de terceiros com um gate de CI e ampliei a suíte para 3.169 testes em Swift Testing. Também conduzi a esteira de fastlane e TestFlight em 33 builds e enviei a versão 1.1.0 para revisão da Apple. O contrato terminou em novembro de 2026, com o app entregue na App Store dentro do prazo de lançamento acordado.
 
 O trabalho de produto cobriu reconexão do túnel na troca de rede, consultas de telemedicina via Conexa, check-ins de humor, modo guardião, assinaturas com PIX e o chat de suporte. As telas abaixo vêm do app publicado e da suíte de snapshots.

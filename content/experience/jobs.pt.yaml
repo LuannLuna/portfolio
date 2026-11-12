@@ -1,8 +1,8 @@
 jobs:
   - role: "Engenheiro de Software iOS Sênior"
     company: "L M Tecnologia — alocado na BeSafe"
-    period: "Mai 2026 — Atual"
-    current: true
+    period: "Mai 2026 — Nov 2026"
+    current: false
     appLinks:
       - name: "BeSafe"
         url: "https://apps.apple.com/br/app/besafe-bloqueador-de-apostas/id6803982275"
@@ -11,6 +11,7 @@ jobs:
       - "Construí o bloqueio de sites de apostas na camada de DNS em uma Network Extension, com lista global baixada, lista no aparelho para bloqueios instantâneos e recuperação do túnel na troca de rede."
       - "Separei o app em 25 módulos Tuist com fronteiras verificadas pelo compilador e ampliei a suíte para 3.169 testes em Swift Testing; um gate de CI mantém SDKs de terceiros fora da extensão."
       - "Entreguei telemedicina, check-ins de humor, modo guardião e fluxos de assinatura, e enviei a versão 1.1.0 para revisão da Apple."
+      - "Liderei a migração de UIKit/MVC para SwiftUI com Clean Architecture e entreguei o app na App Store dentro do prazo de lançamento acordado em contrato."
 
   - role: "Engenheiro de Software iOS Sênior"
     company: "Hi-Tech Talents — alocado na LikeToKnow.It (LTK)"
@@ -42,7 +43,7 @@ jobs:
       - name: "Next"
         url: "https://apps.apple.com/br/app/next-conta-digital-e-cart%C3%A3o/id1133682678"
     bullets:
-      - "Prototipei em RxSwift um login que pedia permissões quando o recurso precisava delas, em vez de pedir tudo na entrada. Revisei a proposta com o Principal Engineer do cliente e documentei o ciclo do login em diagramas UML de sequência."
+      - "Prototipei em RxSwift um login que pedia permissões quando o recurso precisava delas, em vez de pedir tudo na entrada; no ambiente de validação, o tempo de login caiu de 4,2s para 1,5s. Revisei a proposta com o Principal Engineer do cliente e documentei o ciclo do login em diagramas UML de sequência."
       - "Fiz pair com o time de Chat no SDK da Bia, a assistente virtual da Next. Revisei código e tratei bugs, inclusive na passagem do bot para o atendimento humano."
       - "Fiz pair e revisei código com uma pessoa desenvolvedora iOS júnior. Discutíamos arquitetura e implementação conforme as dúvidas apareciam."
 
