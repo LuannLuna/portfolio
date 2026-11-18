@@ -21,6 +21,7 @@ stack:
   - "Swift"
   - "SwiftUI"
   - "UIKit"
+  - "Combine"
   - "MVVM"
   - "Clean Architecture"
   - "Crashlytics"
@@ -31,7 +32,7 @@ challenges:
   - "A bad Remote Config value could affect the live app and was not obvious from the crash alone."
   - "We had to move eight screens to SwiftUI without pausing feature delivery."
 decisions:
-  - "Built the loyalty module with MVVM and Clean Architecture, then shipped it as Petz's first production SwiftUI flow with real business logic."
+  - "Built the loyalty module with MVVM and Clean Architecture, using Combine in a few reactive flows, then shipped it as Petz's first production SwiftUI flow with real business logic."
   - "Migrated the eight screens in stages with a two-developer team; feature delivery went from three months to six weeks."
   - "In the crash war room, traced the incident to a misconfigured Remote Config value and restored service in about three hours."
 impact:
@@ -43,7 +44,7 @@ impact:
 
 ## The work
 
-The loyalty module was Petz's first production SwiftUI flow with real business logic. I designed it with MVVM and Clean Architecture; it generated more than 1,000 organic sales in its first week.
+The loyalty module was Petz's first production SwiftUI flow with real business logic. I designed it with MVVM and Clean Architecture, with Combine in a few reactive flows; it generated more than 1,000 organic sales in its first week.
 
 I also led a UIKit-to-SwiftUI migration across eight screens with one other developer. We kept feature work moving and cut delivery time from three months to six weeks.
 

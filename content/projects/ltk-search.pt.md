@@ -27,14 +27,15 @@ stack:
   - "Design System"
   - "Maestro"
   - "XCTest"
+  - "XCUITest"
 challenges:
   - "Três endpoints legados de busca retornavam estruturas diferentes e tinham comportamentos próprios."
   - "O app adotava strict concurrency do Swift 6 enquanto a busca ainda dependia de fluxos assíncronos antigos."
   - "A jornada passava por login, abas, resultados e loja do criador; testes unitários não cobriam todas as regressões entre telas."
 decisions:
   - "Coloquei os três endpoints atrás de uma camada única com async/await na base com strict concurrency do Swift 6."
-  - "Entreguei três componentes SwiftUI no design system da LTK para que outros times pudessem reutilizá-los."
-  - "Montei uma jornada no Maestro do login até a loja do criador e mantive a cobertura de telas com XCTest."
+  - "Entreguei três componentes SwiftUI como Swift Packages no design system da LTK, sustentando a nova experiência de busca de ponta a ponta."
+  - "Montei uma jornada no Maestro do login até a loja do criador e mantive a cobertura de telas com XCUITest."
 impact:
   - { metric: "900 → 200ms", label: "Tempo de resposta da busca após unificar três endpoints" }
   - { metric: "3 componentes", label: "Componentes SwiftUI entregues ao design system da LTK" }
@@ -48,4 +49,4 @@ seo:
 
 A busca chamava três endpoints legados. Cada um tinha estrutura de resposta e tempo próprios, e a UI precisava lidar com essas diferenças. Coloquei os três atrás de uma camada única com async/await na base com strict concurrency do Swift 6. O tempo de resposta caiu de 900ms para 200ms.
 
-Também entreguei três componentes SwiftUI no design system da LTK. Para cobrir a jornada inteira, montei um fluxo no Maestro do login à busca e à loja do criador; o XCTest continuou cobrindo as telas individuais.
+Também entreguei três componentes SwiftUI como Swift Packages no design system da LTK, sustentando a nova experiência de busca de ponta a ponta. Para cobrir a jornada inteira, montei um fluxo no Maestro do login à busca e à loja do criador; o XCUITest continuou cobrindo as telas individuais.

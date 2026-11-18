@@ -1,7 +1,7 @@
 ---
 eyebrow: "Vamos conversar"
 title: "Contratando um engenheiro iOS?"
-lede: "Procuro uma vaga sênior de iOS em que performance e acessibilidade façam parte da definição de pronto, não de uma sprint de limpeza."
+lede: "Procuro uma vaga sênior de iOS em que arquitetura, performance e acessibilidade façam parte da definição de pronto, não de uma sprint de limpeza."
 linkedinDisplay: "linkedin.com/in/luannluna"
 githubDisplay: "github.com/LuannLuna"
 ---

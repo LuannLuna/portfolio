@@ -6,7 +6,7 @@ period: "2021 — 2022"
 order: 4
 featured: true
 tagline: "Prototipei autenticação sob demanda em RxSwift e fiz pair com o time de Chat na integração do SDK da Bia."
-role: "Criei o protótipo de autenticação e documentei o ciclo de vida do login; também apoiei a integração do SDK da Bia."
+role: "Criei e documentei o protótipo de autenticação, entregue como proposta; também apoiei a integração do SDK da Bia."
 cover: "/content/images/projects/next-banking/cover.webp"
 coverFit: "contain"
 tags: ["iOS", "Architecture", "RxSwift", "Security"]

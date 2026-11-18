@@ -1,5 +1,6 @@
 stats:
   - { value: "8+ anos", label: "escrevendo Swift em produção" }
-  - { value: "1.5M+", label: "usuários no app da Petz" }
-  - { value: "10 marcas", label: "apps em produção" }
+  - { value: "200+", label: "views SwiftUI após a migração na BeSafe" }
+  - { value: "1,5M+", label: "usuários no app da Petz" }
   - { value: "78%", label: "de corte na latência da busca na LTK" }
+  - { value: "10 marcas", label: "apps em produção" }

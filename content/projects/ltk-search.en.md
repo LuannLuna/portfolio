@@ -27,13 +27,14 @@ stack:
   - "Design System"
   - "Maestro"
   - "XCTest"
+  - "XCUITest"
 challenges:
   - "Three legacy search endpoints returned different response shapes and behaved differently."
   - "The app was adopting Swift 6 strict concurrency while search still depended on older async flows."
   - "The journey crossed login, tabs, search results, and creator shops; unit tests could not catch every cross-screen regression."
 decisions:
   - "Put the three endpoints behind one async/await data layer in the Swift 6 strict-concurrency codebase."
-  - "Shipped three SwiftUI components in the LTK design system so other feature teams could reuse them."
+  - "Shipped three SwiftUI components as Swift Packages in the LTK design system, powering the rebuilt search experience end to end."
   - "Built a Maestro journey from login to creator shop and kept XCTest UI coverage for individual screens."
 impact:
   - { metric: "900 → 200ms", label: "Search response time after consolidating three endpoints" }
@@ -48,4 +49,4 @@ seo:
 
 Search called three legacy endpoints. Each had its own response shape and timing, so the UI had to deal with the differences. I put them behind one async/await data layer in the Swift 6 strict-concurrency codebase. Search response time dropped from 900ms to 200ms.
 
-I also shipped three SwiftUI components into the LTK design system. To cover the full journey, I built a Maestro flow from login through search to a creator shop; XCTest continued to cover individual screens.
+I also shipped three SwiftUI components as Swift Packages in the LTK design system, powering the rebuilt search experience end to end. To cover the full journey, I built a Maestro flow from login through search to a creator shop; XCUITest continued to cover individual screens.

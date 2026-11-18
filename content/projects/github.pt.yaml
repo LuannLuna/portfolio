@@ -1,8 +1,8 @@
 projects:
   - name: "BudgetLens"
     url: "https://github.com/LuannLuna/BudgetLens"
-    description: "App em SwiftUI para ler um orçamento local e conversar sobre ele com cinco provedores de LLM. As chaves ficam no Keychain e cada requisição envia só o contexto necessário para responder à pergunta."
-    stack: ["SwiftUI", "Swift 6", "Keychain", "Swift Testing", "LLM APIs"]
+    description: "App em SwiftUI para explorar um orçamento empacotado e conversar sobre ele com cinco provedores de LLM. As chaves ficam no Keychain, o código é dividido em Swift Packages em camadas e cada requisição envia só o contexto necessário para responder à pergunta."
+    stack: ["SwiftUI", "Swift 6", "Swift Packages", "Keychain", "Swift Testing", "XCUITest", "LLM APIs"]
 
   - name: "DictationKit"
     url: "https://github.com/LuannLuna/DictationKit"

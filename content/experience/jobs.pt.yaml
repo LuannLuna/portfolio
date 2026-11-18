@@ -1,17 +1,18 @@
 jobs:
   - role: "Engenheiro de Software iOS Sênior"
     company: "L M Tecnologia — alocado na BeSafe"
-    period: "Mai 2026 — Nov 2026"
+    period: "Jun 2026 — Nov 2026"
     current: false
     appLinks:
       - name: "BeSafe"
         url: "https://apps.apple.com/br/app/besafe-bloqueador-de-apostas/id6803982275"
     bullets:
-      - "Assumi o app iOS como principal contribuidor: cerca de 1.400 commits e 125 pull requests integrados em cinco meses, com 33 builds no TestFlight."
-      - "Construí o bloqueio de sites de apostas na camada de DNS em uma Network Extension, com lista global baixada, lista no aparelho para bloqueios instantâneos e recuperação do túnel na troca de rede."
-      - "Separei o app em 25 módulos Tuist com fronteiras verificadas pelo compilador e ampliei a suíte para 3.169 testes em Swift Testing; um gate de CI mantém SDKs de terceiros fora da extensão."
-      - "Entreguei telemedicina, check-ins de humor, modo guardião e fluxos de assinatura, e enviei a versão 1.1.0 para revisão da Apple."
-      - "Liderei a migração de UIKit/MVC para SwiftUI com Clean Architecture e entreguei o app na App Store dentro do prazo de lançamento acordado em contrato."
+      - "Entreguei o app na App Store dentro do prazo de lançamento acordado em contrato como principal contribuidor iOS, cobrindo a primeira release e a aprovação da Apple."
+      - "Construí o bloqueio de sites de apostas na camada de DNS em uma Network Extension: lista global baixada, lista no aparelho para bloqueios instantâneos e recuperação do túnel na troca de rede."
+      - "Liderei a migração de UIKit/MVC para SwiftUI com Clean Architecture — NavigationStack, @Observable e async/await — chegando a 200+ views SwiftUI e apenas 5 controllers UIKit; todas as views SwiftUI saíram com VoiceOver e Dynamic Type."
+      - "Separei o app em 25 Swift Packages com fronteiras verificadas pelo compilador, incluindo um design system tokenizado gerado a partir do Figma e strings prontas para localização; um gate de CI mantém SDKs de terceiros fora da extensão."
+      - "Respondi de ponta a ponta por rede, sessão e execução em background — interceptors REST com renovação automática de token, credenciais no Keychain, gatilhos de APNs/BGTask e integração com Firebase/RevenueCat — e corrigi uma race condition entre processos que causava logouts determinísticos, unificando o armazenamento de tokens em uma fonte única."
+      - "Ampliei a suíte para 3.169 testes em Swift Testing e 270 baselines de snapshot, adicionei 45+ fluxos Maestro em dispositivos e releases noturnos via fastlane/TestFlight, e implementei telemetria no Firebase sem PII para diagnosticar falhas de recuperação de rede."
 
   - role: "Engenheiro de Software iOS Sênior"
     company: "Hi-Tech Talents — alocado na LikeToKnow.It (LTK)"
@@ -22,8 +23,8 @@ jobs:
         url: "https://apps.apple.com/br/app/ltk-liketoknow-it/id1154027990"
     bullets:
       - "Coloquei três endpoints legados de busca atrás de uma camada única com async/await na base com strict concurrency do Swift 6. O tempo de resposta caiu de 900ms para 200ms."
-      - "Entreguei três componentes SwiftUI no design system da LTK para uso por outros times de produto."
-      - "Criei um fluxo no Maestro do login à loja do criador. O XCTest cobria as telas; o Maestro cobria as transições entre elas."
+      - "Entreguei três componentes SwiftUI como Swift Packages no design system da LTK, sustentando a nova experiência de busca de ponta a ponta."
+      - "Criei um fluxo no Maestro do login à loja do criador, complementando a cobertura XCUITest e capturando regressões entre telas que testes unitários não pegariam."
 
   - role: "Engenheiro de Software iOS Sênior"
     company: "Sebratec — alocado na Petz"
@@ -32,8 +33,8 @@ jobs:
       - name: "Petz"
         url: "https://apps.apple.com/br/app/petz-tudo-que-seu-pet-precisa/id1250491446"
     bullets:
-      - "Arquitetei o módulo de fidelidade da Petz com MVVM e Clean Architecture. Ele virou o primeiro fluxo SwiftUI da empresa em produção com lógica de negócio e gerou mais de 1.000 vendas orgânicas na primeira semana."
-      - "Entrei no war room de um crash que afetou o app, usado por mais de 1,5M de pessoas. Encontrei um valor incorreto no Remote Config; o serviço voltou em cerca de três horas. Depois tratei os 12 crashes mais frequentes com Crashlytics e Instruments. As sessões sem crash ficaram em torno de 99%."
+      - "Arquitetei o módulo de fidelidade da Petz com MVVM e Clean Architecture, usando Combine em alguns fluxos reativos. Ele virou o primeiro fluxo SwiftUI da empresa em produção com lógica de negócio e gerou mais de 1.000 vendas orgânicas na primeira semana."
+      - "Liderei a triagem em war-room de um crash que afetou o app, usado por mais de 1,5M de pessoas. Rastreei o problema até um valor incorreto no Remote Config e restabeleci o serviço em cerca de três horas. Depois tratei os 12 crashes mais frequentes com Crashlytics e Instruments; as sessões sem crash ficaram em torno de 99%."
       - "Migrei oito telas de UIKit para SwiftUI com mais uma pessoa. O prazo de entrega de features caiu de três meses para seis semanas, e o time adotou SwiftUI como padrão."
 
   - role: "Engenheiro iOS / Arquiteto de Soluções Digitais"
@@ -45,7 +46,7 @@ jobs:
     bullets:
       - "Prototipei em RxSwift um login que pedia permissões quando o recurso precisava delas, em vez de pedir tudo na entrada; no ambiente de validação, o tempo de login caiu de 4,2s para 1,5s. Revisei a proposta com o Principal Engineer do cliente e documentei o ciclo do login em diagramas UML de sequência."
       - "Fiz pair com o time de Chat no SDK da Bia, a assistente virtual da Next. Revisei código e tratei bugs, inclusive na passagem do bot para o atendimento humano."
-      - "Fiz pair e revisei código com uma pessoa desenvolvedora iOS júnior. Discutíamos arquitetura e implementação conforme as dúvidas apareciam."
+      - "Orientei um desenvolvedor iOS júnior com pair programming, code reviews e discussões de arquitetura."
 
   - role: "Desenvolvedor iOS Pleno"
     company: "Dextra Digital — alocado na Globo e Dafiti"
@@ -69,5 +70,5 @@ jobs:
       - name: "TocaLivros"
         url: "https://apps.apple.com/br/app/audiolivros-da-tocalivros/id919766261"
     bullets:
-      - "Criei três apps internos de gestão em Swift e UIKit. Eles atendiam mais de 500 operações por dia."
+      - "Criei três apps iOS interconectados de gestão em Swift, UIKit e Storyboards. Eles atendiam mais de 500 operações por dia."
       - "Adicionei busca da loja mais próxima com CoreLocation e push notifications; o DAU subiu 40%. As mudanças acompanhadas pelo Firebase Performance Monitoring reduziram o carregamento em 45%."

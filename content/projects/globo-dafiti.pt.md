@@ -5,7 +5,7 @@ company: "Globo & Grupo Dafiti (via Dextra)"
 period: "2019 — 2021"
 order: 5
 featured: true
-tagline: "A descoberta por localização dobrou o tempo médio de sessão: de 4,2 para 8,7 minutos. Também ampliei a cobertura de testes e corrigi falhas exigidas para conformidade de cartão nos apps da Dafiti."
+tagline: "A descoberta por localização dobrou o tempo médio de sessão: de 4,2 para 8,7 minutos. Também ampliei a cobertura de testes e corrigi falhas exigidas para conformidade de cartão de crédito nos apps da Dafiti."
 role: "Implementei descoberta de notícias por localização no G1/GE, ampliei a cobertura de testes e corrigi falhas de segurança em Objective-C nos apps da Dafiti."
 cover: "/content/images/projects/globo-dafiti/cover.webp"
 coverFit: "contain"

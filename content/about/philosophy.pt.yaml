@@ -1,5 +1,6 @@
 items:
-  - "Meça o fluxo antes de mexer nele. Na LTK, a busca caiu de 900ms para 200ms."
-  - "Migre em etapas. Na Petz, mudamos oito telas sem parar as entregas de features."
-  - "Teste o código compartilhado. No G1/GE, a cobertura foi de 18% para 67%."
-  - "Em dia de incidente, restabeleça o serviço primeiro. Depois, encontre o valor errado no Remote Config."
+  - "Meça o fluxo antes de mudar. A busca da LTK foi de 900ms para 200ms."
+  - "Migre em etapas. Na Petz, movemos oito telas sem parar as features."
+  - "Acessibilidade faz parte da tela. Na BeSafe, toda view SwiftUI saiu com VoiceOver e Dynamic Type."
+  - "Teste o código compartilhado. A cobertura no G1/GE foi de 18% para 67%."
+  - "No dia do incidente, restaure o serviço primeiro. Depois encontre a config errada."

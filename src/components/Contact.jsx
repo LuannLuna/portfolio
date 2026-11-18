@@ -1,11 +1,14 @@
 import { ArrowUpRight } from 'lucide-react'
 import Section from './Section.jsx'
 import Markdown from './Markdown.jsx'
-import { useContent } from '../i18n/locale.jsx'
+import { useContent, useLocale } from '../i18n/locale.jsx'
 
 export default function Contact() {
   const { contact, site } = useContent()
+  const { locale } = useLocale()
   const { profile } = site
+  const resumeHref =
+    locale === 'pt' && profile.links.resumePt ? profile.links.resumePt : profile.links.resume
 
   return (
     <Section
@@ -48,7 +51,11 @@ export default function Contact() {
             {profile.links.schedule && (
               <ContactRow label="Cal.com" value="cal.com/luann-luna" href={profile.links.schedule} />
             )}
-            <ContactRow label="Resume" value="PDF" href={profile.links.resume} />
+            <ContactRow
+              label={locale === 'pt' ? 'Currículo' : 'Resume'}
+              value="PDF"
+              href={resumeHref}
+            />
           </div>
         </aside>
       </div>

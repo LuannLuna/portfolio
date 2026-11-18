@@ -27,6 +27,7 @@ export const SiteSchema = z.object({
       linkedin: z.string().url(),
       github: z.string().url(),
       resume: z.string(),
+      resumePt: z.string().optional(),
       schedule: z.string().url().optional(),
     }),
   }),

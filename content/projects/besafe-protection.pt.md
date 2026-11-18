@@ -33,6 +33,8 @@ challenges:
   - "O túnel cai quando o celular alterna entre Wi-Fi e rede móvel; sem recuperação, o usuário continua apostando enquanto o app ainda parece protegido."
   - "Assinaturas, telemedicina e fluxos do guardião viviam no mesmo target, então uma mudança em uma área podia quebrar um fluxo crítico de outra."
   - "A revisão da Apple examina interceptação de DNS e rede em segundo plano, e a extensão precisava continuar livre de SDKs de rastreamento."
+  - "O app e sua extensão em background compartilhavam o armazenamento de tokens, e uma race condition entre processos causava logouts determinísticos em campo."
+  - "Toda tela SwiftUI precisava suportar VoiceOver e Dynamic Type, e as strings precisavam estar prontas para localização mesmo com a primeira release saindo só em português."
 decisions:
   - "Encaminhar o DNS por um túnel de pacotes até o resolver DoT do BeSafe, aplicar a lista global baixada e responder aos domínios bloqueados no próprio aparelho antes de eles saírem do celular."
   - "Manter a lista de cada usuário no App Group para um domínio reportado ser bloqueado em segundos, e expor caminho ativo, geração da lista e contadores de erro no diagnóstico."
@@ -40,20 +42,24 @@ decisions:
   - "Adicionar reconexão e recuperação do túnel na troca de rede, com verificações de saúde que mostram quando a proteção está desligada."
   - "Separar o app em 25 módulos Tuist com fronteiras verificadas pelo compilador; um gate de CI impede SDKs de terceiros na extensão de rede."
   - "Padronizar os testes em Swift Testing e a entrega em fastlane e TestFlight, e enviar a versão 1.1.0 para revisão da Apple."
+  - "Entregar toda view SwiftUI com VoiceOver e Dynamic Type e manter as strings prontas para localização, para que adicionar um idioma não exigisse refazer a UI."
+  - "Unificar o armazenamento de tokens em uma fonte única compartilhada entre app e extensão, eliminando a race entre processos."
 impact:
   - { metric: "200k+ sites", label: "Domínios de apostas bloqueados na camada de DNS" }
+  - { metric: "200+ views", label: "Views SwiftUI após a migração de UIKit/MVC" }
   - { metric: "25 módulos", label: "Módulos Tuist com fronteiras verificadas pelo compilador" }
   - { metric: "3.169 testes", label: "Casos em Swift Testing distribuídos em 352 suítes" }
-  - { metric: "125 PRs", label: "Integrados em cinco meses como principal contribuidor iOS" }
 seo:
   title: "BeSafe — bloqueio de apostas por DNS no iOS"
-  description: "Bloqueio de DNS em uma Network Extension, recuperação de VPN, telemedicina e assinaturas em um app de 25 módulos com 3.169 testes."
+  description: "Bloqueio de DNS em uma Network Extension, migração de 200+ views para SwiftUI e telemedicina em um app de 25 módulos com 3.169 testes."
 ---
 
 ## O trabalho
 
 O BeSafe bloqueia sites de apostas no iPhone. O iOS não permite que um app leia o tráfego de outro, então o bloqueio vive em uma Network Extension: um túnel de pacotes captura as consultas DNS, encaminha para o resolver DoT do BeSafe e responde aos domínios bloqueados no próprio aparelho. O app baixa uma lista global e mantém os domínios reportados por cada usuário no App Group, para que um site novo seja bloqueado em segundos, sem esperar uma nova versão.
 
-Entrei em maio de 2026 e me tornei o principal contribuidor iOS — cerca de 1.400 dos 1.499 commits do repositório, com 128 pull requests abertos e 125 integrados em cinco meses. Separei o app em 25 módulos Tuist com fronteiras verificadas pelo compilador, mantive a extensão livre de SDKs de terceiros com um gate de CI e ampliei a suíte para 3.169 testes em Swift Testing. Também conduzi a esteira de fastlane e TestFlight em 33 builds e enviei a versão 1.1.0 para revisão da Apple. O contrato terminou em novembro de 2026, com o app entregue na App Store dentro do prazo de lançamento acordado.
+Entrei em junho de 2026 e me tornei o principal contribuidor iOS — cerca de 1.400 dos 1.499 commits do repositório, com 128 pull requests abertos e 125 integrados em cinco meses. Separei o app em 25 módulos Tuist com fronteiras verificadas pelo compilador, mantive a extensão livre de SDKs de terceiros com um gate de CI e ampliei a suíte para 3.169 testes em Swift Testing. Também conduzi a esteira de fastlane e TestFlight em 33 builds e enviei a versão 1.1.0 para revisão da Apple. O contrato terminou em novembro de 2026, depois da primeira release e da aprovação da Apple.
 
-O trabalho de produto cobriu reconexão do túnel na troca de rede, consultas de telemedicina via Conexa, check-ins de humor, modo guardião, assinaturas com PIX e o chat de suporte. As telas abaixo vêm do app publicado e da suíte de snapshots.
+A migração substituiu UIKit/MVC por SwiftUI e Clean Architecture tela a tela: NavigationStack, estado com @Observable e async/await, chegando a 200+ views SwiftUI e apenas 5 controllers UIKit. Todas as views SwiftUI saíram com suporte a VoiceOver e Dynamic Type, e as strings estavam prontas para localização mesmo com a primeira release só em português. Na plataforma, respondi por rede, sessão e execução em background — interceptors REST com renovação automática de token, credenciais no Keychain, gatilhos de APNs/BGTask e Firebase/RevenueCat — e corrigi uma race condition entre processos que causava logouts determinísticos, unificando o armazenamento de tokens em uma fonte única.
+
+O trabalho de produto cobriu reconexão do túnel na troca de rede, consultas de telemedicina via Conexa, check-ins de humor, modo guardião, assinaturas com PIX e o chat de suporte. A telemetria no Firebase sem PII transformou bugs de campo impossíveis de reproduzir em dados consultáveis — foi assim que diagnosticamos falhas de recuperação de rede entre Wi-Fi e celular. As telas abaixo vêm do app publicado e da suíte de snapshots.

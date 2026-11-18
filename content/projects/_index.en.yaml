@@ -1,6 +1,6 @@
 eyebrow: "Selected work"
 title: "Selected iOS work."
-lede: "Betting-site blocking, search, loyalty, authentication and location features in apps from BeSafe, LTK, Petz, Next, G1 and GE."
+lede: "BeSafe's 200+ view SwiftUI migration, LTK search, Petz loyalty, Next authentication and G1/GE location features."
 allLabel: "All"
 tagOrder:
   - "iOS"

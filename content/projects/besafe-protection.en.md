@@ -33,6 +33,8 @@ challenges:
   - "The tunnel drops when the phone moves between Wi-Fi and cellular; without recovery, the user keeps betting while the app still looks protected."
   - "Subscriptions, telemedicine and guardian flows lived in one target, so a change in one area could break a release-critical flow in another."
   - "App Review scrutinizes DNS interception and background networking, and the extension had to stay free of tracking SDKs."
+  - "The app and its background extension shared token storage, and a cross-process race produced deterministic logouts in the field."
+  - "Every SwiftUI screen had to support VoiceOver and Dynamic Type, and strings had to be localization-ready even though the first release shipped in Portuguese only."
 decisions:
   - "Forward DNS through a packet tunnel to BeSafe's DoT resolver, apply the downloaded global blocklist, and answer locally blocked domains on device before they leave the phone."
   - "Keep a per-user blocklist in the App Group so a reported domain blocks in seconds, and expose the active path, blocklist generation and error counters in diagnostics."
@@ -40,20 +42,24 @@ decisions:
   - "Add tunnel reconnection and recovery for network changes, with health checks that surface when protection is off."
   - "Split the app into 25 Tuist modules with compiler-enforced boundaries; a CI gate blocks third-party SDKs from the network extension."
   - "Standardize tests on Swift Testing and delivery on fastlane plus TestFlight, then submit v1.1.0 for App Review."
+  - "Ship every SwiftUI view with VoiceOver and Dynamic Type support, and keep strings localization-ready so adding a language would not require reworking the UI."
+  - "Move token storage into a single source of truth shared by the app and the extension, eliminating the cross-process race."
 impact:
   - { metric: "200k+ sites", label: "Betting domains blocked at the DNS layer" }
+  - { metric: "200+ views", label: "SwiftUI views after the UIKit/MVC migration" }
   - { metric: "25 modules", label: "Tuist modules with compiler-enforced boundaries" }
   - { metric: "3,169 tests", label: "Swift Testing cases across 352 suites" }
-  - { metric: "125 PRs", label: "Merged in five months as the main iOS contributor" }
 seo:
   title: "BeSafe — DNS-level betting blocker for iOS"
-  description: "DNS blocking inside a Network Extension, VPN recovery, telemedicine and subscriptions in a 25-module app with 3,169 tests."
+  description: "DNS blocking inside a Network Extension, a 200+ view SwiftUI migration, and telemedicine in a 25-module app with 3,169 tests."
 ---
 
 ## The work
 
 BeSafe blocks betting sites on iPhone. iOS does not let one app read another app's traffic, so the block lives in a Network Extension: a packet tunnel captures DNS queries, forwards them to BeSafe's DoT resolver, and answers blocked domains on device. The app downloads a global blocklist and keeps each user's reported domains in the App Group, so a new site can be blocked in seconds instead of waiting for an app release.
 
-I joined in May 2026 and became the main iOS contributor — about 1,400 of the repository's 1,499 commits, with 128 pull requests opened and 125 merged in five months. I split the app into 25 Tuist modules with enforced boundaries, kept the extension free of third-party SDKs behind a CI gate, and grew the suite to 3,169 Swift Testing cases. I also ran the fastlane and TestFlight pipeline through 33 builds and submitted v1.1.0 for App Review. The contract ended in November 2026, with the app delivered to the App Store by the agreed launch deadline.
+I joined in June 2026 and became the main iOS contributor — about 1,400 of the repository's 1,499 commits, with 128 pull requests opened and 125 merged in five months. I split the app into 25 Tuist modules with enforced boundaries, kept the extension free of third-party SDKs behind a CI gate, and grew the suite to 3,169 Swift Testing cases. I also ran the fastlane and TestFlight pipeline through 33 builds and submitted v1.1.0 for App Review. The contract ended in November 2026, after the first release and Apple's approval.
 
-The product work covered tunnel reconnection across network changes, telemedicine appointments through Conexa, mood check-ins, guardian mode, subscriptions with PIX and the support chat. The screens below come from the shipped app and its snapshot suite.
+The migration replaced UIKit/MVC with SwiftUI and Clean Architecture screen by screen: NavigationStack routers, @Observable state and async/await, ending with 200+ SwiftUI views and only 5 UIKit controllers. Every SwiftUI view shipped with VoiceOver and Dynamic Type support, and the strings were localization-ready even though the first release was Portuguese-only. On the platform side, I owned networking, session and background execution — REST interceptors with automatic token refresh, Keychain credentials, APNs/BGTask triggers and Firebase/RevenueCat — and fixed a cross-process race that caused deterministic logouts by moving token storage to a single source of truth.
+
+The product work covered tunnel reconnection across network changes, telemedicine appointments through Conexa, mood check-ins, guardian mode, subscriptions with PIX and the support chat. Firebase telemetry with PII stripped turned unreproducible field bugs into queryable data — it was how we diagnosed Wi-Fi/cellular recovery failures. The screens below come from the shipped app and its snapshot suite.

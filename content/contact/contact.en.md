@@ -1,7 +1,7 @@
 ---
 eyebrow: "Let's talk"
 title: "Hiring an iOS engineer?"
-lede: "I'm looking for a senior iOS role where performance and accessibility are part of the definition of done, not a cleanup sprint."
+lede: "I'm looking for a senior iOS role where architecture, performance and accessibility are part of the definition of done, not a cleanup sprint."
 linkedinDisplay: "linkedin.com/in/luannluna"
 githubDisplay: "github.com/LuannLuna"
 ---

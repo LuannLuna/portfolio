@@ -9,7 +9,7 @@ ctaPrimary:
   href: "#projects"
 ctaSecondary:
   label: "Currículo"
-  href: "https://github.com/LuannLuna/Resume/raw/main/pdf/Luann_Luna_Resume_EN.pdf"
+  href: "https://github.com/LuannLuna/Resume/raw/main/pdf/Luann_Luna_Resume_PT.pdf"
 shippedToLabel: "Apps no ar"
 location: "São Luís, Brasil · Remoto (US / EU / LATAM)"
 spec:
@@ -18,4 +18,4 @@ spec:
   - { label: "Base", value: "São Luís, Brasil — remoto" }
 ---
 
-Meu trabalho recente inclui a busca da LTK, o módulo de fidelidade da Petz, um protótipo de autenticação para a Next e recursos de localização no G1 e no GE. Antes, criei apps internos de iOS na Verité. Nesse caminho, trabalhei principalmente com Swift, SwiftUI, testes e a camada de dados por trás das telas.
+Mais recentemente, liderei na BeSafe a migração incremental de UIKit para SwiftUI — 200+ views SwiftUI, 25 Swift Packages e as camadas de rede, sessão e background por trás delas — e entreguei o app na App Store dentro do prazo contratual. Antes disso, reduzi em 78% a latência da busca na LTK e rastreei um crash em produção na Petz até um valor incorreto no Remote Config, restabelecendo o serviço em cerca de três horas. Meu trabalho costuma ficar onde a tela encontra a camada de dados: arquitetura, concorrência, testes e releases.

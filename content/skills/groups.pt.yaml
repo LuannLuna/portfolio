@@ -1,9 +1,9 @@
 groups:
   - title: "Linguagens & Runtime"
-    items: ["Swift 6", "Strict Concurrency", "Async/Await", "Combine", "Objective-C"]
+    items: ["Swift 6", "Strict Concurrency", "Async/Await", "Combine", "RxSwift", "Objective-C"]
 
   - title: "UI & Estado"
-    items: ["SwiftUI", "UIKit", "@Observable", "SwiftData", "Accessibility (VoiceOver, Dynamic Type)"]
+    items: ["SwiftUI", "UIKit", "@Observable", "SwiftData", "Accessibility (VoiceOver, Dynamic Type)", "Localização (i18n)"]
 
   - title: "Arquitetura & Modularização"
     items:
@@ -12,14 +12,16 @@ groups:
       - "MVVM-C"
       - "Coordinator"
       - "SOLID"
-      - "Swift Package Manager (feature modules)"
       - "Dependency Injection"
+      - "Swift Package Manager (feature modules)"
+      - "Design Systems (tokens via Figma)"
+      - "ADRs"
 
   - title: "Qualidade & Performance"
-    items: ["XCTest", "Swift Testing", "Maestro", "Quick/Nimble", "Instruments"]
+    items: ["XCTest", "XCUITest", "Swift Testing", "Snapshot Testing", "Maestro", "Quick/Nimble", "Instruments"]
 
   - title: "Release & Ferramentas"
-    items: ["Fastlane", "Bitrise", "GitHub Actions", "SwiftLint", "Firebase (Crashlytics, Analytics, Remote Config)"]
+    items: ["Git", "Fastlane (match)", "Bitrise", "GitHub Actions (CI/CD)", "SwiftLint", "Firebase (Crashlytics, Analytics, Remote Config)", "RevenueCat", "Desenvolvimento assistido por IA (Claude Code, Codex, GitHub Copilot)"]
 
   - title: "APIs & Plataforma"
-    items: ["REST", "GraphQL", "Apollo", "CoreLocation", "MapKit"]
+    items: ["REST", "GraphQL", "Apollo", "CoreLocation", "MapKit", "APNs", "Keychain", "BGTask"]

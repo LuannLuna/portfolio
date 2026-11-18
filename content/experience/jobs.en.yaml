@@ -1,17 +1,18 @@
 jobs:
   - role: "Senior iOS Software Engineer"
     company: "L M Tecnologia — contracted to BeSafe"
-    period: "May 2026 — Nov 2026"
+    period: "Jun 2026 — Nov 2026"
     current: false
     appLinks:
       - name: "BeSafe"
         url: "https://apps.apple.com/br/app/besafe-bloqueador-de-apostas/id6803982275"
     bullets:
-      - "Took over the iOS app as its main contributor: about 1,400 commits and 125 merged pull requests in five months, with 33 TestFlight builds."
-      - "Built DNS-level betting-site blocking in a Network Extension, with a downloaded global blocklist, an on-device list for instant requests, and tunnel recovery when the network changes."
-      - "Split the app into 25 Tuist modules with compiler-enforced boundaries and grew the suite to 3,169 Swift Testing cases; a CI gate keeps third-party SDKs out of the extension."
-      - "Shipped telemedicine, mood check-ins, guardian mode and subscription flows, and submitted v1.1.0 for App Review."
-      - "Led the migration from UIKit/MVC to SwiftUI with Clean Architecture, and delivered the app to the App Store by the launch deadline agreed in the contract."
+      - "Delivered the app to the App Store by the launch deadline agreed in the contract as the main iOS contributor, through first release and Apple approval."
+      - "Built DNS-level betting-site blocking in a Network Extension: a downloaded global blocklist, an on-device list for instant requests, and tunnel recovery when the network changes."
+      - "Led the UIKit/MVC → SwiftUI migration with Clean Architecture — NavigationStack, @Observable state, async/await — ending with 200+ SwiftUI views and only 5 UIKit controllers; every SwiftUI view shipped with VoiceOver and Dynamic Type."
+      - "Split the app into 25 Swift Packages with compiler-enforced boundaries, including a tokenized Figma-generated design system and localization-ready strings; a CI gate keeps third-party SDKs out of the extension."
+      - "Owned networking, session and background execution end to end — REST interceptors with automatic token refresh, Keychain credentials, APNs/BGTask triggers and Firebase/RevenueCat integration — and fixed a cross-process race that caused deterministic logouts by moving token storage to a single source of truth."
+      - "Grew the suite to 3,169 Swift Testing cases and 270 snapshot baselines, added 45+ on-device Maestro flows and nightly fastlane/TestFlight releases, and instrumented Firebase telemetry with PII stripped to diagnose Wi-Fi/cellular recovery bugs."
 
   - role: "Senior iOS Software Engineer"
     company: "Hi-Tech Talents — contracted to LikeToKnow.It (LTK)"
@@ -22,8 +23,8 @@ jobs:
         url: "https://apps.apple.com/br/app/ltk-liketoknow-it/id1154027990"
     bullets:
       - "Moved three legacy search endpoints behind one async/await data layer in the Swift 6 strict-concurrency codebase. Search response time fell from 900ms to 200ms."
-      - "Shipped three SwiftUI components in the LTK design system for other feature teams to use."
-      - "Built a Maestro flow from login to creator shop. XCTest covered the screens; Maestro covered the transitions between them."
+      - "Shipped three SwiftUI components as Swift Packages in the LTK design system, powering the rebuilt search experience end to end."
+      - "Built a Maestro flow from login to creator shop, complementing XCUITest coverage and catching cross-screen regressions unit tests could not."
 
   - role: "Senior iOS Software Engineer"
     company: "Sebratec — contracted to Petz"
@@ -32,8 +33,8 @@ jobs:
       - name: "Petz"
         url: "https://apps.apple.com/br/app/petz-tudo-que-seu-pet-precisa/id1250491446"
     bullets:
-      - "Architected Petz's loyalty module with MVVM and Clean Architecture. It became the app's first production SwiftUI flow with business logic and generated 1,000+ organic sales in its first week."
-      - "Joined the war room for a crash affecting the app's 1.5M+ users. Found a bad Remote Config value; service was restored in about three hours. I then triaged the 12 most frequent crashes with Crashlytics and Instruments. Crash-free sessions stayed around 99%."
+      - "Architected Petz's loyalty module with MVVM and Clean Architecture, using Combine in a few reactive flows. It became the app's first production SwiftUI flow with business logic and generated 1,000+ organic sales in its first week."
+      - "Led war-room triage for a crash affecting the app's 1.5M+ users. Traced it to a bad Remote Config value and restored service in about three hours. Then triaged the 12 most frequent crashes with Crashlytics and Instruments; crash-free sessions stayed around 99%."
       - "Moved eight screens from UIKit to SwiftUI with one other developer. Feature delivery dropped from three months to six weeks, and the team adopted SwiftUI as its standard."
 
   - role: "iOS Engineer / Digital Solutions Architect"
@@ -43,9 +44,9 @@ jobs:
       - name: "Next"
         url: "https://apps.apple.com/br/app/next-conta-digital-e-cart%C3%A3o/id1133682678"
     bullets:
-      - "Prototyped an RxSwift login flow that requested permissions when a feature needed them instead of all at sign-in; in the validation environment, login time fell from 4.2s to 1.5s. Reviewed the proposal with the client's Principal Engineer and documented the login lifecycle in UML sequence diagrams."
+      - "Prototyped an RxSwift login flow that requested permissions when a feature needed them, not at sign-in; in the validation environment, login time fell from 4.2s to 1.5s. Reviewed the proposal with the client's Principal Engineer and documented the login lifecycle in UML sequence diagrams."
       - "Paired with the Chat team on the SDK for Bia, Next's virtual assistant. I reviewed code and triaged bugs, including issues with handoff from bot to human support."
-      - "Paired with a junior iOS developer and reviewed code together. We discussed architecture and implementation choices as they came up."
+      - "Mentored a junior iOS developer through pair programming, code reviews and architecture discussions."
 
   - role: "Mid-Level iOS Developer"
     company: "Dextra Digital — contracted to Globo and Dafiti"
@@ -69,5 +70,5 @@ jobs:
       - name: "TocaLivros"
         url: "https://apps.apple.com/br/app/audiolivros-da-tocalivros/id919766261"
     bullets:
-      - "Built three internal iOS apps for business management in Swift and UIKit. They handled 500+ operations a day."
+      - "Built three interconnected iOS apps for business management in Swift, UIKit and Storyboards. They handled 500+ operations a day."
       - "Added nearest-store discovery with CoreLocation and push notifications; DAU rose 40%. Firebase Performance Monitoring changes cut load times by 45%."

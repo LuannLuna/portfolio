@@ -21,6 +21,7 @@ stack:
   - "Swift"
   - "SwiftUI"
   - "UIKit"
+  - "Combine"
   - "MVVM"
   - "Clean Architecture"
   - "Crashlytics"
@@ -31,7 +32,7 @@ challenges:
   - "Um valor incorreto no Remote Config podia afetar o app no ar e não era óbvio olhando só para o crash."
   - "Precisávamos migrar oito telas sem parar a entrega de novas features."
 decisions:
-  - "Desenhei o módulo de fidelidade com MVVM e Clean Architecture. Ele virou o primeiro fluxo SwiftUI em produção da Petz com lógica de negócio real."
+  - "Desenhei o módulo de fidelidade com MVVM e Clean Architecture, com Combine em alguns fluxos reativos. Ele virou o primeiro fluxo SwiftUI em produção da Petz com lógica de negócio real."
   - "Migramos as oito telas em etapas, em uma dupla de desenvolvimento; o prazo de entrega caiu de três meses para seis semanas."
   - "No war room do crash, encontrei um valor incorreto no Remote Config e ajudei a restabelecer o serviço em cerca de três horas."
 impact:
@@ -43,7 +44,7 @@ impact:
 
 ## O trabalho
 
-O módulo de fidelidade foi o primeiro fluxo SwiftUI da Petz em produção com lógica de negócio real. Desenhei a arquitetura com MVVM e Clean Architecture; na primeira semana, o fluxo gerou mais de 1.000 vendas orgânicas.
+O módulo de fidelidade foi o primeiro fluxo SwiftUI da Petz em produção com lógica de negócio real. Desenhei a arquitetura com MVVM e Clean Architecture, com Combine em alguns fluxos reativos; na primeira semana, o fluxo gerou mais de 1.000 vendas orgânicas.
 
 Também liderei, com mais uma pessoa, a migração de oito telas de UIKit para SwiftUI. Mantivemos a entrega de features e reduzimos o prazo de três meses para seis semanas.
 

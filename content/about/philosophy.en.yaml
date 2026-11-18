@@ -1,5 +1,6 @@
 items:
   - "Measure the flow before changing it. LTK search went from 900ms to 200ms."
   - "Migrate in steps. At Petz, we moved eight screens and kept feature work going."
+  - "Accessibility is part of the screen. At BeSafe, every SwiftUI view shipped with VoiceOver and Dynamic Type."
   - "Test the shared code. G1/GE coverage went from 18% to 67%."
   - "On incident day, restore service first. Then find the bad config."
