@@ -5,19 +5,19 @@ company: "BeSafe"
 period: "2026"
 order: 1
 featured: true
-tagline: "I shipped the iOS app that blocks betting sites at the DNS layer — and keeps protection alive when the VPN drops."
+tagline: "I shipped the iOS app that blocks betting sites at the DNS layer, and keeps protection alive when the VPN drops."
 role: "I was the main iOS contributor: DNS blocking, VPN recovery, telemedicine, subscriptions, modular architecture and the release pipeline."
 cover: "/content/images/projects/besafe-protection/cover-en.webp"
 coverFit: "contain"
 gallery:
-  - { src: "/content/images/projects/besafe-protection/01-landing.webp",       caption: "Landing — value proposition and entry into the 7-day free trial." }
-  - { src: "/content/images/projects/besafe-protection/02-home.webp",          caption: "Home — protection switch, blocked-site counter, days without betting, money and time recovered." }
-  - { src: "/content/images/projects/besafe-protection/03-mood.webp",          caption: "Mood analysis — 30-day emotional check-ins and a 12-day streak." }
-  - { src: "/content/images/projects/besafe-protection/04-appointments.webp",  caption: "Telemedicine — scheduled and available psychology and psychiatry consultations." }
-  - { src: "/content/images/projects/besafe-protection/05-plans.webp",         caption: "Plans — annual, semester and quarterly subscriptions with 60% off the annual plan." }
-  - { src: "/content/images/projects/besafe-protection/06-dns-diagnostics.webp", caption: "DNS diagnostics — active tunnel path, local blocklist state and live request counters." }
-  - { src: "/content/images/projects/besafe-protection/07-request-block.webp", caption: "Request a block — users submit betting domains for review and track each status." }
-  - { src: "/content/images/projects/besafe-protection/08-chat.webp",          caption: "Support — 24-hour human chat and a hand-off to psychological care." }
+  - { src: "/content/images/projects/besafe-protection/01-landing.webp",       caption: "Landing: value proposition and entry into the 7-day free trial." }
+  - { src: "/content/images/projects/besafe-protection/02-home.webp",          caption: "Home: protection switch, blocked-site counter, days without betting, money and time recovered." }
+  - { src: "/content/images/projects/besafe-protection/03-mood.webp",          caption: "Mood analysis: 30-day emotional check-ins and a 12-day streak." }
+  - { src: "/content/images/projects/besafe-protection/04-appointments.webp",  caption: "Telemedicine: scheduled and available psychology and psychiatry consultations." }
+  - { src: "/content/images/projects/besafe-protection/05-plans.webp",         caption: "Plans: annual, semester and quarterly subscriptions with 60% off the annual plan." }
+  - { src: "/content/images/projects/besafe-protection/06-dns-diagnostics.webp", caption: "DNS diagnostics: active tunnel path, local blocklist state and live request counters." }
+  - { src: "/content/images/projects/besafe-protection/07-request-block.webp", caption: "Request a block: users submit betting domains for review and track each status." }
+  - { src: "/content/images/projects/besafe-protection/08-chat.webp",          caption: "Support: 24-hour human chat and a hand-off to psychological care." }
 tags: ["iOS", "Architecture", "Security", "Performance"]
 stack:
   - "Swift"
@@ -50,7 +50,7 @@ impact:
   - { metric: "25 modules", label: "Tuist modules with compiler-enforced boundaries" }
   - { metric: "3,169 tests", label: "Swift Testing cases across 352 suites" }
 seo:
-  title: "BeSafe — DNS-level betting blocker for iOS"
+  title: "BeSafe: DNS-level betting blocker for iOS"
   description: "DNS blocking inside a Network Extension, a 200+ view SwiftUI migration, and telemedicine in a 25-module app with 3,169 tests."
 ---
 
@@ -58,8 +58,8 @@ seo:
 
 BeSafe blocks betting sites on iPhone. iOS does not let one app read another app's traffic, so the block lives in a Network Extension: a packet tunnel captures DNS queries, forwards them to BeSafe's DoT resolver, and answers blocked domains on device. The app downloads a global blocklist and keeps each user's reported domains in the App Group, so a new site can be blocked in seconds instead of waiting for an app release.
 
-I joined in June 2026 and became the main iOS contributor — about 1,400 of the repository's 1,499 commits, with 128 pull requests opened and 125 merged in five months. I split the app into 25 Tuist modules with enforced boundaries, kept the extension free of third-party SDKs behind a CI gate, and grew the suite to 3,169 Swift Testing cases. I also ran the fastlane and TestFlight pipeline through 33 builds and submitted v1.1.0 for App Review. The contract ended in November 2026, after the first release and Apple's approval.
+I joined in June 2026 and became the main iOS contributor: about 1,400 of the repository's 1,499 commits, with 128 pull requests opened and 125 merged in five months. I split the app into 25 Tuist modules with enforced boundaries, kept the extension free of third-party SDKs behind a CI gate, and grew the suite to 3,169 Swift Testing cases. I also ran the fastlane and TestFlight pipeline through 33 builds and submitted v1.1.0 for App Review. The contract ended in November 2026, after the first release and Apple's approval.
 
-The migration replaced UIKit/MVC with SwiftUI and Clean Architecture screen by screen: NavigationStack routers, @Observable state and async/await, ending with 200+ SwiftUI views and only 5 UIKit controllers. Every SwiftUI view shipped with VoiceOver and Dynamic Type support, and the strings were localization-ready even though the first release was Portuguese-only. On the platform side, I owned networking, session and background execution — REST interceptors with automatic token refresh, Keychain credentials, APNs/BGTask triggers and Firebase/RevenueCat — and fixed a cross-process race that caused deterministic logouts by moving token storage to a single source of truth.
+The migration replaced UIKit/MVC with SwiftUI and Clean Architecture screen by screen: NavigationStack routers, @Observable state and async/await, ending with 200+ SwiftUI views and only 5 UIKit controllers. Every SwiftUI view shipped with VoiceOver and Dynamic Type support, and the strings were localization-ready even though the first release was Portuguese-only. On the platform side, I owned networking, session and background execution (REST interceptors with automatic token refresh, Keychain credentials, APNs/BGTask triggers and Firebase/RevenueCat) and fixed a cross-process race that caused deterministic logouts by moving token storage to a single source of truth.
 
-The product work covered tunnel reconnection across network changes, telemedicine appointments through Conexa, mood check-ins, guardian mode, subscriptions with PIX and the support chat. Firebase telemetry with PII stripped turned unreproducible field bugs into queryable data — it was how we diagnosed Wi-Fi/cellular recovery failures. The screens below come from the shipped app and its snapshot suite.
+The product work covered tunnel reconnection across network changes, telemedicine appointments through Conexa, mood check-ins, guardian mode, subscriptions with PIX and the support chat. Firebase telemetry with PII stripped turned unreproducible field bugs into queryable data, which is how we diagnosed Wi-Fi/cellular recovery failures. The screens below come from the shipped app and its snapshot suite.

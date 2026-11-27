@@ -2,7 +2,7 @@
 slug: "next-banking"
 title: "Next: Authentication & Chat Integrations"
 company: "Next (via Capgemini)"
-period: "2021 — 2022"
+period: "2021 – 2022"
 order: 4
 featured: true
 tagline: "I prototyped on-demand authentication in RxSwift and paired with the Chat team on Bia's SDK integration."
@@ -11,10 +11,10 @@ cover: "/content/images/projects/next-banking/cover-en.webp"
 coverFit: "contain"
 tags: ["iOS", "Architecture", "RxSwift", "Security"]
 gallery:
-  - { src: "/content/images/projects/next-banking/01-home.webp",        caption: "Home — account overview, quick actions, and service shortcuts." }
-  - { src: "/content/images/projects/next-banking/02-chat-bia.webp",    caption: "BIA assistant — in-app chat with proactive account guidance." }
-  - { src: "/content/images/projects/next-banking/03-login.webp",       caption: "Login — authentication entry with shortcuts, token, and PIX access." }
-  - { src: "/content/images/projects/next-banking/04-onboarding.webp",  caption: "Onboarding — Next digital account acquisition flow." }
+  - { src: "/content/images/projects/next-banking/01-home.webp",        caption: "Home: account overview, quick actions, and service shortcuts." }
+  - { src: "/content/images/projects/next-banking/02-chat-bia.webp",    caption: "BIA assistant: in-app chat with proactive account guidance." }
+  - { src: "/content/images/projects/next-banking/03-login.webp",       caption: "Login: authentication entry with shortcuts, token, and PIX access." }
+  - { src: "/content/images/projects/next-banking/04-onboarding.webp",  caption: "Onboarding: Next digital account acquisition flow." }
 stack:
   - "Swift"
   - "RxSwift"

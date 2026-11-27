@@ -1,7 +1,7 @@
 jobs:
   - role: "Engenheiro de Software iOS Sênior"
-    company: "L M Tecnologia — alocado na BeSafe"
-    period: "Jun 2026 — Nov 2026"
+    company: "L M Tecnologia, alocado na BeSafe"
+    period: "Jun 2026 – Nov 2026"
     current: false
     appLinks:
       - name: "BeSafe"
@@ -9,14 +9,14 @@ jobs:
     bullets:
       - "Entreguei o app na App Store dentro do prazo de lançamento acordado em contrato como principal contribuidor iOS, cobrindo a primeira release e a aprovação da Apple."
       - "Construí o bloqueio de sites de apostas na camada de DNS em uma Network Extension: lista global baixada, lista no aparelho para bloqueios instantâneos e recuperação do túnel na troca de rede."
-      - "Liderei a migração de UIKit/MVC para SwiftUI com Clean Architecture — NavigationStack, @Observable e async/await — chegando a 200+ views SwiftUI e apenas 5 controllers UIKit; todas as views SwiftUI saíram com VoiceOver e Dynamic Type."
+      - "Liderei a migração de UIKit/MVC para SwiftUI com Clean Architecture (NavigationStack, @Observable e async/await), chegando a 200+ views SwiftUI e apenas 5 controllers UIKit; todas as views SwiftUI saíram com VoiceOver e Dynamic Type."
       - "Separei o app em 25 Swift Packages com fronteiras verificadas pelo compilador, incluindo um design system tokenizado gerado a partir do Figma e strings prontas para localização; um gate de CI mantém SDKs de terceiros fora da extensão."
-      - "Respondi de ponta a ponta por rede, sessão e execução em background — interceptors REST com renovação automática de token, credenciais no Keychain, gatilhos de APNs/BGTask e integração com Firebase/RevenueCat — e corrigi uma race condition entre processos que causava logouts determinísticos, unificando o armazenamento de tokens em uma fonte única."
+      - "Respondi de ponta a ponta por rede, sessão e execução em background (interceptors REST com renovação automática de token, credenciais no Keychain, gatilhos de APNs/BGTask e integração com Firebase/RevenueCat) e corrigi uma race condition entre processos que causava logouts determinísticos, unificando o armazenamento de tokens em uma fonte única."
       - "Ampliei a suíte para 3.169 testes em Swift Testing e 270 baselines de snapshot, adicionei 45+ fluxos Maestro em dispositivos e releases noturnos via fastlane/TestFlight, e implementei telemetria no Firebase sem PII para diagnosticar falhas de recuperação de rede."
 
   - role: "Engenheiro de Software iOS Sênior"
-    company: "Hi-Tech Talents — alocado na LikeToKnow.It (LTK)"
-    period: "Out 2025 — Abr 2026"
+    company: "Hi-Tech Talents, alocado na LTK, app americano de creator commerce"
+    period: "Out 2025 – Abr 2026"
     current: false
     appLinks:
       - name: "LTK"
@@ -27,8 +27,8 @@ jobs:
       - "Criei um fluxo no Maestro do login à loja do criador, complementando a cobertura XCUITest e capturando regressões entre telas que testes unitários não pegariam."
 
   - role: "Engenheiro de Software iOS Sênior"
-    company: "Sebratec — alocado na Petz"
-    period: "Ago 2022 — Set 2025"
+    company: "Sebratec, alocado na Petz, uma das maiores redes de varejo pet do Brasil"
+    period: "Ago 2022 – Set 2025"
     appLinks:
       - name: "Petz"
         url: "https://apps.apple.com/br/app/petz-tudo-que-seu-pet-precisa/id1250491446"
@@ -38,8 +38,8 @@ jobs:
       - "Migrei oito telas de UIKit para SwiftUI com mais uma pessoa. O prazo de entrega de features caiu de três meses para seis semanas, e o time adotou SwiftUI como padrão."
 
   - role: "Engenheiro iOS / Arquiteto de Soluções Digitais"
-    company: "Capgemini — alocado na Next"
-    period: "Jul 2021 — Jun 2022"
+    company: "Capgemini, alocado na Next, banco digital do Bradesco"
+    period: "Jul 2021 – Jun 2022"
     appLinks:
       - name: "Next"
         url: "https://apps.apple.com/br/app/next-conta-digital-e-cart%C3%A3o/id1133682678"
@@ -49,8 +49,8 @@ jobs:
       - "Orientei um desenvolvedor iOS júnior com pair programming, code reviews e discussões de arquitetura."
 
   - role: "Desenvolvedor iOS Pleno"
-    company: "Dextra Digital — alocado na Globo e Dafiti"
-    period: "Out 2019 — Jun 2021"
+    company: "Dextra Digital, alocado na Globo (G1, GE) e no Grupo Dafiti"
+    period: "Out 2019 – Jun 2021"
     appLinks:
       - name: "G1"
         url: "https://apps.apple.com/br/app/g1-portal-de-not%C3%ADcias-da-globo/id413333281"
@@ -65,7 +65,7 @@ jobs:
 
   - role: "Desenvolvedor iOS Júnior"
     company: "Verité Soluções"
-    period: "Jul 2018 — Set 2019"
+    period: "Jul 2018 – Set 2019"
     appLinks:
       - name: "TocaLivros"
         url: "https://apps.apple.com/br/app/audiolivros-da-tocalivros/id919766261"
