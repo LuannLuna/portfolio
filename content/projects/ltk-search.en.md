@@ -2,7 +2,7 @@
 slug: "ltk-search"
 title: "LTK: Search"
 company: "LikeToKnow.It"
-period: "2025 — 2026"
+period: "2025 – 2026"
 order: 2
 featured: true
 tagline: "Search response time fell from 900ms to 200ms after I unified three legacy endpoints."
@@ -10,14 +10,14 @@ role: "I owned the search data layer, shipped three SwiftUI components, and adde
 cover: "/content/images/projects/ltk-search/cover-en.webp"
 coverFit: "contain"
 gallery:
-  - { src: "/content/images/projects/ltk-search/01-home-feed.webp",        caption: "Home feed — “Pesquisar” editorial hub with seasonal edits, categories, and popular posts." }
-  - { src: "/content/images/projects/ltk-search/02-search-empty.webp",     caption: "Search empty state — entry prompt with quick filters." }
-  - { src: "/content/images/projects/ltk-search/03-search-suggestions.webp", caption: "Search suggestions — recent searches, popular queries, recently viewed creators." }
-  - { src: "/content/images/projects/ltk-search/08-search-typing.webp",    caption: "Typing state — popular searches while the query is entered." }
-  - { src: "/content/images/projects/ltk-search/07-search-matches.webp",   caption: "Query matches — corresponding creators, brands, and related searches." }
-  - { src: "/content/images/projects/ltk-search/04-search-results.webp",   caption: "Search results — LTK AI overview, Posts / Creators tabs, and product carousels." }
-  - { src: "/content/images/projects/ltk-search/05-creator-profile.webp",  caption: "Creator profile — follower stats, posts, products, and gift guides." }
-  - { src: "/content/images/projects/ltk-search/06-brand-profile.webp",    caption: "Brand profile — products in high demand and recent items." }
+  - { src: "/content/images/projects/ltk-search/01-home-feed.webp",        caption: "Home feed: “Pesquisar” editorial hub with seasonal edits, categories, and popular posts." }
+  - { src: "/content/images/projects/ltk-search/02-search-empty.webp",     caption: "Search empty state: entry prompt with quick filters." }
+  - { src: "/content/images/projects/ltk-search/03-search-suggestions.webp", caption: "Search suggestions: recent searches, popular queries, recently viewed creators." }
+  - { src: "/content/images/projects/ltk-search/08-search-typing.webp",    caption: "Typing state: popular searches while the query is entered." }
+  - { src: "/content/images/projects/ltk-search/07-search-matches.webp",   caption: "Query matches: corresponding creators, brands, and related searches." }
+  - { src: "/content/images/projects/ltk-search/04-search-results.webp",   caption: "Search results: LTK AI overview, Posts / Creators tabs, and product carousels." }
+  - { src: "/content/images/projects/ltk-search/05-creator-profile.webp",  caption: "Creator profile: follower stats, posts, products, and gift guides." }
+  - { src: "/content/images/projects/ltk-search/06-brand-profile.webp",    caption: "Brand profile: products in high demand and recent items." }
 tags: ["iOS", "SwiftUI", "Concurrency", "Performance"]
 stack:
   - "Swift"
@@ -41,7 +41,7 @@ impact:
   - { metric: "3 components", label: "SwiftUI components shipped to the LTK design system" }
   - { metric: "End to end", label: "Maestro coverage from login through creator shop" }
 seo:
-  title: "LTK Search — 900ms to 200ms"
+  title: "LTK Search: 900ms to 200ms"
   description: "Three legacy search endpoints unified behind async/await. Search response time dropped from 900ms to 200ms."
 ---
 

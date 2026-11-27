@@ -2,7 +2,7 @@
 slug: "petz-loyalty"
 title: "Petz: Loyalty & SwiftUI Migration"
 company: "Petz (via Sebratec)"
-period: "2022 — 2025"
+period: "2022 – 2025"
 order: 3
 featured: true
 tagline: "I shipped Petz's first production SwiftUI loyalty flow, migrated eight screens, and helped restore service during a crash affecting 1.5M+ users."
@@ -10,12 +10,12 @@ role: "I architected the loyalty module, led an eight-screen UIKit-to-SwiftUI mi
 cover: "/content/images/projects/petz-loyalty/cover-en.webp"
 coverFit: "contain"
 gallery:
-  - { src: "/content/images/projects/petz-loyalty/04-cashpetz-history.jpg", caption: "CashPetz history — earned, used, refunded, and expiring balance." }
-  - { src: "/content/images/projects/petz-loyalty/05-offers.jpg",       caption: "Personalised offers — recommended products with activation flow." }
-  - { src: "/content/images/projects/petz-loyalty/06-coupons.jpg",      caption: "Coupons — single-use discounts tied to the loyalty program." }
-  - { src: "/content/images/projects/petz-loyalty/08-orders-list.jpg",  caption: "Orders list — status-coded history with reorder shortcut." }
-  - { src: "/content/images/projects/petz-loyalty/09-order-completed.jpg", caption: "Completed pickup order — confirmation, address, and feedback prompt." }
-  - { src: "/content/images/projects/petz-loyalty/10-order-cancelled.jpg", caption: "Cancelled order — refund status and itemised payment details." }
+  - { src: "/content/images/projects/petz-loyalty/04-cashpetz-history.jpg", caption: "CashPetz history: earned, used, refunded, and expiring balance." }
+  - { src: "/content/images/projects/petz-loyalty/05-offers.jpg",       caption: "Personalised offers: recommended products with activation flow." }
+  - { src: "/content/images/projects/petz-loyalty/06-coupons.jpg",      caption: "Coupons: single-use discounts tied to the loyalty program." }
+  - { src: "/content/images/projects/petz-loyalty/08-orders-list.jpg",  caption: "Orders list: status-coded history with reorder shortcut." }
+  - { src: "/content/images/projects/petz-loyalty/09-order-completed.jpg", caption: "Completed pickup order: confirmation, address, and feedback prompt." }
+  - { src: "/content/images/projects/petz-loyalty/10-order-cancelled.jpg", caption: "Cancelled order: refund status and itemised payment details." }
 tags: ["iOS", "SwiftUI", "Architecture", "Performance"]
 stack:
   - "Swift"

@@ -5,7 +5,7 @@ lede: "BeSafe, G1/GE, Dafiti, Next, Petz e LTK. Apps de saúde, notícias, varej
 howIWorkLabel: "Notas do trabalho"
 ---
 
-Comecei na Verité em 2018, criando apps internos de gestão. Na Dextra, trabalhei no G1/GE e na Dafiti; depois, na Next, Petz e LTK, passei por autenticação, fidelidade e busca. Na BeSafe, liderei a migração de UIKit para SwiftUI — 200+ views e 25 Swift Packages — e respondi pelas camadas de rede, sessão e background até a primeira release e a aprovação na App Store.
+Comecei na Verité em 2018, criando apps internos de gestão. Na Dextra, trabalhei no G1/GE e na Dafiti; depois, na Next, Petz e LTK, passei por autenticação, fidelidade e busca. Na BeSafe, liderei a migração de UIKit para SwiftUI (200+ views e 25 Swift Packages) e respondi pelas camadas de rede, sessão e background até a primeira release e a aprovação na App Store.
 
 Na LTK, coloquei três endpoints de busca atrás de uma camada única com async/await; a resposta caiu de 900ms para 200ms. Na Petz, ajudei a restabelecer o serviço depois que um valor incorreto no Remote Config causou um crash em um app com mais de 1,5M de usuários.
 

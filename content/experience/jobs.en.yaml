@@ -1,7 +1,7 @@
 jobs:
   - role: "Senior iOS Software Engineer"
-    company: "L M Tecnologia — contracted to BeSafe"
-    period: "Jun 2026 — Nov 2026"
+    company: "L M Tecnologia, contracted to BeSafe"
+    period: "Jun 2026 – Nov 2026"
     current: false
     appLinks:
       - name: "BeSafe"
@@ -9,14 +9,14 @@ jobs:
     bullets:
       - "Delivered the app to the App Store by the launch deadline agreed in the contract as the main iOS contributor, through first release and Apple approval."
       - "Built DNS-level betting-site blocking in a Network Extension: a downloaded global blocklist, an on-device list for instant requests, and tunnel recovery when the network changes."
-      - "Led the UIKit/MVC → SwiftUI migration with Clean Architecture — NavigationStack, @Observable state, async/await — ending with 200+ SwiftUI views and only 5 UIKit controllers; every SwiftUI view shipped with VoiceOver and Dynamic Type."
+      - "Led the UIKit/MVC → SwiftUI migration with Clean Architecture (NavigationStack, @Observable state, async/await), ending with 200+ SwiftUI views and only 5 UIKit controllers; every SwiftUI view shipped with VoiceOver and Dynamic Type."
       - "Split the app into 25 Swift Packages with compiler-enforced boundaries, including a tokenized Figma-generated design system and localization-ready strings; a CI gate keeps third-party SDKs out of the extension."
-      - "Owned networking, session and background execution end to end — REST interceptors with automatic token refresh, Keychain credentials, APNs/BGTask triggers and Firebase/RevenueCat integration — and fixed a cross-process race that caused deterministic logouts by moving token storage to a single source of truth."
+      - "Owned networking, session and background execution end to end (REST interceptors with automatic token refresh, Keychain credentials, APNs/BGTask triggers and Firebase/RevenueCat integration) and fixed a cross-process race that caused deterministic logouts by moving token storage to a single source of truth."
       - "Grew the suite to 3,169 Swift Testing cases and 270 snapshot baselines, added 45+ on-device Maestro flows and nightly fastlane/TestFlight releases, and instrumented Firebase telemetry with PII stripped to diagnose Wi-Fi/cellular recovery bugs."
 
   - role: "Senior iOS Software Engineer"
-    company: "Hi-Tech Talents — contracted to LikeToKnow.It (LTK)"
-    period: "Oct 2025 — Apr 2026"
+    company: "Hi-Tech Talents, contracted to LTK (LikeToKnow.It), a US creator-commerce app"
+    period: "Oct 2025 – Apr 2026"
     current: false
     appLinks:
       - name: "LTK"
@@ -27,8 +27,8 @@ jobs:
       - "Built a Maestro flow from login to creator shop, complementing XCUITest coverage and catching cross-screen regressions unit tests could not."
 
   - role: "Senior iOS Software Engineer"
-    company: "Sebratec — contracted to Petz"
-    period: "Aug 2022 — Sep 2025"
+    company: "Sebratec, contracted to Petz, one of Brazil's largest pet retailers"
+    period: "Aug 2022 – Sep 2025"
     appLinks:
       - name: "Petz"
         url: "https://apps.apple.com/br/app/petz-tudo-que-seu-pet-precisa/id1250491446"
@@ -38,8 +38,8 @@ jobs:
       - "Moved eight screens from UIKit to SwiftUI with one other developer. Feature delivery dropped from three months to six weeks, and the team adopted SwiftUI as its standard."
 
   - role: "iOS Engineer / Digital Solutions Architect"
-    company: "Capgemini — contracted to Next"
-    period: "Jul 2021 — Jun 2022"
+    company: "Capgemini, contracted to Next, Bradesco's digital bank"
+    period: "Jul 2021 – Jun 2022"
     appLinks:
       - name: "Next"
         url: "https://apps.apple.com/br/app/next-conta-digital-e-cart%C3%A3o/id1133682678"
@@ -49,8 +49,8 @@ jobs:
       - "Mentored a junior iOS developer through pair programming, code reviews and architecture discussions."
 
   - role: "Mid-Level iOS Developer"
-    company: "Dextra Digital — contracted to Globo and Dafiti"
-    period: "Oct 2019 — Jun 2021"
+    company: "Dextra Digital, contracted to Globo (G1, GE) and Dafiti Group"
+    period: "Oct 2019 – Jun 2021"
     appLinks:
       - name: "G1"
         url: "https://apps.apple.com/br/app/g1-portal-de-not%C3%ADcias-da-globo/id413333281"
@@ -65,7 +65,7 @@ jobs:
 
   - role: "Junior iOS Developer"
     company: "Verité Soluções"
-    period: "Jul 2018 — Sep 2019"
+    period: "Jul 2018 – Sep 2019"
     appLinks:
       - name: "TocaLivros"
         url: "https://apps.apple.com/br/app/audiolivros-da-tocalivros/id919766261"

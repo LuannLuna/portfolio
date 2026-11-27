@@ -2,7 +2,7 @@
 slug: "next-banking"
 title: "Next: Autenticação & Integrações de Chat"
 company: "Next (via Capgemini)"
-period: "2021 — 2022"
+period: "2021 – 2022"
 order: 4
 featured: true
 tagline: "Prototipei autenticação sob demanda em RxSwift e fiz pair com o time de Chat na integração do SDK da Bia."
@@ -11,10 +11,10 @@ cover: "/content/images/projects/next-banking/cover.webp"
 coverFit: "contain"
 tags: ["iOS", "Architecture", "RxSwift", "Security"]
 gallery:
-  - { src: "/content/images/projects/next-banking/01-home.webp",        caption: "Home — visão da conta, ações rápidas e atalhos de serviços." }
-  - { src: "/content/images/projects/next-banking/02-chat-bia.webp",    caption: "Assistente BIA — chat no app com orientação proativa sobre a conta." }
-  - { src: "/content/images/projects/next-banking/03-login.webp",       caption: "Login — entrada de autenticação com atalhos, token e PIX." }
-  - { src: "/content/images/projects/next-banking/04-onboarding.webp",  caption: "Onboarding — fluxo de abertura de conta digital Next." }
+  - { src: "/content/images/projects/next-banking/01-home.webp",        caption: "Home: visão da conta, ações rápidas e atalhos de serviços." }
+  - { src: "/content/images/projects/next-banking/02-chat-bia.webp",    caption: "Assistente BIA: chat no app com orientação proativa sobre a conta." }
+  - { src: "/content/images/projects/next-banking/03-login.webp",       caption: "Login: entrada de autenticação com atalhos, token e PIX." }
+  - { src: "/content/images/projects/next-banking/04-onboarding.webp",  caption: "Onboarding: fluxo de abertura de conta digital Next." }
 stack:
   - "Swift"
   - "RxSwift"
